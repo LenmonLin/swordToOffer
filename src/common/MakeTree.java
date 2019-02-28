@@ -2,12 +2,16 @@ package common;
 
 /**
  * @author LemonLin
- * @Description :构造一颗二叉树
+ * @Description :MakeTree
  * @date 2018/3/22-17:04
+ *                  8
+ *             6       10
+ *          5   7    9    11
+ *
  */
-public class 构造一颗二叉树 {
+public class MakeTree {
 
-    public static void main(String[] args) {
+    public  TreeNodeCommon makeTree(){
         TreeNodeCommon treeNodeCommon1 = new TreeNodeCommon(8);
         TreeNodeCommon treeNodeCommon2 = new TreeNodeCommon(6);
         TreeNodeCommon treeNodeCommon3 = new TreeNodeCommon(10);
@@ -23,5 +27,11 @@ public class 构造一颗二叉树 {
 
         treeNodeCommon3.left = treeNodeCommon6;
         treeNodeCommon3.right = treeNodeCommon7;
+
+        return treeNodeCommon1;
+    }
+
+    public static void main(String[] args) {
+
     }
 }
