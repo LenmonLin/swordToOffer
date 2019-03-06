@@ -2,8 +2,10 @@
  * @author LemonLin
  * @Description :QuickSort
  * @date 2018/3/24-15:33
+ *
+ * 快速排序算法
  */
-public class QuickSortByLemonLin {
+public class SortQuickSortByLemonLin {
 
 
     public void sort(int arr[],int low,int high){
@@ -46,7 +48,7 @@ public class QuickSortByLemonLin {
 
     //测试代码
     public static void main(String[] args) {
-        QuickSortByLemonLin quickSortByLemonLin = new QuickSortByLemonLin();
+        SortQuickSortByLemonLin quickSortByLemonLin = new SortQuickSortByLemonLin();
 
         int array [] = {49,38,65,97,76,13,27,49};
         quickSortByLemonLin.sort(array,0,array.length-1);
