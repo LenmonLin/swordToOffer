@@ -1,7 +1,10 @@
 
-public class FirstCharacterInStream {
+public class StringFirstCharacterInStream55 {
 
         /*
+        题目描述:
+            请实现一个函数用来找出字符流中第一个只出现一次的字符。例如，当从字符流中只读出前两个字符"go"时，
+            第一个只出现一次的字符是"g"。当从该字符流中读出前六个字符“google"时，第一个只出现一次的字符是"l"。
         解题要点：
             1、ASCII 码转字符；http://blog.csdn.net/myweishanli/article/details/38924481
             字符转ascII 码；
@@ -23,7 +26,7 @@ public class FirstCharacterInStream {
         int index =0;  //#1
 
         //初始化hash表的值为-1
-        FirstCharacterInStream() {
+        StringFirstCharacterInStream55() {
             for(int i=0;i<256;i++){
                 hash[i] = -1;
             }
@@ -63,7 +66,7 @@ public class FirstCharacterInStream {
         // 非静态方法必须寄居在对象上才能使用
         public static void main(String[] args){
 
-            FirstCharacterInStream a = new FirstCharacterInStream();
+            StringFirstCharacterInStream55 a = new StringFirstCharacterInStream55();
             a.Insert('g');
             a.Insert('o');
             a.Insert('o');
