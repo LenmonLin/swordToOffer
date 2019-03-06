@@ -1,6 +1,12 @@
-public class NumericStrings {
+public class StringNumericStrings54 {
 
     /**
+     *
+     * 题目描述
+     * 请实现一个函数用来判断字符串是否表示数值（包括整数和小数）。例如，字符串"+100","5e2","-123",
+     * "3.1416"和"-1E-16"都表示数值。 但是"12e","1a3.14","1.2.3","+-5"和"12e+4.3"都不是。
+     *
+     * 解题思路：
      * 从测试用例来看，表示的字符串有三类：整数、浮点数和科学计数法表示的数值。
      * 那么基本思路就是根绝这三种类型进行判断：对于整数比较容易判断，只要字符串没有出现非0到9的字符，
      * 就可以跳过，否则返回错误；对于浮点数，因为可能会出现多个小数点的情况，所以如果展开判断会很复杂，
@@ -50,7 +56,7 @@ public class NumericStrings {
 
         public static void main(String[] args) {
             String s = "1.2.3";
-            boolean b = new NumericStrings().isNumeric(s.toCharArray());
+            boolean b = new StringNumericStrings54().isNumeric(s.toCharArray());
             System.out.println(b);
         }
 }
