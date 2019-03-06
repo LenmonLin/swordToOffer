@@ -2,8 +2,10 @@
  * @author LemonLin
  * @Description :MergeSortByLemonLin
  * @date 2018/4/7-16:49
+ *
+ * 归并排序算法
  */
-public class MergeSortByLemonLin {
+public class SortMergeSortByLemonLin {
 
     public void MergeSort(int [] arra){
         MSort(arra,arra,1,arra.length);
