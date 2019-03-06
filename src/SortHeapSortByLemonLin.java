@@ -1,11 +1,12 @@
-import java.util.Scanner;
-
 /**
  * @author LemonLin
  * @Description :HeapSortByLemonLin
  * @date 2018/4/3-21:26
+ *
+ * 堆排序算法
+ *
  */
-public class HeapSortByLemonLin {
+public class SortHeapSortByLemonLin {
 
     public void HeapSort(int [] L){
 
@@ -82,7 +83,7 @@ public class HeapSortByLemonLin {
 //        }
 
         int [] arra={0,90,70,80,60,10,40,50,30,20};
-        HeapSortByLemonLin heapSortByLemonLin = new HeapSortByLemonLin();
+        SortHeapSortByLemonLin heapSortByLemonLin = new SortHeapSortByLemonLin();
         heapSortByLemonLin.HeapSort(arra);
         for (int i =1 ;i<arra.length;i++){
             System.out.println(arra[i]);
