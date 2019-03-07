@@ -9,11 +9,33 @@
  * 字符匹配整个模式。例如，字符串"aaa"与模式"a.a"和"ab*ac*a"匹配，但是与"aa.a"
  * 和"ab*a"均不匹配
  *
+ * 解题bug：
+ *      char[] str={}与char[] str=null 的区别
+ *      char[] str={}与char[] str={' '}的区别
+ *      用例:"","."牛客网无法通过
  *
  * 解题思路：
  *      总体情况是，str是需要匹配的字符串，一个pattern是需要匹配的模式，分别用
  *      strIndex,patternIndex,来比较字符。
  *      需要用到递归的思路来对数组下标进行匹配。
+ *
+ *       总括：patternIndex指针先动，strIndex 指针再动
+ *       if(pattern下一个字符是'*'){
+ *           if(pattern当前字符是'.'){
+ *               str被匹配0个;
+ *               str被只匹配一个；
+ *               str被匹配一个或者多个
+ *           }
+ *           else if(pattern当前字符不是'.',同时与str当前字符相匹配){
+ *               pattern匹配一个或者多个
+ *           }else{
+ *               pattern匹配0个
+ *           }
+ *       }
+ *       if(pattern下一个字符不是'*'){
+ *           是否有含'.'
+ *       }
+ *
  *
  *      匹配规则上：
  *     首先，考虑特殊情况：
@@ -38,13 +60,16 @@
  *                 由于str移到了下一个字符，而pattern字符不变，就回到了上边的情况a；
  *                 当匹配多于一个字符时，相当于从str的下一个字符继续开始匹配）
  *
+ *
+ *
+ *
  */
-public class Match53 {
+public class StringMatch53 {
 
     public boolean match(char[] str, char[] pattern) {
 
-        if (str==null && pattern ==null){
-            return true;
+        if (str==null  ||pattern ==null){
+            return false;
         }
 
         int strIndex = 0;
@@ -63,30 +88,47 @@ public class Match53 {
         if (strIndex!=str.length && patternIndex == pattern.length){
             return  false;
         }
+
+        //当越界的时候返回false
+        if (strIndex >str.length ||patternIndex > pattern.length){
+            return false;
+        }
+
         //这里要限定数组下标不能越界
         if (patternIndex+1<pattern.length&&pattern[patternIndex+1]=='*'){
-            if (str[strIndex]!=pattern[patternIndex]){
-                return matchCore(str,strIndex,pattern,patternIndex+2);
+            //但pattern是这种模式的时候'abc.*bcd'
+            if (pattern[patternIndex]=='.'){
+                //情况一是str 被匹配一个或者多个
+                return matchCore(str,strIndex+1,pattern,patternIndex)
+                        //情况二是str被匹配0个
+                        || matchCore(str,strIndex,pattern,patternIndex+2)
+                        //情况三是str只被匹配1个
+                        || matchCore(str, strIndex + 1, pattern, patternIndex + 2);
+            }
+            else if ((strIndex != str.length && pattern[patternIndex] == str[strIndex])){
+                //当匹配一个字符的时候
+                return matchCore(str, strIndex + 1, pattern, patternIndex);
             }
             else {
-                return matchCore(str,strIndex+1,pattern,patternIndex);
+                //当‘*’匹配0个字符时
+                return matchCore(str,strIndex,pattern,patternIndex+2);
             }
         }
 
         if (str[strIndex]==pattern[patternIndex]||(pattern[patternIndex]=='.'&&strIndex != str.length)){
             return matchCore(str,strIndex+1,pattern,patternIndex+1);
-        }else {
-            //这里也是重要的出口
-            return false;
         }
+        //这里也是重要的出口
+        return false;
+
     }
 
 
     public static void main(String[] args) {
-        Match53 match53= new Match53();
-        char [] str={'1','2','2','3'};
-        char [] pattern={'1','2','*','3'};
-        boolean match = match53.match(str, pattern);
+        StringMatch53 stringMatch53 = new StringMatch53();
+        char [] str={' '};
+        char [] pattern={'.'};
+        boolean match = stringMatch53.match(str, pattern);
         System.out.println(match);
     }
 }
