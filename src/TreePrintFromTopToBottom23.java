@@ -18,6 +18,9 @@ import java.util.Queue;
  */
 
 /**
+ * 题目描述
+ * 从上往下打印出二叉树的每个节点，同层节点从左至右打印
+ *
  *层次遍历和前序遍历的代码总体模块有点像，那为什么层次遍历的代码可以读取左结点之后再读取右结点，而不是
  * 像前序遍历那样读取左结点的左子树结点，主要原因是因为层次遍历的
  * if(pNode->m_pLeft)
@@ -32,7 +35,7 @@ import java.util.Queue;
  * @Description :PrintFromTopToBottom23
  * @date 2018/3/22-15:58
  */
-public class PrintFromTopToBottom23 {
+public class TreePrintFromTopToBottom23 {
 
     public ArrayList<Integer> PrintFromTopToBottom(TreeNodeCommon root) {
 
@@ -83,9 +86,9 @@ public class PrintFromTopToBottom23 {
 
         treeNodeCommon3.left = treeNodeCommon6;
         treeNodeCommon3.right = treeNodeCommon7;
-        PrintFromTopToBottom23 printFromTopToBottom23 = new PrintFromTopToBottom23();
+        TreePrintFromTopToBottom23 treePrintFromTopToBottom23 = new TreePrintFromTopToBottom23();
 
-        ArrayList<Integer> arrayList = printFromTopToBottom23.PrintFromTopToBottom(treeNodeCommon1);
+        ArrayList<Integer> arrayList = treePrintFromTopToBottom23.PrintFromTopToBottom(treeNodeCommon1);
 
 
         System.out.println("从上到下存入结点" + arrayList);
