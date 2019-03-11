@@ -28,13 +28,14 @@ public class SortMergeSortByLemonLin {
         int mid=0;
 
         if (left<right){
-            //确定一分为二的分界点
+            //确定一分为二的分界点,mid是左边数组的末尾元素
             mid=(left+right)/2;
             //递归解决左边
             MSort(result,temp,left,mid);
             //递归解决右边的小块数组
             MSort(result,temp,mid+1,right);
-            //合并已经排好序的左右两边的数组
+            //合并已经排好序的左右两边的数组，这里之所以去mid+1,是为了temp[tempLeft++]=result[mid++];
+            //方便，否则取mid,result中的mid不能直接++,坐标不对
             MergeS(result,temp,left,mid+1,right);
         }
     }
