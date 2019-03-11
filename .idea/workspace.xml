@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d7ee6a3f-6fc0-4c05-82c3-68c3c317ca9f" name="Default" comment="二叉树的下一个结点">
-      <change afterPath="$PROJECT_DIR$/src/TreePrintMultipleLines60.java" afterDir="false" />
+    <list default="true" id="d7ee6a3f-6fc0-4c05-82c3-68c3c317ca9f" name="Default" comment="把二叉树打印成多行">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TreeGetNext58.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TreeGetNext58.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SortMergeSortByLemonLin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SortMergeSortByLemonLin.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -29,34 +28,88 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/TreePrintMultipleLines60.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/TreeSerialize62.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="182">
-              <caret line="37" selection-start-line="37" selection-end-line="39" selection-end-column="26" />
+            <state relative-caret-position="1564">
+              <caret line="68" column="30" selection-start-line="68" selection-start-column="30" selection-end-line="68" selection-end-column="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/TreeGetMedian64.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret selection-end-line="1" selection-end-column="31" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#519#539#0" expanded="true" />
-                <element signature="e#680#696#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/common/MakeTree.java">
+        <entry file="file://$PROJECT_DIR$/src/MinNumberInRotatedArray08.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="159">
-              <caret line="24" selection-start-line="24" selection-end-line="24" />
+            <state relative-caret-position="529">
+              <caret line="23" column="34" selection-start-line="23" selection-start-column="34" selection-end-line="23" selection-end-column="34" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/common/TreeNodeCommon.java">
+        <entry file="file://$PROJECT_DIR$/src/ArrayPrintMinNumber33.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
-              <caret line="12" selection-start-line="12" selection-end-line="12" />
+            <state relative-caret-position="23">
+              <caret line="45" column="20" selection-start-line="45" selection-start-column="20" selection-end-line="45" selection-end-column="20" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ArrayFindNumsAppearOnce40.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="782">
+              <caret line="34" selection-start-line="34" selection-end-line="68" selection-end-column="5" />
+              <folding>
+                <element signature="method#FindNumsAppearOnce#0;class#ArrayFindNumsAppearOnce40#0" />
+                <element signature="method#findFirstBitIs#0;class#ArrayFindNumsAppearOnce40#0" />
+                <element signature="method#isBit#0;class#ArrayFindNumsAppearOnce40#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/SortMergeSortByLemonLin.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="247">
+              <caret line="19" column="46" selection-start-line="19" selection-start-column="46" selection-end-line="19" selection-end-column="46" />
+              <folding>
+                <element signature="method#MergeS#0;class#SortMergeSortByLemonLin#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/TreePrintFromTopToBottom23.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="575">
+              <caret line="29" column="31" selection-start-line="29" selection-start-column="31" selection-end-line="29" selection-end-column="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/StringFirstCharacterInStream55.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="437">
+              <caret line="19" column="35" selection-start-line="19" selection-start-column="35" selection-end-line="19" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -64,11 +117,23 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/TreeGetNext58.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="213">
-              <caret line="60" column="10" selection-start-line="60" selection-start-column="10" selection-end-line="60" selection-end-column="10" />
+            <state relative-caret-position="897">
+              <caret line="41" column="32" selection-start-line="41" selection-start-column="32" selection-end-line="41" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#GetNext#0;class#TreeGetNext58#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/TreeIsSymmetrical59.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="276">
+              <caret line="12" column="40" selection-start-line="12" selection-start-column="40" selection-end-line="12" selection-end-column="40" />
+              <folding>
+                <element signature="e#532#533#0" expanded="true" />
+                <element signature="e#581#582#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -101,7 +166,6 @@
         <option value="$PROJECT_DIR$/src/Match53.java" />
         <option value="$PROJECT_DIR$/src/StringFirstCharacterInStream55.java" />
         <option value="$PROJECT_DIR$/src/SortHeapSortByLemonLin.java" />
-        <option value="$PROJECT_DIR$/src/SortMergeSortByLemonLin.java" />
         <option value="$PROJECT_DIR$/src/StringNumericStrings54.java" />
         <option value="$PROJECT_DIR$/src/SortQuickSortByLemonLin.java" />
         <option value="$PROJECT_DIR$/src/StringMatch53.java" />
@@ -112,14 +176,24 @@
         <option value="$PROJECT_DIR$/src/common/MakeTreelink.java" />
         <option value="$PROJECT_DIR$/src/TreeIsSymmetrical59.java" />
         <option value="$PROJECT_DIR$/src/TreePrintFromTopToBottom23.java" />
-        <option value="$PROJECT_DIR$/src/TreeGetNext58.java" />
         <option value="$PROJECT_DIR$/src/TreePrintMultipleLines60.java" />
+        <option value="$PROJECT_DIR$/src/TreeGetNext58.java" />
+        <option value="$PROJECT_DIR$/src/FirstNotRepeatingChar35.java" />
+        <option value="$PROJECT_DIR$/src/StringFirstNotRepeatingChar35.java" />
+        <option value="$PROJECT_DIR$/src/ArrayFindInPartiallySortedMatrix03.java" />
+        <option value="$PROJECT_DIR$/src/TreeSerialize62.java" />
+        <option value="$PROJECT_DIR$/src/TreeKthNode63.java" />
+        <option value="$PROJECT_DIR$/src/TreePrintWithZigzag61.java" />
+        <option value="$PROJECT_DIR$/src/TreeGetMedian64.java" />
+        <option value="$PROJECT_DIR$/src/ArrayPrintMinNumber33.java" />
+        <option value="$PROJECT_DIR$/src/ArrayFindNumsAppearOnce40.java" />
+        <option value="$PROJECT_DIR$/src/SortMergeSortByLemonLin.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" fullScreen="true">
+  <component name="ProjectFrameBounds">
     <option name="width" value="1366" />
-    <option name="height" value="768" />
+    <option name="height" value="725" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -130,6 +204,7 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -142,24 +217,18 @@
               <item name="swordToOffer" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="swordToOffer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="swordToOffer" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552119985472" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552294748161" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
@@ -175,56 +244,56 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.TreePrintMultipleLines60">
-    <configuration name="LinkedListDeleteDuplication57" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="LinkedListDeleteDuplication57" />
+  <component name="RunManager" selected="Application.SortMergeSortByLemonLin">
+    <configuration name="ArrayFindNumsAppearOnce40" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ArrayFindNumsAppearOnce40" />
       <module name="swordToOffer" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LinkedListEntryNodeOfLoop56" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="LinkedListEntryNodeOfLoop56" />
+    <configuration name="ArrayPrintMinNumber33" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ArrayPrintMinNumber33" />
       <module name="swordToOffer" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="StringMatch53" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="StringMatch53" />
+    <configuration name="SortMergeSortByLemonLin" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="SortMergeSortByLemonLin" />
       <module name="swordToOffer" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TreeGetNext58" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="TreeGetNext58" />
+    <configuration name="TreeGetMedian64" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="TreeGetMedian64" />
       <module name="swordToOffer" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TreePrintMultipleLines60" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="TreePrintMultipleLines60" />
+    <configuration name="TreeKthNode63" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="TreeKthNode63" />
       <module name="swordToOffer" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.StringMatch53" />
-      <item itemvalue="Application.LinkedListEntryNodeOfLoop56" />
-      <item itemvalue="Application.LinkedListDeleteDuplication57" />
-      <item itemvalue="Application.TreeGetNext58" />
-      <item itemvalue="Application.TreePrintMultipleLines60" />
+      <item itemvalue="Application.TreeKthNode63" />
+      <item itemvalue="Application.TreeGetMedian64" />
+      <item itemvalue="Application.ArrayPrintMinNumber33" />
+      <item itemvalue="Application.ArrayFindNumsAppearOnce40" />
+      <item itemvalue="Application.SortMergeSortByLemonLin" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.TreePrintMultipleLines60" />
-        <item itemvalue="Application.TreeGetNext58" />
-        <item itemvalue="Application.LinkedListDeleteDuplication57" />
-        <item itemvalue="Application.LinkedListEntryNodeOfLoop56" />
-        <item itemvalue="Application.StringMatch53" />
+        <item itemvalue="Application.SortMergeSortByLemonLin" />
+        <item itemvalue="Application.ArrayFindNumsAppearOnce40" />
+        <item itemvalue="Application.ArrayPrintMinNumber33" />
+        <item itemvalue="Application.TreeGetMedian64" />
+        <item itemvalue="Application.TreeKthNode63" />
       </list>
     </recent_temporary>
   </component>
@@ -255,7 +324,11 @@
       <workItem from="1552012524123" duration="10842000" />
       <workItem from="1552094833269" duration="106000" />
       <workItem from="1552095005381" duration="1131000" />
-      <workItem from="1552112617505" duration="6552000" />
+      <workItem from="1552112617505" duration="8616000" />
+      <workItem from="1552130080101" duration="7643000" />
+      <workItem from="1552178720975" duration="5773000" />
+      <workItem from="1552216565829" duration="3680000" />
+      <workItem from="1552275318698" duration="5839000" />
     </task>
     <task id="LOCAL-00001" summary="&quot;树(搜索二叉树)中两个结点的最低公共祖先&quot;">
       <created>1551360703459</created>
@@ -397,11 +470,88 @@
       <option name="project" value="LOCAL" />
       <updated>1552116214146</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="把二叉树打印成多行">
+      <created>1552119959422</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1552119959422</updated>
+    </task>
+    <task id="LOCAL-00022" summary="二叉树的下一个结点">
+      <created>1552119998882</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1552119998882</updated>
+    </task>
+    <task id="LOCAL-00023" summary="把二叉树打印成多行">
+      <created>1552120042565</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1552120042565</updated>
+    </task>
+    <task id="LOCAL-00024" summary="第一个只出现一次的字符">
+      <created>1552121317558</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1552121317558</updated>
+    </task>
+    <task id="LOCAL-00025" summary="二维数组中的查找">
+      <created>1552131394167</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1552131394167</updated>
+    </task>
+    <task id="LOCAL-00026" summary="按之字形顺序打印二叉树">
+      <created>1552133348821</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1552133348821</updated>
+    </task>
+    <task id="LOCAL-00027" summary="序列化二叉树">
+      <created>1552135443267</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1552135443267</updated>
+    </task>
+    <task id="LOCAL-00028" summary="二叉搜索树的第K个结点">
+      <created>1552137847467</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1552137847467</updated>
+    </task>
+    <task id="LOCAL-00029" summary="数据流中的中位数">
+      <created>1552188153850</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1552188153850</updated>
+    </task>
+    <task id="LOCAL-00030" summary="把数组排成最小的数">
+      <created>1552222957925</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1552222957925</updated>
+    </task>
+    <task id="LOCAL-00031" summary="数组中只出现一次的数字">
+      <created>1552277330462</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1552277330462</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="83551000" />
+    <option name="totallyTimeSpent" value="108550000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -413,10 +563,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1366" height="768" extended-state="0" />
+    <frame x="0" y="0" width="1366" height="725" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49811321" visible="true" weight="0.1913767" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49811321" visible="true" weight="0.21975498" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="JRebel" order="3" sideWeight="0.5018868" side_tool="true" weight="0.21028744" />
@@ -426,12 +576,12 @@
       <window_info id="Capture Tool" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.25755396" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.4374101" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.36209813" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4374101" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3294964" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.32805756" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.32656515" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="9" weight="0.32805756" />
       <window_info anchor="bottom" id="Database Changes" order="10" show_stripe_button="false" />
@@ -495,7 +645,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="&quot;树(搜索二叉树)中两个结点的最低公共祖先注释更新&quot;" />
     <MESSAGE value="&quot;树(有指向父亲结点的指针)中两个结点的最低公共祖先&quot;" />
     <MESSAGE value="&quot;树(普通树)中两个结点的最低公共祖先&quot;" />
     <MESSAGE value="&quot;不用乘除法，for,while等求1+2+...+n&quot;" />
@@ -509,10 +658,19 @@
     <MESSAGE value="链表中的环的入口结点" />
     <MESSAGE value="删除链表中重复的结点" />
     <MESSAGE value="TreeGetNextNode58" />
-    <MESSAGE value="二叉树的下一个结点" />
     <MESSAGE value="对称的二叉树" />
     <MESSAGE value="从上到下，从左到右打印一颗二叉树" />
-    <option name="LAST_COMMIT_MESSAGE" value="从上到下，从左到右打印一颗二叉树" />
+    <MESSAGE value="二叉树的下一个结点" />
+    <MESSAGE value="把二叉树打印成多行" />
+    <MESSAGE value="第一个只出现一次的字符" />
+    <MESSAGE value="二维数组中的查找" />
+    <MESSAGE value="按之字形顺序打印二叉树" />
+    <MESSAGE value="序列化二叉树" />
+    <MESSAGE value="二叉搜索树的第K个结点" />
+    <MESSAGE value="数据流中的中位数" />
+    <MESSAGE value="把数组排成最小的数" />
+    <MESSAGE value="数组中只出现一次的数字" />
+    <option name="LAST_COMMIT_MESSAGE" value="数组中只出现一次的数字" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -559,6 +717,12 @@
           <properties />
           <option name="timeStamp" value="20" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/TreeKthNode63.java</url>
+          <line>43</line>
+          <properties />
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/StringMatch53.java</url>
           <line>79</line>
@@ -566,6 +730,14 @@
             <option name="EMULATED" value="true" />
           </properties>
           <option name="timeStamp" value="18" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/ArrayFindNumsAppearOnce40.java</url>
+          <line>65</line>
+          <properties class="ArrayFindNumsAppearOnce40" method="isBit">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="22" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -675,24 +847,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/StringFirstCharacterInStream55.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="6" column="12" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/SortHeapSortByLemonLin.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="184">
           <caret line="8" column="37" selection-start-line="8" selection-start-column="37" selection-end-line="8" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SortMergeSortByLemonLin.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="5" column="3" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="9" />
         </state>
       </provider>
     </entry>
@@ -745,38 +903,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/TreePrintFromTopToBottom23.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="22" column="2" selection-start-line="22" selection-start-column="2" selection-end-line="22" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/TreeIsSymmetrical59.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-          <folding>
-            <element signature="method#isSymmetrical#1;class#TreeIsSymmetrical59#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/common/TreeLinkNode.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="299">
           <caret line="13" column="29" selection-start-line="13" selection-start-column="29" selection-end-line="13" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/TreeGetNext58.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="213">
-          <caret line="60" column="10" selection-start-line="60" selection-start-column="10" selection-end-line="60" selection-end-column="10" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#GetNext#0;class#TreeGetNext58#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -787,21 +917,155 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/ArrayFindInPartiallySortedMatrix03.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="9" column="24" selection-start-line="9" selection-start-column="24" selection-end-line="9" selection-end-column="24" />
+          <folding>
+            <element signature="method#Find#0;class#ArrayFindInPartiallySortedMatrix03#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/common/MakeTree.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="159">
+        <state relative-caret-position="552">
           <caret line="24" selection-start-line="24" selection-end-line="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/StringFirstNotRepeatingChar35.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="7" column="3" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ConstructBinaryTree06.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="690">
+          <caret line="31" column="13" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/TreePrintMultipleLines60.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="37" selection-start-line="37" selection-end-line="39" selection-end-column="26" />
+        <state relative-caret-position="805">
+          <caret line="40" selection-start-line="40" selection-end-line="40" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#519#539#0" expanded="true" />
-            <element signature="e#680#696#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/TreePrintWithZigzag61.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1127">
+          <caret line="53" column="41" selection-start-line="53" selection-start-column="41" selection-end-line="53" selection-end-column="41" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/TreeKthNode63.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="37" column="5" selection-start-line="18" selection-start-column="4" selection-end-line="37" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#KthNode#0;class#TreeKthNode63#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/TreeSerialize62.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1564">
+          <caret line="68" column="30" selection-start-line="68" selection-start-column="30" selection-end-line="68" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/TreeGetMedian64.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="1" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MinNumberInRotatedArray08.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="529">
+          <caret line="23" column="34" selection-start-line="23" selection-start-column="34" selection-end-line="23" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/TreePrintFromTopToBottom23.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="575">
+          <caret line="29" column="31" selection-start-line="29" selection-start-column="31" selection-end-line="29" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/StringFirstCharacterInStream55.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="19" column="35" selection-start-line="19" selection-start-column="35" selection-end-line="19" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/TreeGetNext58.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="897">
+          <caret line="41" column="32" selection-start-line="41" selection-start-column="32" selection-end-line="41" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/TreeIsSymmetrical59.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="12" column="40" selection-start-line="12" selection-start-column="40" selection-end-line="12" selection-end-column="40" />
+          <folding>
+            <element signature="e#532#533#0" expanded="true" />
+            <element signature="e#581#582#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ArrayPrintMinNumber33.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="45" column="20" selection-start-line="45" selection-start-column="20" selection-end-line="45" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ArrayFindNumsAppearOnce40.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="782">
+          <caret line="34" selection-start-line="34" selection-end-line="68" selection-end-column="5" />
+          <folding>
+            <element signature="method#FindNumsAppearOnce#0;class#ArrayFindNumsAppearOnce40#0" />
+            <element signature="method#findFirstBitIs#0;class#ArrayFindNumsAppearOnce40#0" />
+            <element signature="method#isBit#0;class#ArrayFindNumsAppearOnce40#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SortMergeSortByLemonLin.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="19" column="46" selection-start-line="19" selection-start-column="46" selection-end-line="19" selection-end-column="46" />
+          <folding>
+            <element signature="method#MergeS#0;class#SortMergeSortByLemonLin#0" />
           </folding>
         </state>
       </provider>
