@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d7ee6a3f-6fc0-4c05-82c3-68c3c317ca9f" name="Default" comment="把二叉树打印成多行">
+    <list default="true" id="d7ee6a3f-6fc0-4c05-82c3-68c3c317ca9f" name="Default" comment="归并排序算法(含注解)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/SortMergeSortByLemonLin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SortMergeSortByLemonLin.java" afterDir="false" />
     </list>
@@ -87,8 +87,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/SortMergeSortByLemonLin.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="247">
-              <caret line="19" column="46" selection-start-line="19" selection-start-column="46" selection-end-line="19" selection-end-column="46" />
+            <state relative-caret-position="299">
+              <caret line="13" column="4" lean-forward="true" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="18" />
               <folding>
                 <element signature="method#MergeS#0;class#SortMergeSortByLemonLin#0" />
               </folding>
@@ -226,7 +226,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552294748161" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552294764666" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
@@ -328,7 +328,7 @@
       <workItem from="1552130080101" duration="7643000" />
       <workItem from="1552178720975" duration="5773000" />
       <workItem from="1552216565829" duration="3680000" />
-      <workItem from="1552275318698" duration="5839000" />
+      <workItem from="1552275318698" duration="6199000" />
     </task>
     <task id="LOCAL-00001" summary="&quot;树(搜索二叉树)中两个结点的最低公共祖先&quot;">
       <created>1551360703459</created>
@@ -547,11 +547,18 @@
       <option name="project" value="LOCAL" />
       <updated>1552277330462</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="归并排序算法(含注解)">
+      <created>1552294794007</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1552294794007</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="108550000" />
+    <option name="totallyTimeSpent" value="108910000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -645,7 +652,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="&quot;树(有指向父亲结点的指针)中两个结点的最低公共祖先&quot;" />
     <MESSAGE value="&quot;树(普通树)中两个结点的最低公共祖先&quot;" />
     <MESSAGE value="&quot;不用乘除法，for,while等求1+2+...+n&quot;" />
     <MESSAGE value="求两个整数之和，要求在函数体内不得使用四则运算符号" />
@@ -670,7 +676,8 @@
     <MESSAGE value="数据流中的中位数" />
     <MESSAGE value="把数组排成最小的数" />
     <MESSAGE value="数组中只出现一次的数字" />
-    <option name="LAST_COMMIT_MESSAGE" value="数组中只出现一次的数字" />
+    <MESSAGE value="归并排序算法(含注解)" />
+    <option name="LAST_COMMIT_MESSAGE" value="归并排序算法(含注解)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1062,8 +1069,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SortMergeSortByLemonLin.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="19" column="46" selection-start-line="19" selection-start-column="46" selection-end-line="19" selection-end-column="46" />
+        <state relative-caret-position="299">
+          <caret line="13" column="4" lean-forward="true" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="18" />
           <folding>
             <element signature="method#MergeS#0;class#SortMergeSortByLemonLin#0" />
           </folding>

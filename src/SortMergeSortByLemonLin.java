@@ -1,5 +1,3 @@
-import java.awt.font.TextMeasurer;
-
 /**
  * @author LemonLin
  * @Description :MergeSortByLemonLin
@@ -12,6 +10,8 @@ import java.awt.font.TextMeasurer;
  *  排好序的各个阶段，最后把全部排好序的内容复制到输入的数组中；
  *  同时需要三个坐标记录，start,记录待排序的数组的开始位置，End记录待排序数组的结束位置，mid，记录
  *  一分为二的坐标。
+ *
+ *  时间复杂度是O(nlogn)，利用了分而治之的办法，其中分O(logn),治O(n)
  */
 public class SortMergeSortByLemonLin {
 
