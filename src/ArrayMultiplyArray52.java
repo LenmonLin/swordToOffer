@@ -18,7 +18,7 @@
  *
  *  先计算下三角的每行乘积，再计算上三角的每行乘积，两者相乘，即是所求。
  */
-public class MultiplyArray52 {
+public class ArrayMultiplyArray52 {
     public int[] multiply(int[] A) {
 
         int[] C= new int[A.length];
@@ -46,9 +46,9 @@ public class MultiplyArray52 {
     }
 
     public static void main(String[] args) {
-        MultiplyArray52 multiplyArray52 = new MultiplyArray52();
+        ArrayMultiplyArray52 arrayMultiplyArray52 = new ArrayMultiplyArray52();
         int [] A={1,2,3};
-        int[] B = multiplyArray52.multiply(A);
+        int[] B = arrayMultiplyArray52.multiply(A);
 
         for (int i= 0;i<B.length;i++){
             System.out.println(B[i]);
