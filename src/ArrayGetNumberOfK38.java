@@ -1,16 +1,18 @@
 import java.util.HashMap;
-
 /**
  * @author LemonLin
  * @Description :GetNumberOfK38
  * @date 2018/5/8-15:58
+ *题目描述
+ * 统计一个数字在排序数组中出现的次数。
  *
+ * 解题思路：
  * 基本思路是使用hashmap中的key来记录array中的数，使用value来记录出现的次数。
  * 不能用数组的原因是，如果数字很大，array={300},那么要申请一个300大小的数组，非常的浪费。
  *
  * hashmap中get取出的元素类型是object，需要强制转换为int型;
  */
-public class GetNumberOfK38 {
+public class ArrayGetNumberOfK38 {
     public int GetNumberOfK(int [] array , int k) {
         if (array==null){
             return 0;
@@ -40,8 +42,8 @@ public class GetNumberOfK38 {
 
     public static void main(String[] args) {
         int[]array = {3};
-        GetNumberOfK38 getNumberOfK38 = new GetNumberOfK38();
-        int iNumber = getNumberOfK38.GetNumberOfK(array, 3);
+        ArrayGetNumberOfK38 arrayGetNumberOfK38 = new ArrayGetNumberOfK38();
+        int iNumber = arrayGetNumberOfK38.GetNumberOfK(array, 3);
         System.out.println(iNumber);
     }
 }
