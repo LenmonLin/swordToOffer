@@ -5,16 +5,33 @@ import java.util.ArrayList;
  * @Description :StringPermutation28
  * @date 2018/4/10-19:36
  *
- * 基本思路:
+ * 题目描述
+ * 输入一个字符串,按字典序打印出该字符串中字符的所有排列。例如输入字符串abc,则打印出由字符a,b,c所能排
+ * 列出来的所有字符串abc,acb,bac,bca,cab和cba。
+ * 输入描述:
+ * 输入一个字符串,长度不超过9(可能有字符重复),字符只包括大小写字母。
+ *
+ * 解题思路:
  *      把第一个字符独立出来，第一步，第一个字符和后面的所有字符交换，
  *      第二步，后面的字符又可以看作由一个字符和其他字符表示;
  *难点在于怎么获得每个字符的下标进行变化：
  *  答，可以使用string.tocharArray()方法把字符串转换位字符数组
+ *
+ *  bug:牛客网判别：
+ *  用例:
+ * abc
+ * 对应输出应该为:["abc","acb","bac","bca","cab","cba"]
+ *你的输出为:["abc","acb","bac","bca","cba","cab"]
+ * 顺序不同，无法通过；
  */
 public class StringPermutation28 {
 
     public ArrayList<String> Permutation(String str) {
-        return  new ArrayList<>();
+        ArrayList<String> result = new ArrayList<>();
+        if (str != null && str.length() > 0) {
+            recursionArrange(str.toCharArray(), 0, str.length() - 1, result);
+        }
+        return  result;
     }
 
     /*
@@ -23,18 +40,18 @@ public class StringPermutation28 {
      * 参数end:字符串数组的最后一位
      * 函数功能：输出字符串数字的各个字符全排列
      */
-    public void recursionArrange(char[] arrayA,int start,int end){
-        if(end <= 1)
-            return;
+    public void recursionArrange(char[] arrayA,int start,int end,ArrayList<String> stringArrayList){
         if(start == end){
-            for(int i = 0;i < arrayA.length;i++)
-                System.out.print(arrayA[i]);
-            System.out.println();
+            String val = String.valueOf(arrayA);
+            //这个判断必须加，否则会有重复的字符串放入
+            if (!stringArrayList.contains(val)) {
+                stringArrayList.add(val);
+            }
         }
         else{
             for(int i = start;i <= end;i++){
                 swap(arrayA,i,start);
-                recursionArrange(arrayA,start+1,end);
+                recursionArrange(arrayA,start+1,end,stringArrayList);
                 swap(arrayA,i,start);
             }
         }
@@ -49,8 +66,10 @@ public class StringPermutation28 {
 
     public static void main(String[] args){
         StringPermutation28 test = new StringPermutation28();
-        String A = "abc";
-        char[] arrayA = A.toCharArray();
-        test.recursionArrange(arrayA,0,arrayA.length-1);
+        String A = "aa";
+        ArrayList<String> permutation = test.Permutation(A);
+        for (int i=0;i<permutation.size();i++){
+            System.out.println(permutation.get(i));
+        }
     }
 }
