@@ -10,19 +10,19 @@
  * 解法思路：不能用循环解题了，就用递归代替，利用逻辑与的短路特性实现递归终止。
  *
  */
-public class Sumsolution46 {
+public class MathSumsolution46 {
 
 
-    public int SumSolution(int n) {
+    public int Sum_Solution(int n) {
         int sum =n;
         //java 中&&符号两边需要的是表达式
-        boolean ans= n>0 && ((sum+=SumSolution(n-1))>0);
+        boolean ans= n>0 && ((sum+=Sum_Solution(n-1))>0);
         return sum;
     }
 
     public static void main(String[] args) {
-        Sumsolution46 sumsolution46 = new Sumsolution46();
-        int sum = sumsolution46.SumSolution(5);
+        MathSumsolution46 mathSumsolution46 = new MathSumsolution46();
+        int sum = mathSumsolution46.Sum_Solution(5);
         System.out.println(sum);
     }
 }
