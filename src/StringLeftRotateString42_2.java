@@ -17,7 +17,7 @@
  *
  */
 
-public class LeftRotateString42_2 {
+public class StringLeftRotateString42_2 {
 
     public String LeftRotateString(String str,int n) {
 
@@ -78,8 +78,8 @@ public class LeftRotateString42_2 {
 
         String string2="";
 
-        LeftRotateString42_2 leftRotateString42_2=new LeftRotateString42_2();
-        String result = leftRotateString42_2.LeftRotateString(string2, 2);
+        StringLeftRotateString42_2 stringLeftRotateString42_2 =new StringLeftRotateString42_2();
+        String result = stringLeftRotateString42_2.LeftRotateString(string2, 2);
         System.out.println(result);
     }
 }
