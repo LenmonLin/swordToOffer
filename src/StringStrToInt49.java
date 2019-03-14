@@ -28,7 +28,7 @@
 *      2.4.4、但是java中int有正负之分，所以32个格子中占用一个格子标识正负，仅仅能用31个格子来标识数值。
 *      最后int能标识的最大/最小数字是：2的31次方即+/- 2147483648。取值范围即为二者之间
  */
-public class StrToInt49 {
+public class StringStrToInt49 {
 
     public int StrToInt(String str) {
 
@@ -69,8 +69,8 @@ public class StrToInt49 {
     }
 
     public static void main(String[] args) {
-        StrToInt49 strToInt49 = new StrToInt49();
-        int result = strToInt49.StrToInt("123");
+        StringStrToInt49 stringStrToInt49 = new StringStrToInt49();
+        int result = stringStrToInt49.StrToInt("123");
         System.out.println(result);
     }
 }
