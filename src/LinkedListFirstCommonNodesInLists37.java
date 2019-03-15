@@ -1,15 +1,17 @@
 import common.ListNodeCommom;
-
 /**
  * @author LemonLin
  * @Description :FirstCommonNodesInLists37
+ * @date 2018/5/5-20:00
+ *题目描述
+ * 输入两个链表，找出它们的第一个公共结点。
+ * 解题思路：
  * 总体思路：1、首先要知道链表是单向链表。如果两个单向链表有公共的结点，那么两个链表从某一个结点开始，
  * 它们的next都指向同一个结点。
  * 2、先求出两个链表的长度，进而求出两个链表的长度差，然后先遍历长的链表长度差，然后同时出发，当
  * 遍历了同一个结点的时候，就是公共结点
- * @date 2018/5/5-20:00
  */
-public class FirstCommonNodesInLists37 {
+public class LinkedListFirstCommonNodesInLists37 {
 
     public ListNodeCommom FindFirstCommonNode(ListNodeCommom pHead1, ListNodeCommom pHead2) {
 
@@ -82,8 +84,8 @@ public class FirstCommonNodesInLists37 {
         listb3.next = listb4;
         listb4.next = lista5;
 
-        FirstCommonNodesInLists37 firstCommonNodesInLists37 = new FirstCommonNodesInLists37();
-        ListNodeCommom listNodeCommom = firstCommonNodesInLists37.FindFirstCommonNode(lista1, listb1);
+        LinkedListFirstCommonNodesInLists37 linkedListFirstCommonNodesInLists37 = new LinkedListFirstCommonNodesInLists37();
+        ListNodeCommom listNodeCommom = linkedListFirstCommonNodesInLists37.FindFirstCommonNode(lista1, listb1);
         System.out.println(listNodeCommom.val);
     }
 }
