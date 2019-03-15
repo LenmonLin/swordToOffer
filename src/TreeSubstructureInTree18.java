@@ -1,6 +1,8 @@
 import common.TreeNodeCommon;
 
 /**
+ * 题目描述
+ * 输入两棵二叉树A，B，判断B是不是A的子结构。（ps：我们约定空树不是任意一个树的子结构）
  * 解题思路：
  * 分为两步骤：
  *  一、先判断根节点是不是相同的，使用一种遍历方法，遍历需要判定的树，进行判断。
@@ -10,7 +12,7 @@ import common.TreeNodeCommon;
  * @Description :SubstructureInTree18
  * @date 2018/2/23-15:55
  */
-public class SubstructureInTree18 {
+public class TreeSubstructureInTree18 {
 
     //先判断根节点是否是相同的
     public boolean HasSubtree(TreeNodeCommon root1, TreeNodeCommon root2) {
