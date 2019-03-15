@@ -12,7 +12,7 @@
  * 返回num1^num2的结果。
  *
  */
-public class AddWithoutSymbol47 {
+public class BitManipulationAddWithoutSymbol47 {
 
     public int Add(int num1,int num2) {
         while (num2!=0) {
@@ -25,8 +25,8 @@ public class AddWithoutSymbol47 {
 
     public static void main(String[] args) {
 
-        AddWithoutSymbol47 addWithoutSymbol47 = new AddWithoutSymbol47();
-        int num = addWithoutSymbol47.Add(5,17);
+        BitManipulationAddWithoutSymbol47 bitManipulationAddWithoutSymbol47 = new BitManipulationAddWithoutSymbol47();
+        int num = bitManipulationAddWithoutSymbol47.Add(5,17);
         System.out.println(num);
 
     }
