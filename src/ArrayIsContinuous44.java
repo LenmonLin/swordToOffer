@@ -19,7 +19,7 @@ import java.util.Arrays;
  * 3、计算排好序的相邻数据之间的空缺总数，和2对比，0总数多，就算连续数组，否则不算
  * 4、注意异常情况，如果有非0数字重复出现，则该数组不是连续的，即有对子不能为顺子
  */
-public class IsContinuous44 {
+public class ArrayIsContinuous44 {
 
     public boolean isContinuous(int [] numbers) {
         Arrays.sort(numbers);
@@ -62,8 +62,8 @@ public class IsContinuous44 {
     }
 
     public static void main(String[] args) {
-        IsContinuous44 isContinuous44 = new IsContinuous44();
+        ArrayIsContinuous44 arrayIsContinuous44 = new ArrayIsContinuous44();
         int[]test ={1,3,2,6,4};
-        isContinuous44.isContinuous(test);
+        arrayIsContinuous44.isContinuous(test);
     }
 }
