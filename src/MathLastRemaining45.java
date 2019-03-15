@@ -34,7 +34,7 @@ import java.util.LinkedList;
  * 数组的每个元素都是false，数到谁的时候，将数组对对应index的值改为true。
  * 知道最后只剩下一个元素值为false，得到此index。
  */
-public class LastRemaining45 {
+public class MathLastRemaining45 {
 
 
     /**
@@ -84,9 +84,9 @@ public class LastRemaining45 {
 
     public static void main(String[] args) {
 
-        LastRemaining45 lastRemaining45 = new LastRemaining45();
+        MathLastRemaining45 mathLastRemaining45 = new MathLastRemaining45();
 
-        int test = lastRemaining45.LastRemaining_Solution(5, 3);
+        int test = mathLastRemaining45.LastRemaining_Solution(5, 3);
         System.out.println(test);
     }
 }
