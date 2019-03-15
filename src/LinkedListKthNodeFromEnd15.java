@@ -1,7 +1,12 @@
 import common.ListNodeCommom;
-
 /**
+ *
+ * 题目描述
+ * 输入一个链表，输出该链表中倒数第k个结点。
+ *
  * 解题思路：
+ *  用两个指针，第一个指针先遍历k-1,同时第二个指针从第一个结点出发，然后两个指针同时移动，由于这
+ *  两个指针之间相差k-1，所以当第一个指针先到链表尾部，第二个指针就到了倒数第k个结点
  *  本题注意下要控制代码的鲁棒性问题，包括三个点：
  *   1、传入的指针可能为空指针；
  *   2、K值可能为0 ，0如果设定为无符号的数(即 unsigned )，那么0-1= 一个很大的数；可能要循环很多次
@@ -10,7 +15,7 @@ import common.ListNodeCommom;
  * @Description :KthNodeFromEnd15
  * @date 2018/2/23-20:32
  */
-public class KthNodeFromEnd15 {
+public class LinkedListKthNodeFromEnd15 {
 
     public ListNodeCommom FindKthToTail(ListNodeCommom head, int k) {
         ListNodeCommom pHead = null;
@@ -50,7 +55,7 @@ public class KthNodeFromEnd15 {
         list4.next =list5;
         list5.next =list6;
 
-        KthNodeFromEnd15 test = new KthNodeFromEnd15();
+        LinkedListKthNodeFromEnd15 test = new LinkedListKthNodeFromEnd15();
         ListNodeCommom pHead = test.FindKthToTail(list1,3);
 
         System.out.println(pHead.val);
