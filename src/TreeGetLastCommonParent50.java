@@ -2,7 +2,6 @@ import common.MakeTree;
 import common.TreeNodeCommon;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @author LemonLin
@@ -34,7 +33,7 @@ import java.util.List;
  *              默认是根结点到叶子节点的情况，两个链表一样长
  *
  */
-public class GetLastCommonParent50 {
+public class TreeGetLastCommonParent50 {
 
 
     /*
@@ -139,12 +138,12 @@ public class GetLastCommonParent50 {
         TreeNodeCommon tLeft = new TreeNodeCommon(5);
         TreeNodeCommon tRight = new TreeNodeCommon(7);
 
-        GetLastCommonParent50 getLastCommonParent50 = new GetLastCommonParent50();
+        TreeGetLastCommonParent50 treeGetLastCommonParent50 = new TreeGetLastCommonParent50();
         //TreeNodeCommon lastCommonParent = getLastCommonParent50.GetLastCommonParentOne(pRoot,tLeft,tRight);
         //System.out.println(lastCommonParent.data);
 
 
-        TreeNodeCommon lastCommonParent = getLastCommonParent50.GetLastCommonParentTwo(pRoot
+        TreeNodeCommon lastCommonParent = treeGetLastCommonParent50.GetLastCommonParentTwo(pRoot
         ,tLeft,tRight);
         System.out.println(lastCommonParent.data);
 
