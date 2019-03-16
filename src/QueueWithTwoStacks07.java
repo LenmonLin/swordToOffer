@@ -1,9 +1,10 @@
 import java.util.Stack;
-
 /**
  * @author LemonLin
  * @Description :QueueWithTwoStacks07
  * @date 2018/2/22-16:28
+ *题目描述
+ * 用两个栈来实现一个队列，完成队列的Push和Pop操作。 队列中的元素为int类型。
  *
  * 解题要点：
  * 1、要实现进队列和出队列；进队列没什么问题；
@@ -14,16 +15,10 @@ import java.util.Stack;
 public class QueueWithTwoStacks07 {
     Stack<Integer> stack1 = new Stack<Integer>();
     Stack<Integer> stack2 = new Stack<Integer>();
-
-
     //定义这个题目要求的总体的入队
     public void push(int node) {
-
         stack1.push(node);
-
     }
-
-
     //定义这个题目要求的总体的出队
     public int pop() {
         Integer popInterger ;
@@ -41,12 +36,9 @@ public class QueueWithTwoStacks07 {
         }
         return popInterger;
     }
-
-
     //测试脚本
     public static void main(String[] args) {
         QueueWithTwoStacks07 test = new QueueWithTwoStacks07();
-
         test.push(1);
         test.push(2);
         test.push(3);
