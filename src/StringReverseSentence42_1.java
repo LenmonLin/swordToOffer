@@ -1,7 +1,6 @@
 /**
  * @author LemonLin
  * @Description :ReverseSentence42_1
- *
  *翻转单词顺序列
  *
  * 牛客最近来了一个新员工Fish，每天早晨总是会拿着一本英文杂志，写些句子在本子上。
@@ -23,8 +22,7 @@
  * 7、数组作为输入，一般情况下需要至少两个参数，一个是数组，一个是数组长度
  * @date 2018/6/12-15:29
  */
-public class ReverseSentence42_1 {
-
+public class StringReverseSentence42_1 {
     /**
      *     翻转思路是用一个中间的变量来存，头尾互相交换,翻转的终止条件是到字符串的中间
       */
@@ -32,19 +30,14 @@ public class ReverseSentence42_1 {
         if(str == null||str.trim().equals("")){
             return str;
         }
-
         char [] chars = str.toCharArray();
-
         //翻转整个句子
         Reverse(chars,0,chars.length-1);
         //翻转句子中的每个单词
         int j=0;
         int start = j;
-
         boolean flag = false;
-
         while (j<chars.length){
-
             if (chars[j]==' '){
                 flag = true;
                 int end = j-1;
@@ -65,7 +58,6 @@ public class ReverseSentence42_1 {
         String strChange=String.valueOf(chars);
         return strChange;
     }
-
     //start 的参数为数组开头，end的参数为数组的结尾;
     //数组作为输入，一般情况下需要至少两个参数，一个是数组，一个是数组长度
     /**
@@ -73,9 +65,7 @@ public class ReverseSentence42_1 {
      *      为什么加一，如果字符数组下标是012345，则必须为middle为3，因为for循环中i<middle注意体会这个小于号，
      *      而不是小于等于号，小于号(0+5)/2=2,加一，则为3*/
     public void Reverse(char[] chars,int start,int end){
-
         char  temp= ' ';
-
         int isZero = (start+end)%2;
         int middle = 0;
         if (isZero == 0){
@@ -91,11 +81,10 @@ public class ReverseSentence42_1 {
             j++;
         }
     }
-
     public static void main(String[] args) {
         String string = "i am a student.";
-        ReverseSentence42_1 reverseSentence42_1 = new ReverseSentence42_1();
-        String s = reverseSentence42_1.ReverseSentence(string);
+        StringReverseSentence42_1 stringReverseSentence42_1 = new StringReverseSentence42_1();
+        String s = stringReverseSentence42_1.ReverseSentence(string);
         System.out.println(s);
     }
 
