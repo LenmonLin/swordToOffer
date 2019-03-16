@@ -1,14 +1,15 @@
 import common.ListNodeCommom;
-
 /**
+ *  @author LemonLin
+ *  @Description :MergeSortedLists
+ *  @date 2018/2/23-16:47
+ *  题目描述
+ * 输入两个单调递增的链表，输出两个链表合成后的链表，当然我们需要合成后的链表满足单调不减规则。
  * 解题思路比较简单，主要用到了递归的思路：
  *  互相比较两个链表的开始结点，使用一个pHeadMerge合并指针来指向合并后的链表
  *  主要考虑当两个链表中的其中一个链表比较结束之后该怎么处理
- * @author LemonLin
- * @Description :MergeSortedLists
- * @date 2018/2/23-16:47
  */
-public class MergeSortedLists17 {
+public class LinkedListMergeSortedLists17 {
     public ListNodeCommom Merge(ListNodeCommom list1, ListNodeCommom list2) {
         if (list1 ==null){
             return list2;
@@ -45,7 +46,7 @@ public class MergeSortedLists17 {
         list2.next =list4;
         list4.next =list6;
 
-        MergeSortedLists17 test = new MergeSortedLists17();
+        LinkedListMergeSortedLists17 test = new LinkedListMergeSortedLists17();
         ListNodeCommom pHead = test.Merge(list1,list2);
         //遍历合并后的链表
         while(pHead!=null){
