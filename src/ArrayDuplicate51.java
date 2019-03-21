@@ -51,6 +51,8 @@ public class ArrayDuplicate51 {
                 temp2 = numbers[temp];
                 numbers[temp]=numbers[i];
                 numbers[i] = temp2;
+                //这里i--的原因，numbers[temp]与numbers[i]交换之后，numbers[i]还要重新判定，
+                //如果没有i--,下一步就是i++,就绕过去了numbers[i],程序逻辑就错了
                 i--;
             }
         }
