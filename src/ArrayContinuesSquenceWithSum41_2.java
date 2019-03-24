@@ -13,7 +13,8 @@ import java.util.ArrayList;
  * 基本思路：
  * 1、用两个指针分别记录头尾，然后如果两者之和小于sum,则后移尾指针，增加求和的数的数量，如果
  * 两者之和大于sum，则后移头指针，减少求和的数的数量。
- * 2、因为这个序列至少要有两个数字，我们一直增加small到(1+s)/2为止;
+ * 2、因为这个序列至少要有两个数字，则序列中至少有一个数是小于sum/2,否则都大于sum/2，则不可能由两个
+ * 数组成，两个都大于sum/2的和一定大于sum,所以我们一直增加small到(1+sum)/2为止;
 */
 public class ArrayContinuesSquenceWithSum41_2 {
     public ArrayList<ArrayList<Integer>> FindContinuousSequence(int sum) {
