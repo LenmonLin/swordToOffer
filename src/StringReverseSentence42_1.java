@@ -81,6 +81,17 @@ public class StringReverseSentence42_1 {
             j++;
         }
     }
+    //这里介绍一个更好的翻转思路，不用求middle这么麻烦，一不小心就记错了，可以用
+    //两个首尾指针，用一个变量来存中间值，首尾互相交换,翻转的终止条件是，首尾指针想遇
+    //比上一种方法简单直白不易错的多
+    public void Reverse2(char[] chars,int start,int end){
+        char  temp= ' ';
+        while (start<end){
+            temp=chars[start];
+            chars[start++]=chars[end];
+            chars[end--]=temp;
+        }
+    }
     public static void main(String[] args) {
         String string = "i am a student.";
         StringReverseSentence42_1 stringReverseSentence42_1 = new StringReverseSentence42_1();
