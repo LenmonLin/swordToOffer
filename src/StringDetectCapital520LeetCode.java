@@ -25,7 +25,7 @@
  * @Description :StringDetectCapital
  * @date 19.6.18-23:43
  */
-public class StringDetectCapital {
+public class StringDetectCapital520LeetCode {
     public boolean detectCapitalUse(String word) {
         if (word.length()==1)return true;
         char[] chars = word.toCharArray();
@@ -84,6 +84,6 @@ public class StringDetectCapital {
 
     public static void main(String[] args) {
         String s= "cVe";
-        System.out.println(new StringDetectCapital().detectCapitalUse(s));
+        System.out.println(new StringDetectCapital520LeetCode().detectCapitalUse(s));
     }
 }
