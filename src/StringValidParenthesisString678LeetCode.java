@@ -1,26 +1,4 @@
 /**
- * @author LemonLin
- * @Description :StringValidParenthesisString
- * @date 19.6.17-23:45
- * Given a string containing only three types of characters: '(', ')' and '*', write a function to
- * check whether this string is valid. We define the validity of a string by these rules:
- * Any left parenthesis '(' must have a corresponding right parenthesis ')'.
- * Any right parenthesis ')' must have a corresponding left parenthesis '('.
- * Left parenthesis '(' must go before the corresponding right parenthesis ')'.
- * '*' could be treated as a single right parenthesis ')' or a single left parenthesis '(' or
- * an empty string.
- * An empty string is also valid.
- * Example 1:
- * Input: "()"
- * Output: True
- * Example 2:
- * Input: "(*)"
- * Output: True
- * Example 3:
- * Input: "(*))"
- * Output: True
- * Note:
- * The string size will be in the range [1, 100].
  * 给定一个只包含三种字符的字符串：（ ，） 和 *，写一个函数来检验这个字符串是否为有效字符串。
  * 有效字符串具有如下规则：
  * 任何左括号 ( 必须有相应的右括号 )。
@@ -49,8 +27,30 @@
  * 因为如果正向遍历，左括号大于右括号，说明要么是左括号和*相加的数量多于右括号，要么是左括号的数量
  * 多于右括号，同时如果反向遍历，左括号小于右括号，说明要么是左括号小于右括号加*的数量，要么是左括
  * 号的数量小于右括号。如果正反遍历都是正数，那么只能是其中存在*这种情况。
+ * @author LemonLin
+ * @Description :StringValidParenthesisString
+ * @date 19.6.17-23:45
+ * Given a string containing only three types of characters: '(', ')' and '*', write a function to
+ * check whether this string is valid. We define the validity of a string by these rules:
+ * Any left parenthesis '(' must have a corresponding right parenthesis ')'.
+ * Any right parenthesis ')' must have a corresponding left parenthesis '('.
+ * Left parenthesis '(' must go before the corresponding right parenthesis ')'.
+ * '*' could be treated as a single right parenthesis ')' or a single left parenthesis '(' or
+ * an empty string.
+ * An empty string is also valid.
+ * Example 1:
+ * Input: "()"
+ * Output: True
+ * Example 2:
+ * Input: "(*)"
+ * Output: True
+ * Example 3:
+ * Input: "(*))"
+ * Output: True
+ * Note:
+ * The string size will be in the range [1, 100].
  */
-public class StringValidParenthesisString {
+public class StringValidParenthesisString678LeetCode {
     public boolean checkValidString(String s) {
         char[] chars = s.toCharArray();
         int LeftParenthesis=0,RightParenthesis=0;
@@ -77,6 +77,6 @@ public class StringValidParenthesisString {
 
     public static void main(String[] args) {
         String s = "())";
-        System.out.println(new StringValidParenthesisString().checkValidString(s));
+        System.out.println(new StringValidParenthesisString678LeetCode().checkValidString(s));
     }
 }
