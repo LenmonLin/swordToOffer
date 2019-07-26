@@ -9,6 +9,10 @@ import java.util.HashSet;
  * 给定一个单词列表，每个单词可以写成每个字母对应摩尔斯密码的组合。例如，"cab" 可以写
  * 成 "-.-..--..."，(即 "-.-." + "-..." + ".-"字符串的结合)。我们将这样一个连接过程称作单词翻译。
  * 返回我们可以获得所有词不同单词翻译的数量。
+ * 题意理解：
+ * 题意是比如我们输入一组单词数组， ["gin", "zen", "gig", "msg"]，每个单词对应的每个字母
+ * 都有对应的摩尔斯字符串，不同单词（字母的组合）的摩尔斯字符串可能重复，现在要求出输入这
+ * 组单词数组中的单词组成的不同的摩尔斯字符串数量
  * International Morse Code defines a standard encoding where each letter is mapped to
  * a series of dots and dashes, as follows: "a" maps to ".-", "b" maps to "-...", "c" maps
  * to "-.-.", and so on.
@@ -43,7 +47,7 @@ import java.util.HashSet;
  * @Description :StringUniqueMorseCodeWords
  * @date 19.6.18-23:50
  */
-public class StringUniqueMorseCodeWords {
+public class StringUniqueMorseCodeWords804LeetCode {
     public int uniqueMorseRepresentations(String[] words) {
         String [] map={".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.",
                 "---",".--.", "--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."};
@@ -60,6 +64,6 @@ public class StringUniqueMorseCodeWords {
 
     public static void main(String[] args) {
         String[] words = {"gin", "zen", "gig", "msg"};
-        System.out.println(new StringUniqueMorseCodeWords().uniqueMorseRepresentations(words));
+        System.out.println(new StringUniqueMorseCodeWords804LeetCode().uniqueMorseRepresentations(words));
     }
 }
