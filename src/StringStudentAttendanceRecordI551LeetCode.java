@@ -1,4 +1,12 @@
 /**
+ * 给定一个字符串来代表一个学生的出勤记录，这个记录仅包含以下三个字符：
+ * 'A' : Absent，缺勤
+ * 'L' : Late，迟到
+ * 'P' : Present，到场
+ * 如果一个学生的出勤记录中不超过一个'A'(缺勤)并且不超过两个连续的'L'(迟到),那么这个学生会被奖赏。
+ * 你需要根据这个学生的出勤记录判断他是否会被奖赏。
+ * 思路：比较简单，用hashmap的key可以直接记录字母，value记录出现的次数
+ * 或者用两个变量来记录：A,L的出现次数即可
  * @author LemonLin
  * @Description :StringStudentAttendanceRecordI
  * @date 19.6.17-22:59
@@ -16,16 +24,8 @@
  * Example 2:
  * Input: "PPALLL"
  * Output: False
- * 给定一个字符串来代表一个学生的出勤记录，这个记录仅包含以下三个字符：
- * 'A' : Absent，缺勤
- * 'L' : Late，迟到
- * 'P' : Present，到场
- * 如果一个学生的出勤记录中不超过一个'A'(缺勤)并且不超过两个连续的'L'(迟到),那么这个学生会被奖赏。
- * 你需要根据这个学生的出勤记录判断他是否会被奖赏。
- * 思路：比较简单，用hashmap的key可以直接记录字母，value记录出现的次数
- * 或者用两个变量来记录：A,L的出现次数即可
  */
-public class StringStudentAttendanceRecordI {
+public class StringStudentAttendanceRecordI551LeetCode {
     public boolean checkRecord(String s) {
         char[] chars = s.toCharArray();
         int numA=0;
@@ -46,6 +46,6 @@ public class StringStudentAttendanceRecordI {
 
     public static void main(String[] args) {
         String s="PPALLL";
-        System.out.println(new StringStudentAttendanceRecordI().checkRecord(s));
+        System.out.println(new StringStudentAttendanceRecordI551LeetCode().checkRecord(s));
     }
 }
