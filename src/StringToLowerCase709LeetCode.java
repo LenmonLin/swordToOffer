@@ -21,7 +21,7 @@
  * @Description :StringToLowerCase
  * @date 19.6.18-23:34
  */
-public class StringToLowerCase {
+public class StringToLowerCase709LeetCode {
     public String toLowerCase(String str) {
         char[] chars = str.toCharArray();
         for (int i=0;i<chars.length;i++){
@@ -40,6 +40,6 @@ public class StringToLowerCase {
     }
     public static void main(String[] args) {
         String s ="LOVELY";
-        System.out.println(new StringToLowerCase().toLowerCase(s));
+        System.out.println(new StringToLowerCase709LeetCode().toLowerCase(s));
     }
 }
