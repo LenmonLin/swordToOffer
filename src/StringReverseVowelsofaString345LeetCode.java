@@ -1,6 +1,9 @@
 import java.util.HashSet;
-
 /**
+ *编写一个函数，以字符串作为输入，反转该字符串中的元音字母。
+ * 思路：用两个指针，left从头开始遍历，right从后开始遍历，遇到元音字母进行交换。类似快速排序的算法流
+ * 程。字符数组转换为字符串用String.valueOf(chars)方法；判断是否元音字母的方法，本题用了hashset
+ * 来存放元音字母，用contains来判断。
  * @author LemonLin
  * @Description :StringReverseVowelsofaString
  * @date 19.6.14-11:07
@@ -13,11 +16,8 @@ import java.util.HashSet;
  * Output: "leotcede"
  * Note:
  * The vowels does not include the letter "y".
- *编写一个函数，以字符串作为输入，反转该字符串中的元音字母。
- * 思路：用两个指针，left从头开始遍历，right从后开始遍历，遇到元音字母进行交换。类似快速排序的算法流程。
- * 字符数组转换为字符串用String.valueOf(chars)方法；
  */
-public class StringReverseVowelsofaString {
+public class StringReverseVowelsofaString345LeetCode {
     public String reverseVowels(String s) {
         if(s==null)return null;
         char[] chars = s.toCharArray();
@@ -65,6 +65,6 @@ public class StringReverseVowelsofaString {
 
     public static void main(String[] args) {
         String s= "a.";
-        System.out.println(new StringReverseVowelsofaString().reverseVowels(s));
+        System.out.println(new StringReverseVowelsofaString345LeetCode().reverseVowels(s));
     }
 }
