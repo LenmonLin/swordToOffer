@@ -1,4 +1,10 @@
 /**
+ * 给定一个非空的字符串，判断它是否可以由它的一个子串重复多次构成。给定的字符串只含有小写英文字母，
+ * 并且长度不超过10000。
+ * 思路：
+ *  求出子字符串，再把它拼接起来，和原字符串对比，看是否相等。怎么求出子字符串这是个问题?
+ *  用整除的方法，因为一个子字符串的长度一定能被原字符串整除。所以从1开始遍历到原字符串的一半的长度。
+ *  判断每次遍历的长度能否被原字符串的长度整除，如果能整除，复制该长度的串判断是否能与原字符串相等。
  * @author LemonLin
  * @Description :StringRepeatedSubstringPattern
  * @date 2019/6/9-17:13
@@ -9,23 +15,15 @@
  * Input: "abab"
  * Output: True
  * Explanation: It's the substring "ab" twice.
- *
  * Example 2:
  * Input: "aba"
  * Output: False
- *
  * Example 3:
  * Input: "abcabcabcabc"
  * Output: True
  * Explanation: It's the substring "abc" four times. (And the substring "abcabc" twice.)
- * 给定一个非空的字符串，判断它是否可以由它的一个子串重复多次构成。给定的字符串只含有小写英文字母，
- * 并且长度不超过10000。
- * 思路：
- *  求出子字符串，再把它拼接起来，和原字符串对比，看是否相等。怎么求出子字符串这是个问题?
- *  用整除的方法，因为一个子字符串的长度一定能被原字符串整除。所以从1开始遍历到原字符串的一半的长度。
- *  判断每次遍历的长度能否被原字符串的长度整除，如果能整除，复制该长度的串判断是否能与原字符串相等。
  */
-public class StringRepeatedSubstringPattern {
+public class StringRepeatedSubstringPattern459LeetCode {
     public boolean repeatedSubstringPattern(String s) {
         if (s==null|| s.equals(" "))return false;
         //用来记录重复个数
@@ -52,7 +50,7 @@ public class StringRepeatedSubstringPattern {
 
     public static void main(String[] args) {
         String test = "abcabcabcabc";
-        boolean result = new StringRepeatedSubstringPattern().repeatedSubstringPattern(test);
+        boolean result = new StringRepeatedSubstringPattern459LeetCode().repeatedSubstringPattern(test);
         System.out.println(result);
     }
 }
