@@ -1,6 +1,17 @@
 import java.util.HashMap;
-
 /**
+ *给定一个赎金信 (ransom) 字符串和一个杂志(magazine)字符串，判断第一个字符串ransom能不能
+ * 由第二个字符串magazines里面的字符构成。如果可以构成，返回 true ；否则返回 false。
+ * (题目说明：为了不暴露赎金信字迹，要从杂志上搜索各个需要的字母，组成单词来表达意思。)
+ * 注意：
+ * 你可以假设两个字符串均只含有小写字母。
+ * canConstruct("a", "b") -> false
+ * canConstruct("aa", "ab") -> false
+ * canConstruct("aa", "aab") -> true
+ * 题目理解：这里判断ransom能不能由magazines里面的字符构成，包括了数量，比如ransom
+ * 为aa,magazine为ab,magazine里面只有一个a,所以无法构成aa.
+ *思路：先遍历一边magazine，用hashmap存放各个字母出现的次数，再遍历一边ransom,如果出现次数
+ * 少于0，或者没有出现的key,就返回false;
  * @author LemonLin
  * @Description :StringRansomNote
  * @date 19.6.17-23:11
@@ -13,18 +24,8 @@ import java.util.HashMap;
  * canConstruct("a", "b") -> false
  * canConstruct("aa", "ab") -> false
  * canConstruct("aa", "aab") -> true
- *给定一个赎金信 (ransom) 字符串和一个杂志(magazine)字符串，判断第一个字符串ransom能不能
- * 由第二个字符串magazines里面的字符构成。如果可以构成，返回 true ；否则返回 false。
- * (题目说明：为了不暴露赎金信字迹，要从杂志上搜索各个需要的字母，组成单词来表达意思。)
- * 注意：
- * 你可以假设两个字符串均只含有小写字母。
- * canConstruct("a", "b") -> false
- * canConstruct("aa", "ab") -> false
- * canConstruct("aa", "aab") -> true
- *思路：可以用hashmap 变量magazine，存放出现的次数，再遍历一边ransom,如果出现次数少于0，
- * 或者没有出现的key,就返回false;
  */
-public class StringRansomNote {
+public class StringRansomNote383LeetCode {
     public boolean canConstruct(String ransomNote, String magazine) {
         if (ransomNote==null||magazine==null)return false;
         HashMap hashMap = new HashMap();
@@ -54,6 +55,6 @@ public class StringRansomNote {
         String magazine = "hhjdgjbhahaagihhhhhajjibjffhijehda";
 //        String ransomNote = "aa";
 //        String magazine = "aab";
-        System.out.println(new StringRansomNote().canConstruct(ransomNote, magazine));
+        System.out.println(new StringRansomNote383LeetCode().canConstruct(ransomNote, magazine));
     }
 }
