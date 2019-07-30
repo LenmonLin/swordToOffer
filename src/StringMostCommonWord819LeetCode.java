@@ -1,9 +1,15 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.HashMap;
-
 /**
+ * 给定一个段落 (paragraph) 和一个禁用单词列表 (banned)。返回出现次数最多，同时不在禁用列表中
+ * 的单词。题目保证至少有一个词不在禁用列表中，而且答案唯一。禁用列表中的单词用小写字母表示，
+ * 不含标点符号。段落中的单词不区分大小写。答案都是小写字母。
+ *思路：
+ * 考虑用hashmap处理，把单词作为key，value值是单词出现的次数。
+ * 1、关于段落提取单词的思路，先把段落中所有的符号,.:!?';用空格替代，然后再用正则表达式把\\s+
+ * 匹配任意空白字符作为分隔点，把段落分隔成单词形式。
+ * 2、利用hashmap统计key出现的频率
+ * 3、把banner中单词key把hashmap对应的value值置为0;
+ * 4、取出此时最大的value值对应的key
  * @author LemonLin
  * @Description :StringMostCommonWord
  * @date 19.6.10-22:14
@@ -11,7 +17,6 @@ import java.util.HashMap;
  * of banned words.  It is guaranteed there is at least one word that isn't banned, and that the
  * answer is unique.Words in the list of banned words are given in lowercase, and free of
  * punctuation.  Words in the paragraph are not case sensitive.  The answer is in lowercase.
- *
  * Example:
  * Input:
  * paragraph = "Bob hit a ball, the hit BALL flew far after it was hit."
@@ -24,7 +29,6 @@ import java.util.HashMap;
  * Note that words in the paragraph are not case sensitive,
  * that punctuation is ignored (even if adjacent to words, such as "ball,"),
  * and that "hit" isn't the answer even though it occurs more because it is banned.
- *
  * Note:
  * 1 <= paragraph.length <= 1000.
  * 0 <= banned.length <= 100.
@@ -34,18 +38,8 @@ import java.util.HashMap;
  * paragraph only consists of letters, spaces, or the punctuation symbols !?',;.
  * There are no hyphens or hyphenated words.
  * Words only consist of letters, never apostrophes or other punctuation symbols.
- * 给定一个段落 (paragraph) 和一个禁用单词列表 (banned)。返回出现次数最多，同时不在禁用列表中的
- * 单词。题目保证至少有一个词不在禁用列表中，而且答案唯一。
- * 禁用列表中的单词用小写字母表示，不含标点符号。段落中的单词不区分大小写。答案都是小写字母。
- *思路：
- * 考虑用hashmap处理，把单词作为key，value值是单词出现的次数。
- * 1、关于段落提取单词的思路，先把段落中所有的符号,.:!?';用空格替代，然后再用正则表达式把\\s+匹配任意空白
- * 字符作为分隔点，把段落分隔成单词形式。
- * 2、利用hashmap统计key出现的频率
- * 3、把banner中单词key把hashmap对应的value值置为0;
- * 4、取出此时最大的value值对应的key
  */
-public class StringMostCommonWord {
+public class StringMostCommonWord819LeetCode {
     public String mostCommonWord(String paragraph, String[] banned) {
         String symbol = ",.:!?';";
         for (char i : symbol.toCharArray()) {
@@ -76,10 +70,9 @@ public class StringMostCommonWord {
         }
         return result;
     }
-
     public static void main(String[] args) {
         String pa ="Bob. hIt, baLl";
         String[] ba = new String[]{"bob", "hit"};
-        System.out.println(new StringMostCommonWord().mostCommonWord(pa, ba));
+        System.out.println(new StringMostCommonWord819LeetCode().mostCommonWord(pa, ba));
     }
 }
