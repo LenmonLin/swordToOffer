@@ -1,11 +1,10 @@
 /**
+ * 给定一个字符串， 判定它是否是回文（只统计字母、数字，其他字符请忽略）
  * @author LemonLin
  * @Description :StringValidPalindrome
  * @date 2019/5/9-16:40
- *
- * Given a string, determine if it is a palindrome, considering only alphanumeric characters and
- * ignoring cases.
- * 直译：给你一个字符串， 判定它是否是回文（只统计字母、数字，其他字符请忽略）。
+ * Given a string, determine if it is a palindrome, considering only alphanumeric characters
+ * and ignoring cases.
  * Note: For the purpose of this problem, we define empty string as valid palindrome.
  * 定义空字符串也是有效的回文
  * Example 1:
@@ -14,11 +13,10 @@
  *Example 2:
  *      Input: "race a car"
  *      Output: false
- * 解题思路：采用二分法，一个指针从左边遍历，一个从右边遍历，跳过非字母和非数字，当遍历到中点依然相同那
- * 就是回文。时间复杂度O(n), 空间复杂度O(1)
- *
+ * 解题思路：采用二分法，一个指针从左边遍历，一个从右边遍历，跳过非字母和非数字，当遍历到中点依
+ * 然相同那就是回文。时间复杂度O(n), 空间复杂度O(1)
  */
-public class StringValidPalindrome {
+public class StringValidPalindrome125LeetCode {
     public boolean isPalindrome(String s) {
         if(s.isEmpty()){
             return true;
@@ -51,10 +49,9 @@ public class StringValidPalindrome {
         return false;
     }
     public static void main(String[] args) {
-        StringValidPalindrome stringValidPalindrome =new StringValidPalindrome();
         String test = "A man, a plan, a canal: Panama";
         String test2 =" ";
-        boolean result = stringValidPalindrome.isPalindrome(test2);
+        boolean result = new StringValidPalindrome125LeetCode().isPalindrome(test2);
         System.out.println(result);
     }
 }
