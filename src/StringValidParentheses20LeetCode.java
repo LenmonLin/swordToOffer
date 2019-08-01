@@ -1,6 +1,12 @@
 import java.util.Stack;
-
 /**
+ * 给定一个只包括 '('，')'，'{'，'}'，'['，']' 的字符串，判断字符串是否有效。
+ * 有效字符串需满足：
+ * 左括号必须用相同类型的右括号闭合。
+ * 左括号必须以正确的顺序闭合。
+ * 注意空字符串可被认为是有效字符串。
+ * 思路：利用栈来解决存储，比如存储顺序是({[ ,接下来如果是合法字符串的话，接下来必须是],而
+ * 不是)或者}，所以不必担心顺序的问题，直接用栈顶出栈入栈就能解决问题。
  * @author LemonLin
  * @Description :StringValidParentheses
  * @date 19.6.10-23:32
@@ -25,15 +31,8 @@ import java.util.Stack;
  * Example 5:
  * Input: "{[]}"
  * Output: true
- * 给定一个只包括 '('，')'，'{'，'}'，'['，']' 的字符串，判断字符串是否有效。
- * 有效字符串需满足：
- * 左括号必须用相同类型的右括号闭合。
- * 左括号必须以正确的顺序闭合。
- * 注意空字符串可被认为是有效字符串。
-* 思路：利用栈来解决存储，比如存储顺序是({[ ,接下来如果是合法字符串的话，接下来必须是],而不是)或者}，
- * 所以不必担心顺序的问题，直接用栈顶出栈入栈就能解决问题。
  */
-public class StringValidParentheses {
+public class StringValidParentheses20LeetCode {
     public boolean isValid(String s) {
         if (s==null)return true;
         Stack stack =new Stack();
@@ -58,6 +57,6 @@ public class StringValidParentheses {
 
     public static void main(String[] args) {
         String s ="]{";
-        System.out.println(new StringValidParentheses().isValid(s));
+        System.out.println(new StringValidParentheses20LeetCode().isValid(s));
     }
 }
