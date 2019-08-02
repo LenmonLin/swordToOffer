@@ -3,6 +3,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 /**
+ *给定一个字符串数组，将字母异位词组合在一起。字母异位词指字母相同，但排列不同的字符串。
+ * 思路：
+*      全排列不同，但是字母组合内包含的字母是相同的，所以考虑集合的问题，将二十六个字母用hashmap进行
+*      数字映射(注意这里只能用素数映射，否则会出现1*6*1=2*3*1这种错误)，然后读入每个单词，如果乘积
+*      相同就分为一组。
  * @author LemonLin
  * @Description :StringGroupAnagrams
  * @date 19.6.10-14:49
@@ -18,13 +23,8 @@ import java.util.Map;
  * Note:
  * All inputs will be in lowercase.
  * The order of your output does not matter.
- *给定一个字符串数组，将字母异位词组合在一起。字母异位词指字母相同，但排列不同的字符串。
- * 思路：
- *      全排列不同，但是字母组合内包含的字母是相同的，所以考虑集合的问题，将二十六个字母用hashmap进行
- *      数字映射(注意这里只能用素数映射，否则会出现1*6*1=2*3*1这种错误)，然后读入每个单词，如果乘积
- *      相同就分为一组。
  */
-public class StringGroupAnagrams {
+public class StringGroupAnagrams49LeetCode {
     public List<List<String>> groupAnagrams(String[] strs) {
         if (strs.length==0)return new ArrayList();
         String aToz = "abcdefghijklmnopqrstuvwxyz";
@@ -63,6 +63,6 @@ public class StringGroupAnagrams {
                 "mys","den","dem","fat","you","eon","sui","oct","asp","ago","lea","sow",
                 "hus","fee","yup","eve","red",
                 "flo","ids","tic","pup","hag","ito","zoo"};
-        System.out.println(new StringGroupAnagrams().groupAnagrams(test));
+        System.out.println(new StringGroupAnagrams49LeetCode().groupAnagrams(test));
     }
 }
