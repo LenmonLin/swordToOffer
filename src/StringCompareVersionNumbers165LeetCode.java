@@ -1,12 +1,11 @@
-import javax.xml.stream.FactoryConfigurationError;
-
 /**
  * 比较两个版本号 version1 和 version2。
  * 如果 version1 > version2 返回 1，如果 version1 < version2 返回 -1， 除此之外返回 0。
  * 你可以假设版本字符串非空，并且只包含数字和 . 字符。
  *  . 字符不代表小数点，而是用于分隔数字序列。
  * 例如，2.5 不是“两个半”，也不是“差一半到三”，而是第二版中的第五个小版本。
- * 你可以假设版本号的每一级的默认修订版号为 0。例如，版本号 3.4 的第一级（大版本）和第二级（小版本）修订号分别为 3 和 4。其第三级和第四级修订号均为 0。
+ * 你可以假设版本号的每一级的默认修订版号为 0。例如，版本号 3.4 的第一级（大版本）和第二
+ * 级（小版本）修订号分别为 3 和 4。其第三级和第四级修订号均为 0。
  * 示例 1:
  * 输入: version1 = "0.1", version2 = "1.1"
  * 输出: -1
@@ -27,13 +26,15 @@ import javax.xml.stream.FactoryConfigurationError;
  * 提示：
  * 版本字符串由以点 （.） 分隔的数字字符串组成。这个数字字符串可能有前导零。
  * 版本字符串不以点开始或结束，并且其中不会有两个连续的点。
- * 思路：感觉这题没啥可以思考，就是从头开始遍历，然后比较大小，如果其中一个字符串没有数字的
- * 补0处理。
+ * 思路：这题思路比较直白，统一把两个版本号整理成都是标准形式，即对齐。首先：处理前导
+ * 0，直接用正则表达式处理s.replaceAll("^(0+)", "");其次：如果其中一个字符串某段没有数字
+ * 的，补0处理。怎么补0，开辟一个新的字符数组，先复制短的版本，剩余长度补0；
+ * 最后从头开始遍历，比较大小，如果其中一个字符串没有数字的补0处理。
  * @author LemonLin
  * @Description :StringCompareVersionNumbers
  * @date 19.6.23-23:24
  */
-public class StringCompareVersionNumbers {
+public class StringCompareVersionNumbers165LeetCode {
     public int compareVersion(String version1, String version2) {
         String[] v1=version1.split("\\.");
         String[] v2=version2.split("\\.");
@@ -109,6 +110,6 @@ public class StringCompareVersionNumbers {
     public static void main(String[] args) {
         String v1="1.1";
         String v2="1.0010";
-        System.out.println(new StringCompareVersionNumbers().compareVersion(v1, v2));
+        System.out.println(new StringCompareVersionNumbers165LeetCode().compareVersion(v1, v2));
     }
 }
