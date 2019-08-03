@@ -1,62 +1,45 @@
 /**
+ * 题目描述
+ * 汇编语言中有一种移位指令叫做循环左移（ROL），现在有个简单的任务，就是用字符串模
+ * 拟这个指令的运算结果。对于一个给定的字符序列S，请你把其循环左移K位后的序列输出。
+ * 例如，字符序列S=”abcXYZdef”,要求输出循环左移3位后的结果，即“XYZdefabc”。是不
+ * 是很简单？OK，搞定它！
+ * 基本思路：
+ * 把前三个字符移到后面，我们就把前三个字符分到第一部分，把后面的所有字符都分到第二
+ * 部分，先翻转这两部分，再翻转整个字符串，即可得到结果。
+ * ps：要注意考虑边界条件：1、考虑输入空字符串
+ *                                      2、考虑输入的翻转n为0的情况下
  * @author LemonLin
  * @Description :LeftRotateString42_2
  * @date 2018/7/23-19:37
- *
- * 题目描述
- * 汇编语言中有一种移位指令叫做循环左移（ROL），现在有个简单的任务，就是用字符串模拟这个指令的运算结果。
- * 对于一个给定的字符序列S，请你把其循环左移K位后的序列输出。例如，字符序列S=”abcXYZdef”,要求输出循环
- * 左移3位后的结果，即“XYZdefabc”。是不是很简单？OK，搞定它！
- *
- * 基本思路：
- * 把前三个字符移到后面，我们就把前三个字符分到第一部分，把后面的所有字符都分到第二部分，先翻转这两部分，
- * 再翻转整个字符串，即可得到结果。
- *
- * ps：要注意考虑边界条件：1、考虑输入空字符串
- *                                      2、考虑输入的翻转n为0的情况下
- *
  */
-
 public class StringLeftRotateString42_2 {
-
     public String LeftRotateString(String str,int n) {
-
         char[] chars = str.toCharArray();
-
-        /*
-        * 考虑如果传入的是空字符串的处理
-        * */
+         //考虑如果传入的是空字符串的处理
         if(str.isEmpty()){
             return "";
         }
-
-        /*
-        * 考虑如果输入为n的情况
-        * */
+        //考虑如果输入为n的情况
         if (n==0){
             return str;
         }
-
-
-        Reverse(chars,0,n-1);
-        Reverse(chars,n,chars.length-1);
-        Reverse(chars,0,chars.length-1);
+        reverseString(chars,0,n-1);
+        reverseString(chars,n,chars.length-1);
+        reverseString(chars,0,chars.length-1);
         String strChange = String.valueOf(chars);
-
         return strChange;
     }
-
     //start 的参数为数组开头，end的参数为数组的结尾;
     //数组作为输入，一般情况下需要至少两个参数，一个是数组，一个是数组长度
     /**
      * 如果是字符串是偶数个数（字符数组首字符下标是0），那么翻转的middle值为 (start+end)/2+1;
-     *      为什么加一，如果字符数组下标是012345，则必须为middle为3，因为for循环中i<middle注意体会这个小于号，
+     *      为什么加一，如果字符数组下标是012345，则必须为middle为3，因为for循环中i<middle
+     *      注意体会这个小于号，
      *      而不是小于等于号，小于号(0+5)/2=2,加一，则为
-     *      */
+     * */
     public void Reverse(char[] chars,int start,int end){
-
         char  temp= ' ';
-
         int isZero = (start+end)%2;
         int middle = 0;
         if (isZero == 0){
@@ -72,14 +55,19 @@ public class StringLeftRotateString42_2 {
             j++;
         }
     }
-
+    //反转简化版：直接首尾指针想中间靠拢即可
+    public void reverseString(char[] chars,int start,int end) {
+        while (start<end){
+            char temp = chars[start];
+            chars[start]=chars[end];
+            start++;
+            chars[end]=temp;
+            end--;
+        }
+    }
     public static void main(String[] args) {
-//        String string = "abcdefg";
-
+        String string = "abcdefg";
         String string2="";
-
-        StringLeftRotateString42_2 stringLeftRotateString42_2 =new StringLeftRotateString42_2();
-        String result = stringLeftRotateString42_2.LeftRotateString(string2, 2);
-        System.out.println(result);
+        System.out.println(new StringLeftRotateString42_2().LeftRotateString(string, 2));
     }
 }
