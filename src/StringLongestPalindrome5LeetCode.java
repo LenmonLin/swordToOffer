@@ -7,17 +7,17 @@
  * 示例 2：
  * 输入: "cbbd"
  * 输出: "bb"
- * 思路：两种方法;暴力法：
+ * 思路：首先回文的意思是正着念和倒着念一样，如：上海自来水来自海上。两种方法;暴力法：
  *  设置两个变量，变量i遍历字符串，变量j以i为中心，想左右两边扩张的比较，比如i+j,i-j,j从1开始不断
  *  增加。这种解法要判断字符串的长度是奇数还是偶数。可以在字符串中的字符两边都添加#，这样不管
  *  字符串长度是奇数还是偶数，都变成奇数处理，比如babad可以变成#b#a#b#a#d#
  *  时间复杂度O（N*M）
  *  方法二：动态规划
- *  难度主要还是递推公式的推导，维护一个二维数组 dp，其中 dp[i][j] 表示字符串区间 [i, j] 是否为回文串，
- *  当 i = j 时，只有一个字符，肯定是回文串，如果 i = j + 1，说明是相邻字符，此时需要判断 s[i] 是否等
- *  于 s[j]，如果i和j不相邻，即 i - j >= 2 时，除了判断 s[i] 和 s[j] 相等之外，dp[i + 1][j - 1]
- *  若为真，就是回文串，通过以上分析，可以写出递推式如下：
- *dp[i, j]     = 1                                                if i == j
+ *  难度主要还是递推公式的推导，维护一个二维数组 dp，其中 dp[i][j] 表示字符串区间 [i, j]
+ *  是否为回文串，当 i = j 时，只有一个字符，肯定是回文串，如果 i = j + 1，说明是相邻字符，
+ *  此时需要判断 s[i] 是否等于 s[j]，如果i和j不相邻，即 i - j >= 2 时，除了判断 s[i] 和 s[j]
+ *  相等之外，dp[i + 1][j - 1]，若为真，就是回文串，通过以上分析，可以写出递推式如下：
+ *dp[i][j]    = 1                                                if i == j
  *               = s[i] == s[j]                                 if j = i + 1
  *               = s[i] == s[j] && dp[i + 1][j - 1]    if i-j>=2
  *   时间复杂度是O(n^2),空间复杂度是O(N^2)。
@@ -45,7 +45,7 @@
  * @Description :StringLongestPalindrome
  * @date 19.6.22-21:41
  */
-public class StringLongestPalindrome {
+public class StringLongestPalindrome5LeetCode {
     public String longestPalindrome(String s) {
         int len = s.length();
         if (len == 0) {
@@ -67,6 +67,7 @@ public class StringLongestPalindrome {
                 }else if (i-j>=2){
                     dp[j][i]=(s.charAt(i) == s.charAt(j)&&dp[j+1][i-1]);
                 }
+                //这个判断是为了记录最长回文子串的下标，然后用substring输入返回。
                 if (dp[j][i]&&length<i-j+1){
                     length =i-j+1;
                     left = j;
@@ -81,7 +82,7 @@ public class StringLongestPalindrome {
     public static void main(String[] args) {
 
         String s = "cb";
-        System.out.println(new StringLongestPalindrome().longestPalindrome(s));
+        System.out.println(new StringLongestPalindrome5LeetCode().longestPalindrome(s));
 //        for (int i=0;i<s.length();i++){
 //            for (int j=0;j<=i;j++){
 //                System.out.println("i===="+s.charAt(i)+"j===="+s.charAt(j));
