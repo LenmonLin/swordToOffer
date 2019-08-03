@@ -1,5 +1,4 @@
 import java.util.LinkedList;
-
 /**
  * 给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。
  * 示例 1:
@@ -30,7 +29,7 @@ import java.util.LinkedList;
  * @Description :StringlengthOfLongestSubstring
  * @date 19.6.23-17:19
  */
-public class StringlengthOfLongestSubstring {
+public class StringlengthOfLongestSubstring3LeetCode {
     public int lengthOfLongestSubstring(String s) {
         //这里add,remove方法是List接口的;offer，poll方法是Queue接口的，虽然两种方法使用得到
         //的结果都一样，但是这里是把Linkedlist当做队列使用，所以使用offer，poll更形象
@@ -65,6 +64,6 @@ public class StringlengthOfLongestSubstring {
 
     public static void main(String[] args) {
         String s = "dvdf";
-        System.out.println(new StringlengthOfLongestSubstring().lengthOfLongestSubstring(s));
+        System.out.println(new StringlengthOfLongestSubstring3LeetCode().lengthOfLongestSubstring(s));
     }
 }
