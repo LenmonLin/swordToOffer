@@ -1,5 +1,4 @@
 import java.util.HashMap;
-
 /**
  * 给定两个字符串 s 和 t ，编写一个函数来判断 t 是否是 s 的字母异位词。
  * 示例 1:
@@ -19,7 +18,7 @@ import java.util.HashMap;
  * 存储出现的次数，第二次遍历目标词，如果次数小于0，或者不存在key，即返回false,第三次遍历是
  * 判断经过第二次之后value值是否为0，排除s="ab",t="a"的情况。
  */
-public class StringValidAnagram {
+public class StringValidAnagram242LeetCode {
     public boolean isAnagram(String s, String t) {
         HashMap hashMap = new HashMap();
         char [] chars=s.toCharArray();
@@ -51,6 +50,6 @@ public class StringValidAnagram {
     public static void main(String[] args) {
         String s= "ab";
         String t="a";
-        System.out.println(new StringValidAnagram().isAnagram(s, t));
+        System.out.println(new StringValidAnagram242LeetCode().isAnagram(s, t));
     }
 }
