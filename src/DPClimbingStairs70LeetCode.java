@@ -19,26 +19,30 @@ import java.util.ArrayList;
  *思路:第 i阶可以由以下两种方法得到：
  * 在第 (i-1) 阶后向上爬一阶。在第 (i-2)阶后向上爬 2阶。
  * 所以到达第 ii阶的方法总数就是到第 (i-1)阶和第 (i-2)阶的方法数之和。
- * 令 dp[i]dp[i] 表示能到达第 i阶的方法总数：dp[i]=dp[i-1]+dp[i-2]
+ * 令 dp[i]表示能到达第 i阶的方法总数：dp[i]=dp[i-1]+dp[i-2]
  * @author LemonLin
  * @Description :DPClimbingStairs
  * @date 19.6.21-16:47
  */
-public class DPClimbingStairs {
+public class DPClimbingStairs70LeetCode {
     public int climbStairs(int n) {
-        ArrayList dp = new ArrayList();
-        dp.add(1);
-        dp.add(2);
+        if (n==1)return 1;
+        int [] dp = new int[n+1];
+        //只有一个台阶有一种方法；
+        dp[1]=1;
+        //有两个台阶有两种方法；1,1;  2；
+        dp[2]=2;
         if (n>=3){
-            for (int i=2;i<=n-1;i++){
-                dp.add(i,(int)dp.get(i-1)+(int)dp.get(i-2));
+            for (int i=3;i<=n;i++){
+                //比如有三个台阶，就是前两种台阶加起来
+                dp[i]=dp[i-1]+dp[i-2];
             }
         }
-        return (int)dp.get(n-1);
+        return dp[n];
     }
 
     public static void main(String[] args) {
         int n=3;
-        System.out.println(new DPClimbingStairs().climbStairs(n));
+        System.out.println(new DPClimbingStairs70LeetCode().climbStairs(n));
     }
 }
