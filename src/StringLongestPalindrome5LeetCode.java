@@ -68,6 +68,7 @@ public class StringLongestPalindrome5LeetCode {
                     dp[j][i]=(s.charAt(i) == s.charAt(j)&&dp[j+1][i-1]);
                 }
                 //这个判断是为了记录最长回文子串的下标，然后用substring输入返回。
+                //length记录的是最长的长度
                 if (dp[j][i]&&length<i-j+1){
                     length =i-j+1;
                     left = j;
