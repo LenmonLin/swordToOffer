@@ -18,6 +18,8 @@
  * 要点二：
  * MIN_VALUE = 0x80000000 和 MAX_VALUE = 0x7fffffff 就是补码表示的Integer的最小值(-2^31)和
  * 最大值(2^31-1)。至于为什么采用补码表示，简单的说就是方便运算，
+ * 80000000一共8位16进制，也就是32位的2进制，2进制写法位数太多了，不展开写了，这也是为什么用
+ * 16进制表示的原因。
  * 详细可自行Google一下或找本基础教材翻一下。至于Integer的最大值最小值为什么是这两个数，
  * 这是因为Java语言规范规定int型为4字节，不管是32/64位机器，这就是其所宣称的跨平台的基础部分。
  */
@@ -31,9 +33,10 @@ public class ArrayGreatestSumOfSubarrays31 {
 
         //注意这里GreatSum不能设置为0，应该设置成一个极小的数，否则如果都是数组都是负数的话，
         //就返回0，这个是有问题的
-        int GreatSum=0x80000000;
+        int GreatSum=Integer.MIN_VALUE;
         for (int i=0;i<array.length;++i){
             if (currentSum<0){
+                //如果小于0，就舍弃前面currentSum的和，把当前数字作为currentSum的起点
                 currentSum = array[i];
             }else {
                 currentSum+=array[i];
