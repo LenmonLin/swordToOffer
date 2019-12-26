@@ -69,6 +69,24 @@ public class 常规记忆操作 {
         linkedList.pollFirst();
         linkedList.offer("进队");
 
+        //异或某个数字
+        int temp =12;
+        int temp2=123;
+        temp ^= temp2;
+        //向右移位某个数字
+        temp2=temp2>>1;
+        //与某个数字
+        temp2=temp2&1;
+
+        //Integer的最小值为0x80000000也就是-2^31次方。
+        int n=Integer.MIN_VALUE;
+
+        //对数组进行排序
+        int[] numbers={12,21,124};
+        Arrays.sort(numbers);
+        for (int i=0;i<numbers.length;i++){
+            System.out.println("numbers"+numbers[i]);
+        }
     }
 
 
