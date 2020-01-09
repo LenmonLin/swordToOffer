@@ -59,6 +59,7 @@ public class TreesortedArrayToBST108LeetCode {
             return null;
         //这里的mid一定不能设置成全局变量，所有的递归函数需要的变量一般都设置在
         //递归函数内部比较合理
+        //这里用Math.ceil 进一法来去右边的数，比如0,1两个的平均数取1。
         int mid = (int)Math.ceil(((double) left+right)/2);
         TreeNode treeNode = new TreeNode(nums[mid]);
         treeNode.left = sortedArrayToBST(nums,left,mid-1);
