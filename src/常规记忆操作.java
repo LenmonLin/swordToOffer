@@ -87,6 +87,12 @@ public class 常规记忆操作 {
         for (int i=0;i<numbers.length;i++){
             System.out.println("numbers"+numbers[i]);
         }
+
+        //这里用Math.ceil 进一法来取右边的数，比如0,1两个的平均数取1。
+        int left=0;
+        int right =1;
+        int mid = (int)Math.ceil(((double) left+right)/2);
+        System.out.println(mid);
     }
 
 
