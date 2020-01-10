@@ -88,6 +88,13 @@ public class 常规记忆操作 {
             System.out.println("numbers"+numbers[i]);
         }
 
+        //复制ArrayList,arrayList2复制了ArrayList1的
+        ArrayList arrayList1 = new ArrayList();
+        arrayList1.add(1);
+        arrayList1.add(2);
+        arrayList1.add(3);
+        ArrayList arrayList2 = new ArrayList(arrayList1);
+
         //这里用Math.ceil 进一法来取右边的数，比如0,1两个的平均数取1。
         int left=0;
         int right =1;
