@@ -69,6 +69,18 @@ public class 常规记忆操作 {
         linkedList.pollFirst();
         linkedList.offer("进队");
 
+        /**
+         * 链表操作，输出结果是tou2 tou wei wei2
+         */
+        LinkedList linkedList1 = new LinkedList();
+        linkedList1.addFirst("tou");
+        linkedList1.addFirst("tou2");
+        linkedList1.addLast("wei");
+        linkedList1.addLast("wei2");
+        for (Object s12: linkedList1){
+            System.out.println(String.valueOf(s12));
+        }
+
         /*
         * 关于栈的操作
         * */
