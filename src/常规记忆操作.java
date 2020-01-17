@@ -69,6 +69,17 @@ public class 常规记忆操作 {
         linkedList.pollFirst();
         linkedList.offer("进队");
 
+        /*
+        * 关于栈的操作
+        * */
+        Stack stack = new Stack();
+        //进栈
+        stack.push("进栈");
+        //出栈
+        stack.pop();
+        //栈大小
+        stack.size();
+
         //异或某个数字
         int temp =12;
         int temp2=123;
