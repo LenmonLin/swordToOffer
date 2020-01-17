@@ -14,12 +14,12 @@ import java.util.Queue;
  *       5   3   9
  * 输出: [1, 3, 9]
  * @author LemonLin
- * @Description :DFSlargestValues515LeetCode
+ * @Description :BFSlargestValues515LeetCode
  * @date 20.1.15-11:57
  * 思路：这题应该考虑用BFS，记录填写每一行的最大值。用了int count =queue.size()
  * 来记录每一层数的个数，比较巧妙。
  */
-public class DFSlargestValues515LeetCode {
+public class BFSlargestValues515LeetCode {
     /**
      * Definition for a binary tree node.
      */
@@ -78,7 +78,7 @@ public class DFSlargestValues515LeetCode {
         treeNodeCommon5.right = null;
         treeNodeCommon6.left = null;
         treeNodeCommon6.right = null;
-        List<Integer> integers = new DFSlargestValues515LeetCode().
+        List<Integer> integers = new BFSlargestValues515LeetCode().
                 largestValues(treeNodeCommon1);
         for (Integer i:integers){
             System.out.println(i);
