@@ -124,11 +124,15 @@ public class 常规记忆操作 {
     public void stack(){
         Stack stack = new Stack();
         //进栈
-        stack.push("进栈");
+        stack.push("进栈");//返回的是入栈的内容
+        stack.add("进栈");//返回的是true或false
         //出栈
-        stack.pop();
+        stack.pop();//输出并删除栈顶元素
+        stack.peek();//输出不删除栈顶元素
         //栈大小
         stack.size();
+        //栈是否为空
+        stack.isEmpty();
     }
     //最小堆的实现
     public void minHeap(){
