@@ -7,6 +7,8 @@ import java.util.*;
  */
 public class 常规记忆操作 {
     public static void main(String[] args) {
+        new 常规记忆操作().minHeap();
+
         //字符串转换为字符数组(目的是为了方便改动字符串中的字符)
         String string = "hello";
         char [] chars = string.toCharArray();
@@ -124,6 +126,18 @@ public class 常规记忆操作 {
         int mid = (int)Math.ceil(((double) left+right)/2);
         System.out.println(mid);
     }
-
-
+    //最小堆的实现
+    public void minHeap(){
+        int[] a = {45,36,18,53,72,30,48,93,15,35};
+        //1，默认实现的是最小堆，元素按照natural ordering排序（自然排序，例如，数字的从小到大）
+        PriorityQueue<Integer> minHeap = new PriorityQueue<Integer>();
+        for(int i=0;i<a.length;i++) {
+            minHeap.offer(a[i]);
+        }
+        while(!minHeap.isEmpty()) {
+            System.out.print(minHeap.poll()+" ");
+        }
+        System.out.println();
+        //输出（升序）：15 18 30 35 36 45 48 53 72 93
+    }
 }
