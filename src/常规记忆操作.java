@@ -7,6 +7,10 @@ import java.util.*;
  */
 public class 常规记忆操作 {
     public static void main(String[] args) {
+        // 关于栈的操作
+        new 常规记忆操作().stack();
+
+        //最小堆的实现
         new 常规记忆操作().minHeap();
 
         //字符串转换为字符数组(目的是为了方便改动字符串中的字符)
@@ -83,17 +87,6 @@ public class 常规记忆操作 {
             System.out.println(String.valueOf(s12));
         }
 
-        /*
-        * 关于栈的操作
-        * */
-        Stack stack = new Stack();
-        //进栈
-        stack.push("进栈");
-        //出栈
-        stack.pop();
-        //栈大小
-        stack.size();
-
         //异或某个数字
         int temp =12;
         int temp2=123;
@@ -125,6 +118,17 @@ public class 常规记忆操作 {
         int right =1;
         int mid = (int)Math.ceil(((double) left+right)/2);
         System.out.println(mid);
+    }
+
+     // 关于栈的操作
+    public void stack(){
+        Stack stack = new Stack();
+        //进栈
+        stack.push("进栈");
+        //出栈
+        stack.pop();
+        //栈大小
+        stack.size();
     }
     //最小堆的实现
     public void minHeap(){
