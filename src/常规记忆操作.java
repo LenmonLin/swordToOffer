@@ -108,6 +108,8 @@ public class 常规记忆操作 {
         stringBuilder.toString();
         //stringBuilder反转操作
         stringBuilder.reverse();
+        //清空stringBuilder，这个方法效率高
+        stringBuilder.delete(0,stringBuilder.length());
     }
 
     //关于String的操作
