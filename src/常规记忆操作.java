@@ -7,22 +7,42 @@ import java.util.*;
  */
 public class 常规记忆操作 {
     public static void main(String[] args) {
-
+        //list操作
+        new 常规记忆操作().list();
+        //hashmap操作
+        new 常规记忆操作().hashmap();
+        //数学运算
+        new  常规记忆操作().math();
+        //关于队列操作
+        new 常规记忆操作().queue();
         //关于string的操作
         new 常规记忆操作().string();
-
         //关于stringBuilder的操作
         new 常规记忆操作().stringBuilder();
-
         // 关于栈的操作
         new 常规记忆操作().stack();
-
         //最小堆的实现
         new 常规记忆操作().minHeap();
+    }
 
-        //   /号结果等于得到的整数（商的整数），%号结果等于余数
-        System.out.println(13/5);
+    //list操作
+    public void list(){
+        //对数组进行排序
+        int[] numbers={12,21,124};
+        Arrays.sort(numbers);
+        for (int i=0;i<numbers.length;i++){
+            System.out.println("numbers"+numbers[i]);
+        }
 
+        //复制ArrayList,arrayList2复制了ArrayList1的
+        ArrayList arrayList1 = new ArrayList();
+        arrayList1.add(1);
+        arrayList1.add(2);
+        arrayList1.add(3);
+        ArrayList arrayList2 = new ArrayList(arrayList1);
+    }
+    //hashmap操作
+    public  void hashmap(){
         //hashmap 遍历key
         HashMap<String,Integer> hashMap = new HashMap();
         for (String test3:hashMap.keySet()){
@@ -32,7 +52,35 @@ public class 常规记忆操作 {
         //把hashmap中的value值以列表ArrayList的形式返回：
         Map<Integer, List<String>> map=new HashMap<>();
         List<List<String>> result = new ArrayList<>(map.values()) ;
+    }
 
+    //数学运算
+    public void math(){
+
+        //   /号结果等于得到的整数（商的整数），%号结果等于余数
+        System.out.println(13/5);
+
+        //这里用Math.ceil 进一法来取右边的数，比如0,1两个的平均数取1。
+        int left=0;
+        int right =1;
+        int mid = (int)Math.ceil(((double) left+right)/2);
+        System.out.println(mid);
+
+        //异或某个数字
+        int temp =12;
+        int temp2=123;
+        temp ^= temp2;
+        //向右移位某个数字
+        temp2=temp2>>1;
+        //与某个数字
+        temp2=temp2&1;
+
+        //Integer的最小值为0x80000000也就是-2^31次方。
+        int n=Integer.MIN_VALUE;
+    }
+
+    //关于队列操作
+    public void queue(){
         //队列操作,取队头元素linkedList.peekFirst()，出队linkedList.pollFirst(),
         //这里add,remove方法是List接口的;offer，poll方法是Queue接口的
         //linkedList即是List也是Queue
@@ -52,40 +100,7 @@ public class 常规记忆操作 {
         for (Object s12: linkedList1){
             System.out.println(String.valueOf(s12));
         }
-
-        //异或某个数字
-        int temp =12;
-        int temp2=123;
-        temp ^= temp2;
-        //向右移位某个数字
-        temp2=temp2>>1;
-        //与某个数字
-        temp2=temp2&1;
-
-        //Integer的最小值为0x80000000也就是-2^31次方。
-        int n=Integer.MIN_VALUE;
-
-        //对数组进行排序
-        int[] numbers={12,21,124};
-        Arrays.sort(numbers);
-        for (int i=0;i<numbers.length;i++){
-            System.out.println("numbers"+numbers[i]);
-        }
-
-        //复制ArrayList,arrayList2复制了ArrayList1的
-        ArrayList arrayList1 = new ArrayList();
-        arrayList1.add(1);
-        arrayList1.add(2);
-        arrayList1.add(3);
-        ArrayList arrayList2 = new ArrayList(arrayList1);
-
-        //这里用Math.ceil 进一法来取右边的数，比如0,1两个的平均数取1。
-        int left=0;
-        int right =1;
-        int mid = (int)Math.ceil(((double) left+right)/2);
-        System.out.println(mid);
     }
-
     //关于stringBuilder的操作
     public void stringBuilder(){
         //stringbuilder转换为字符串
