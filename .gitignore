@@ -23,3 +23,7 @@
 hs_err_pid*
 *.xml
 *.html
+
+#忽略Test文件夹和writtenExamination文件节
+/src/Test/*
+/src/writtenExamination/*
