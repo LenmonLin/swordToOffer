@@ -25,5 +25,5 @@ hs_err_pid*
 *.html
 
 #忽略Test文件夹和writtenExamination文件夹
-src/Test/
-src/writtenExamination/
+src/Test/*
+src/writtenExamination/*
