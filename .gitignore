@@ -25,5 +25,6 @@ hs_err_pid*
 *.html
 
 #忽略Test文件夹和writtenExamination文件夹
+#需要先用git rm --cached  src/Test/*    命令行才能生效
 src/Test/*
 src/writtenExamination/*
