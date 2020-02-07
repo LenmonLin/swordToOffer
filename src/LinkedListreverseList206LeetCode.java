@@ -20,7 +20,6 @@ public class LinkedListreverseList206LeetCode {
         ListNode(int x) { val = x; }
     }
     public ListNode reverseList(ListNode head) {
-        //设置哑结点，为了方便处理。
         ListNode preCur = null;
         ListNode cur = head;
         //用来临时记录cur之后的节点，这一步很关键，仔细体会
