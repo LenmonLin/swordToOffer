@@ -62,7 +62,7 @@ public class Arraymerge56LeetCode {
         if (intervals==null||intervals.length==0||intervals.length==1){
             return intervals;
         }
-        //这一点很重要，解决了上面大多数bug
+        //这一点很重要，解决了上面大多数bug，对二维数组中的第一个数进行排序
         Arrays.sort(intervals, (a, b) -> a[0] - b[0]);
         ArrayList result =  new ArrayList();
         int i =0;

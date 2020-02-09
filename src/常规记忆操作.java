@@ -33,6 +33,9 @@ public class 常规记忆操作 {
         for (int i=0;i<numbers.length;i++){
             System.out.println("numbers"+numbers[i]);
         }
+        int[][] intervals={{2,3},{4,5},{6,7},{8,9},{1,10}};
+        //对二维数组中的第一个数进行排序
+        Arrays.sort(intervals, (a, b) -> a[0] - b[0]);
 
         //复制ArrayList,arrayList2复制了ArrayList1的
         ArrayList arrayList1 = new ArrayList();
