@@ -7,6 +7,8 @@ import java.util.*;
  */
 public class 常规记忆操作 {
     public static void main(String[] args) {
+        //位操作
+        new 常规记忆操作().bit();
         //list操作
         new 常规记忆操作().list();
         //hashmap操作
@@ -25,6 +27,28 @@ public class 常规记忆操作 {
         new 常规记忆操作().heap();
     }
 
+    //位操作
+    public void bit(){
+        int num1 =2;
+        int num2 =3;
+        //2 =======>0010
+        //3 =======>0011
+        //2^3就为0001，结果就是1
+        System.out.println("^(亦或运算) ，针对二进制，相同的为0，不同的为1");
+        System.out.println(num1^num2);
+        /**
+        *&（与运算） 针对二进制，只要有一个为0，就为0
+         */
+        System.out.println(num1&num2);
+        /**
+         * <<表示左移移，不分正负数，低位补0；
+         * >>表示右移，如果该数为正，则高位补0，若为负数，则高位补1；
+         *  >>>表示无符号右移，也叫逻辑右移，即若该数为正，则高位补0，而若该数为
+         *  负数，则右移后高位同样补0
+         */
+        //获取某个数最后一位是1还是0，只要将这个数和1与即可；
+        System.out.println(num1&1);
+    }
     //list操作
     public void list(){
         //对数组进行排序
