@@ -48,6 +48,11 @@ public class 常规记忆操作 {
          */
         //获取某个数最后一位是1还是0，只要将这个数和1与即可；
         System.out.println(num1&1);
+
+        //左边存a,右边存b
+        int a=1;
+        int b=1;
+        System.out.println((a<<1)+b);
     }
     //list操作
     public void list(){
