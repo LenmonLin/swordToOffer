@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
 * 给定一个二叉树，判断其是否是一个有效的二叉搜索树。
 * 假设一个二叉搜索树具有如下特征：
@@ -30,6 +32,10 @@
 *  @author LemonLin
  * @Description :TreeisValidBST98LeetCode
  * @date 2019/12/27-15:03
+ * 如果直接上述递归没想明白，可以考虑用中序遍历的方式，比较简洁明了，因为中序遍历
+ * 的二叉排序树的结果是递增的数据，可以利用这个特点进行判断。
+ * 参考：https://leetcode-cn.com/problems/validate-binary-search-tree/solution/
+ * bstjing-guo-zhong-xu-bian-li-listzhong-de-yuan-su-/
  */
 public class TreeisValidBST98LeetCode {
     public class TreeNode {
@@ -38,8 +44,32 @@ public class TreeisValidBST98LeetCode {
      TreeNode right;
      TreeNode(int x) { val = x; }
      }
+    //中序遍历解法
+    public boolean isValidBST2(TreeNode root,ArrayList<TreeNode> result ){
+        inorderTravel(root,result);
+        for (int i=0;i<result.size()-1;i++){
+            if (result.get(i).val>=result.get(i+1).val){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private void inorderTravel(TreeNode root,ArrayList<TreeNode> result){
+        if (root ==null){
+            return ;
+        }
+        inorderTravel(root.left,result);
+        result.add(root);
+        inorderTravel(root.right,result);
+    }
+
+
+
     public boolean isValidBST(TreeNode root) {
-        return isValidBST(root,null,null);
+        ArrayList<TreeNode> result = new ArrayList<>();
+        return isValidBST2(root,result);
+        //return isValidBST(root,null,null);
     }
      /**
       *@Description
