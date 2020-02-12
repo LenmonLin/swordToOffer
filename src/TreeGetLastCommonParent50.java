@@ -1,5 +1,5 @@
 import common.MakeTree;
-import common.TreeNodeCommon;
+import common.TreeNode;
 
 import java.util.ArrayList;
 /**
@@ -29,33 +29,53 @@ import java.util.ArrayList;
  */
 public class TreeGetLastCommonParent50 {
     /**
+     * Definition for a binary tree node.
+     * public class TreeNode {
+     *     public int val;
+     *     public TreeNode left;
+     *     public TreeNode right;
+     *     public TreeNode(int x) { val = x; }
+     * }
+     */
+    /**
      *需要用到递归的想法,解法一：假设是二叉搜索树
      */
-    public TreeNodeCommon GetLastCommonParentOne(TreeNodeCommon tRoot,
-                                                 TreeNodeCommon tLeft,TreeNodeCommon tRight){
-        TreeNodeCommon treeNodeCommon = null;
-        if (tRoot == null || tRight.data<tLeft.data){
-            return  null;
+    public TreeNode lowestCommonAncestor(TreeNode root,
+                                                 TreeNode p,TreeNode q){
+        TreeNode result=null;
+        if (root == null){
+            result =root;
         }
-        if (tRoot.data >tRight.data){
-            return treeNodeCommon = GetLastCommonParentOne(tRoot.left,tLeft,tRight);
+        //处理输入:
+        //[2,1]
+        //2
+        //1
+        //输出
+        //null
+        //预期结果
+        //2
+        TreeNode smallNode = p.val > q.val ? q : p;
+        TreeNode bigNode = p.val > q.val ? p : q;
+        if (root.val ==smallNode.val||root.val==bigNode.val||
+                root.val > smallNode.val && root.val < bigNode.val){
+             result=root;
         }
-        if (tRoot.data <tLeft.data){
-            return treeNodeCommon = GetLastCommonParentOne(tRoot.right,tLeft,tRight);
+        if (root.val >bigNode.val){
+          result =  lowestCommonAncestor(root.left,smallNode,bigNode);
         }
-        if (tRoot.data > tLeft.data && tRoot.data < tRight.data){
-            return  tRoot;
+        if (root.val <smallNode.val){
+           result= lowestCommonAncestor(root.right,smallNode,bigNode);
         }
-        return  treeNodeCommon;
+        return result;
     }
     //解法三：假设是普通的树,且没有指向父节点的指针
-    public  TreeNodeCommon GetLastCommonParentThree(TreeNodeCommon tRoot ,
-                                                  TreeNodeCommon node1 ,TreeNodeCommon node2){
+    public  TreeNode GetLastCommonParentThree(TreeNode root ,
+                                                  TreeNode node1 ,TreeNode node2){
         ArrayList path1 = new ArrayList();
         ArrayList path2 = new ArrayList();
         ArrayList temp = new ArrayList();
-        getNodePath(tRoot,node1,temp,path1);
-        getNodePath(tRoot,node2,temp,path2);
+        getNodePath(root,node1,temp,path1);
+        getNodePath(root,node2,temp,path2);
         //如果路径不存在，返回空
         if (path1.size()==0 || path2.size() ==0){
             return null;
@@ -64,22 +84,22 @@ public class TreeGetLastCommonParent50 {
     }
     //获取路径的方法，有点类似深度优先
     //获取路径的方法，有点难，不好理解。
-   public  void  getNodePath(TreeNodeCommon tRoot, TreeNodeCommon targetNode,
+   public  void  getNodePath(TreeNode root, TreeNode targetNode,
                              ArrayList tempList ,ArrayList path){
-        if (tRoot == targetNode || tRoot == null){
+        if (root == targetNode || root == null){
             return ;
         }
-        tempList.add(tRoot);
-       ArrayList<TreeNodeCommon> childs = new ArrayList<>();
-        if (tRoot.left != null){
-           childs.add(tRoot.left);
+        tempList.add(root);
+       ArrayList<TreeNode> childs = new ArrayList<>();
+        if (root.left != null){
+           childs.add(root.left);
         }
-       if (tRoot.right!= null){
-           childs.add(tRoot.right);
+       if (root.right!= null){
+           childs.add(root.right);
        }
-        for (TreeNodeCommon node :childs ){
-            //注意这里用的是比较data,不能直接比较结点，否则会包括比较结点下面的子结点，导致无法进入if
-            if (node.data == targetNode.data){
+        for (TreeNode node :childs ){
+            //注意这里用的是比较val,不能直接比较结点，否则会包括比较结点下面的子结点，导致无法进入if
+            if (node.val == targetNode.val){
                 path.addAll(tempList);
                 break;
             }
@@ -90,9 +110,9 @@ public class TreeGetLastCommonParent50 {
    }
    //获取两个路径的最后一个公共结点，重点是最后两个字，
     //1-2-4-5 与1-2-3-6，那么获得了2
-   public  TreeNodeCommon getLastCommonParent(ArrayList<TreeNodeCommon> path1,
-                                        ArrayList<TreeNodeCommon> path2){
-       TreeNodeCommon treeNode  = null;
+   public  TreeNode getLastCommonParent(ArrayList<TreeNode> path1,
+                                        ArrayList<TreeNode> path2){
+       TreeNode treeNode  = null;
         for (int i=0;i<path1.size();i++){
             if (path1.get(i)!=path2.get(i)){
                 break;
@@ -104,14 +124,14 @@ public class TreeGetLastCommonParent50 {
 
     public static void main(String[] args) {
         MakeTree makeTree = new MakeTree();
-        TreeNodeCommon pRoot = makeTree.makeTree();
-        TreeNodeCommon tLeft = new TreeNodeCommon(5);
-        TreeNodeCommon tRight = new TreeNodeCommon(7);
+        TreeNode pRoot = makeTree.makeTree2();
+        TreeNode p = new TreeNode(6);
+        TreeNode q = new TreeNode(7);
         TreeGetLastCommonParent50 treeGetLastCommonParent50 = new TreeGetLastCommonParent50();
-        //TreeNodeCommon lastCommonParent = getLastCommonParent50.GetLastCommonParentOne(pRoot,tLeft,tRight);
-        //System.out.println(lastCommonParent.data);
-        TreeNodeCommon lastCommonParent = treeGetLastCommonParent50.GetLastCommonParentThree(pRoot
-        ,tLeft,tRight);
-        System.out.println(lastCommonParent.data);
+        TreeNode lastCommonParent = treeGetLastCommonParent50.lowestCommonAncestor(pRoot,p,q);
+        System.out.println(lastCommonParent.val);
+//        TreeNode lastCommonParent = treeGetLastCommonParent50.GetLastCommonParentThree(pRoot
+//        ,p,q);
+//        System.out.println(lastCommonParent.val);
     }
 }
