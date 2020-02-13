@@ -40,9 +40,14 @@ public class DFSbinaryTreePaths257LeetCode {
         return  result;
     }
     public void helper(TreeNode root , ArrayList result, ArrayList path){
+        //递归出口，满足这个情况要停止递归
         if (root == null)return;
+        // 递归过程处理函数，
         path.add(root.val);
+        //下面的代码也应该归入递归处理函数，只是需要在某种特殊情况下处理。即
+        // root.left == null&&root.right == null
         if (root.left == null&&root.right == null){
+            //把路径中的值进行输出转换为题目要求的字符串进行保存。
             StringBuilder stringBuilder = new StringBuilder();
             for (int i=0;i<path.size();i++){
                 stringBuilder.append(path.get(i));
@@ -54,6 +59,7 @@ public class DFSbinaryTreePaths257LeetCode {
         }
         helper(root.left,result,path);
         helper(root.right,result,path);
+        //回溯框架
         path.remove(path.size()-1);
     }
 
