@@ -43,6 +43,14 @@
  *  了完美二叉树的特点，只要root.left!= null,那么右边就一定是亲兄弟节点，堂兄弟节点
  *  的判断是root.next!=null,因为完美二叉树的构造，亲兄弟节点root.next都已经进行了
  *  链接，只剩下堂兄弟节点的root.next没有链接。
+ *  思路2：参考
+ *  https://leetcode-cn.com/problems/populating-next-right-pointers-in-each-node/
+ *  solution/xiang-xi-tong-su-de-si-lu-fen-xi-duo-jie-fa-by--27/
+ *  层次遍历每次通过队列保存下一层节点的顺序，比如访问第0层时，就把第0层的的左右
+ *  孩子结点进队，这样第1层的左右结点顺序就保存下来了。观察本题，虽然不能让用队列
+ *  但是有一个next指针，只要访问第0层的时候，就把第1层的结点的next指针链接上，这
+ *  样第1层的左右结点的顺序也被保存下来了，当访问第1层的时候，根据next指针访问就
+ *  可以了。如此反复，访问第一层的时候，把第二层结点的next指针也链接上。
  * @author LemonLin
  * @Description :Treeconnect116LeetCode
  * @date 2020/1/10-21:22
@@ -69,15 +77,46 @@ public class Treeconnect116LeetCode {
             next = _next;
         }
     }
+
+    //层次遍历next指针方法，这里根据特点需要三个指针，
+    // start，记录每一层的最左边的开头结点，当cur遍历到每一层末尾时，利用start找到
+    // 下一层的开头
+    // cur,遍历每一层结点，遍历的时候就把下一层节点的next指针链接起来
+    // pre,始终在cur之前，为了解决堂兄弟指针的next链接问题。
     public Node connect(Node root) {
+        if(root==null)return root;
+        Node start = root;
+        Node cur = null;
+        Node pre = start;
+        //start.left 表示下一层的开头结点
+        while (start.left!=null){
+            //下一层的头一个结点的next指针先链接上，方便pre和cur指定
+            start.left.next = start.right;
+            //说明这一层右侧还有结点
+            while (cur!=null){
+                pre.right.next = cur.left;
+                cur.left.next = cur.right;
+                pre = pre.next;
+                cur = cur.next;
+            }
+            //到下一层
+            pre=start.left;
+            cur = start.right;
+            start = pre;
+        }
+        return root;
+    }
+
+    //递归方法
+    public Node connect1(Node root) {
         if(root == null) return null;
         //这里需要结合完美二叉树的图形看，比较容易理解
         if(root.left!= null){
             root.left.next = root.right;
             if (root.next!=null) root.right.next = root.next.left;
         }
-        connect(root.left);
-        connect(root.right);
+        connect1(root.left);
+        connect1(root.right);
         return root;
     }
 }
