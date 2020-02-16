@@ -8,23 +8,23 @@ import java.util.*;
 public class 常规记忆操作 {
     public static void main(String[] args) {
         //位操作
-        new 常规记忆操作().bit();
+//        new 常规记忆操作().bit();
         //list操作
         new 常规记忆操作().list();
-        //hashmap操作
-        new 常规记忆操作().hashmap();
-        //数学运算
-        new  常规记忆操作().math();
-        //关于队列操作
-        new 常规记忆操作().queue();
-        //关于string的操作
-        new 常规记忆操作().string();
-        //关于stringBuilder的操作
-        new 常规记忆操作().stringBuilder();
-        // 关于栈的操作
-        new 常规记忆操作().stack();
-        //堆的实现,包括最大堆和最小堆
-        new 常规记忆操作().heap();
+//        //hashmap操作
+//        new 常规记忆操作().hashmap();
+//        //数学运算
+//        new  常规记忆操作().math();
+//        //关于队列操作
+//        new 常规记忆操作().queue();
+//        //关于string的操作
+//        new 常规记忆操作().string();
+//        //关于stringBuilder的操作
+//        new 常规记忆操作().stringBuilder();
+//        // 关于栈的操作
+//        new 常规记忆操作().stack();
+//        //堆的实现,包括最大堆和最小堆
+//        new 常规记忆操作().heap();
     }
 
     //位操作
@@ -57,8 +57,10 @@ public class 常规记忆操作 {
     //list操作
     public void list(){
         //对数组进行排序
-        int[] numbers={12,21,124};
-        Arrays.sort(numbers);
+        int[] numbers={10,9,8,7,4,5,2,1};
+        //结果：10 2  4   5  7  8  9  1，也就是toIndex最后一位没排，不包括toIndex
+        Arrays.sort(numbers,1,numbers.length-1);
+//        Arrays.sort(numbers);
         for (int i=0;i<numbers.length;i++){
             System.out.println("numbers"+numbers[i]);
         }
