@@ -20,6 +20,9 @@ import java.util.HashMap;
  * 3、根据中序序列找到的左子树和右子树到后序序列中找对应左子树的根节点和右子树
  * 的根节点。
  * 总结来说：在后序序列中找根节点，在中序序列中找左子树和右子树。
+ *
+ *参考LeetCode105的ConstructBinaryTree2解法，放弃以下被{}括起来的解法：
+ * {
  *虽然做题思路是这样，但是从代码来看，有一个特别的点，就是第三步，不是继续从左子树
  * 和右子树中到后序序列找对应于的根节点，可以看出根节点代码下标是postIndex，而且
  * 在递归代码逻辑中进行postIndex--，也就是这其中不是利用中序序列分割出来的左子树
@@ -36,6 +39,19 @@ import java.util.HashMap;
  * 猜想，但是看各路大神的题解来看，如果代码严格按照解题思路的解决方法，传入参数
  * （中序序列左边界，中序序列右边界，后序序列左边界，后序序列右边界）这种解题方法
  * 没有以上两个想不明白的bug点。
+ * }
+ *新的解法用的是传入四个下标的参数，后序遍历的首尾坐标，中序遍历的首尾坐标。
+ *
+ * 后序遍历 preorder = 
+ *  [4  ,   8,   9,      5,            2,                                                       10,        6,        7,            3,                    1]
+ *   |                                     |                                                         |                                     |                     |
+ * postLeft      (pivotIndex-1-inLeft)+(postLeft)    (pivotIndex-1-inLeft)+(postLeft)+1    postRight-1         postRight
+ *  中序遍历 inorder =
+ *  [4,        2,8,         5, 9,                                 1,                                  6,             10,3,                        7]
+ *   |                              |                                  |                                    |                                              |
+ * inLeft               pivotIndex-1                   pivotIndex                 pivotIndex+1                               inRight
+ *对比LeetCode105，中序遍历的下标坐标都是一样的，只是后序遍历和前序遍历的下标不一样，前序遍历的根节点是从前往后发现的，
+ * 后序遍历的根节点是从后往前发现的过程。
  * @author LemonLin
  * @Description :TreebuildTree106LeetCode
  * @date 2019/12/27-20:44
@@ -71,9 +87,28 @@ public class TreebuildTree106LeetCode {
         for (int i=0;i<inorder.length;i++){
             hashMap.put(inorder[i],i);
         }
-        return ConstructBinaryTree(0,inorder.length-1,inorder,postorder);
+//        return ConstructBinaryTree(0,inorder.length-1,inorder,postorder);
+        return ConstructBinaryTree2(0,postorder.length-1,
+                0,inorder.length-1,postorder,inorder);
     }
     //重构二叉树传入的参数只要是有序数组的首和尾即可。传入postorder和inorder是为了不设置全局变量
+    public TreeNode ConstructBinaryTree2(int postLeft,int postRight,int inLeft,int inRight,
+                                         int [] postorder,int [] inorder) {
+        if(postLeft > postRight||inLeft>inRight){
+            return null;
+        }
+        TreeNode rootNode = new TreeNode(postorder[postRight]);
+        int  pivotIndex=hashMap.get(postorder[postRight]);
+        rootNode.left = ConstructBinaryTree2(
+                postLeft,pivotIndex-1-inLeft+postLeft,
+                inLeft,pivotIndex-1,
+                postorder,inorder);
+        rootNode.right = ConstructBinaryTree2(
+                pivotIndex-inLeft+postLeft,postRight-1,
+                pivotIndex+1,inRight,
+                postorder,inorder);
+        return rootNode;
+    }
     public TreeNode ConstructBinaryTree(int left,int right,int [] inorder,int [] postorder) {
         //这里的left和right指的都是中序序列中的坐标，同时递归出口要想明白，只有left大
         // 于right的时候，才返回null，而不是left ==right的情况，left ==right时应该
