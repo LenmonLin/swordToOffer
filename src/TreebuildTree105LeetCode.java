@@ -19,13 +19,21 @@ import java.util.HashMap;
  * 3、根据中序序列找到的左子树和右子树到前序序列中找对应左子树的根节点和右子树
  * 的根节点。
  * 总结来说：在前序序列中找根节点，在中序序列中找左子树和右子树。
- *虽然做题思路是这样，但是从代码来看，有一个特别的点，就是第三步，不是继续从左子树
+ * {}这部分看看就好，应该放弃这种做法，容易出错，特别是在后序中不通用
+ *{
+ *  虽然做题思路是这样，但是从代码来看，有一个特别的点，就是第三步，不是继续从左子树
  * 和右子树中到前序序列找对应于的根节点，可以看出根节点代码下标是preIndex，而且
  * 在递归代码逻辑中进行preIndex++，也就是这其中不是利用中序序列分割出来的左子树
  * 和右子树跟着递归从前序序列中找对应的根节点，而是认为前序序列中的每个下标节点
  * 都是某一课树的根节点，只要把每个节点的作为根节点的情况下，它的左子树和右子树的
  * 关系都建立好，那么久完成了整颗树的建立。
- *
+ * }
+ * 合理的解法：参考：
+ * https://leetcode-cn.com/problems/construct-binary-tree-from-preorder-and
+ * -inorder-traversal/solution/qian-xu-bian-li-python-dai-ma-java-dai-ma-by-liwei/
+ *补充：ConstructBinaryTree2完全是按照做题思路的解法，注意，这里要传入四个下标的
+ * 参数，前序遍历的首尾坐标，中序遍历的首尾坐标。应该放弃ConstructBinaryTree的解法。
+ * 注意在前序的左子树的尾坐标，应该包含用中序中找到的左右子树的长度来替代。
  * 疑问点：
  * Java中怎么表示指针，比如数组要用首指针和末尾指针表示；
  * 为解决这个问题，应该把数组首地址和数组的第一个下标和最后一个下标传入即可；
@@ -56,7 +64,9 @@ public class TreebuildTree105LeetCode {
         for (int i=0;i<inorder.length;i++){
             hashMap.put(inorder[i],i);
         }
-        return ConstructBinaryTree(0,inorder.length-1,preorder,inorder);
+        return ConstructBinaryTree2(0,preorder.length-1,
+                0,inorder.length-1,preorder,inorder);
+//        return ConstructBinaryTree(0,inorder.length-1,preorder,inorder);
     }
     //重构二叉树传入的参数只要是有序数组的首和尾即可。传入preorder和inorder是为了不设置全局变量
     public TreeNode ConstructBinaryTree(int left,int right,int [] preorder,int [] inorder) {
@@ -75,5 +85,41 @@ public class TreebuildTree105LeetCode {
         rootNode.left = ConstructBinaryTree(left,indexRootInOrder-1,preorder,inorder);
         rootNode.right = ConstructBinaryTree(indexRootInOrder+1,right,preorder,inorder);
         return rootNode;
+    }
+
+    public TreeNode ConstructBinaryTree2(int preLeft,int preRight,int inLeft,int inRight,
+                                         int [] preorder,int [] inorder) {
+        if(preLeft > preRight||inLeft>inRight){
+            return null;
+        }
+        TreeNode rootNode = new TreeNode(preorder[preLeft]);
+        int  pivotIndex=hashMap.get(preorder[preLeft]);
+/**
+ *前序遍历 preorder = 
+ * [1  ,           2,         4,       5,           8,      9,                                                 3,        6,          10,      7]
+ *  |               |                                            |                                                   |                                 |
+ *preLeft   preLeft+1    (pivotIndex-1-inLeft)+(preLeft+1)   (pivotIndex-1-inLeft)+(preLeft+1)+1   preRight
+ * 中序遍历 inorder =
+ * [4,        2,8,         5, 9,                                 1,                                  6,             10,3,                        7]
+ *  |                              |                                  |                                    |                                              |
+ *inLeft               pivotIndex-1                   pivotIndex                 pivotIndex+1                               inRight
+ */
+        rootNode.left = ConstructBinaryTree2(
+                //前序左子树的尾坐标应该是(pivotIndex-1-inLeft)+(preLeft+1)=pivotIndex-inLeft+preLeft
+                //把两个1消掉。
+                preLeft+1,pivotIndex-inLeft+preLeft,
+                inLeft,pivotIndex-1,
+                preorder,inorder);
+        rootNode.right = ConstructBinaryTree2(
+                pivotIndex-inLeft+preLeft+1,preRight,
+                pivotIndex+1,inRight,
+                    preorder,inorder);
+        return rootNode;
+    }
+
+    public static void main(String[] args) {
+        int[] preorder={3,9,20,15,7};
+        int[] inorder={9,3,15,20,7};
+        new TreebuildTree105LeetCode().buildTree(preorder,inorder);
     }
 }
