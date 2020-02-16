@@ -51,6 +51,9 @@ public class DFSmaxDepth559LeetCode {
     }
     public void dfs(Node root,int depth){
         if (root==null)return;
+        //depth++不能写在dfs(root.children.get(i),depth+1);中，因为 if (depth>maxDepth){
+        //需要判断，所以必须在这个之前就要做判断，写在前面还有传入root根节点的时候，就
+        //需要加1。否则root根节点无法加一。
         depth++;
         if (root.children.isEmpty()){
             if (depth>maxDepth){
