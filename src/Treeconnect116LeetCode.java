@@ -2,7 +2,6 @@
 *  * 给定一个完美二叉树，其所有叶子节点都在同一层，每个父节点都有两个子节点。二
  * 叉树定义如下：
 *  struct Node {
-*       int val;
 *       Node *left;
 *       Node *right;
 *       Node *next;
@@ -78,12 +77,39 @@ public class Treeconnect116LeetCode {
         }
     }
 
+    //本解法利用了LeetCode117的解法，和117不同的是，不用判断第二层节点是否右节点
+    //一定存在
+    public Node connect(Node root) {
+        Node cur = root;
+        Node dummy=new Node();
+        Node tail = null;
+        //这一层的cur指的是第一层的节点
+        while(cur!=null){
+            dummy.next = null;
+            tail = dummy;
+            //这里的cur以及经过更新到第二层了。
+            while(cur!=null){
+                if (cur.left!=null){
+                    tail.next = cur.left;
+                    tail= tail.next;
+                    tail.next = cur.right;
+                    tail=tail.next;
+                }
+                //本层的下一个结点
+                cur = cur.next;
+            }
+            //到下一层
+            cur = dummy.next;
+        }
+        return root;
+    }
+
     //层次遍历next指针方法，这里根据特点需要三个指针，
     // start，记录每一层的最左边的开头结点，当cur遍历到每一层末尾时，利用start找到
     // 下一层的开头
     // cur,遍历每一层结点，遍历的时候就把下一层节点的next指针链接起来
     // pre,始终在cur之前，为了解决堂兄弟指针的next链接问题。
-    public Node connect(Node root) {
+    public Node connect2(Node root) {
         if(root==null)return root;
         Node start = root;
         Node cur = null;
