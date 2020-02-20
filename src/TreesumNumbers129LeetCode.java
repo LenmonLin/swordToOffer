@@ -55,6 +55,8 @@ public class TreesumNumbers129LeetCode {
         return sum;
     }
     public void helper (TreeNode root){
+        //return必须写在这里，不能把return写在if (root.left ==null&&root.right ==null){
+        //里面，如果写了，会因为直接return，没执行到回溯一步而导致错误结果。
         if (root == null)return;
         temp = temp*10+root.val;
         if (root.left ==null&&root.right ==null){
@@ -62,7 +64,9 @@ public class TreesumNumbers129LeetCode {
         }
         helper(root.left);
         helper(root.right);
-        temp = (temp-root.val)/10;
+        //这里反正最后一位是不需要的，所以可以不用减直接写成
+        temp =temp/10;
+//        temp = (temp-root.val)/10;
     }
 
     public static void main(String[] args) {
