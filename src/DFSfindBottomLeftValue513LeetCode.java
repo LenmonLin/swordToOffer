@@ -1,3 +1,5 @@
+import java.util.LinkedList;
+
 /**
  * 给定一个二叉树，在树的最后一行找到最左边的值。
  * 示例 1:
@@ -31,6 +33,7 @@
  * findBottomLeftValue内定义，然后作为参数传入递归函数。这里maxLevel就是全局
  * 变量，因为记录的是曾经到达过的最大层数。level是局部变量，记录使用level的递归函数
  * 在第几层，仔细体会。
+ * 思路二：第一反应考虑层次遍历。参考LeetCode199层序遍历法。层次遍历比较直观。
  * @author LemonLin
  * @Description :DFSfindBottomLeftValue513LeetCode
  * @date 20.1.15-11:49
@@ -45,6 +48,32 @@ public class DFSfindBottomLeftValue513LeetCode {
         TreeNode right;
         TreeNode(int x) { val = x; }
     }
+
+    //层序遍历法
+    public int findBottomLeftValue2(TreeNode root) {
+        if (root == null)return  0 ;
+        LinkedList<TreeNode> queue = new LinkedList<>();
+        queue.addLast(root);
+        int result = 0;
+        while (!queue.isEmpty()){
+            int size = queue.size();
+            for (int i=0;i<size;i++){
+                TreeNode temp = queue.removeFirst();
+                //每次是最左边节点就更新。最后更新的肯定是最后的结果。
+                if (i==0){
+                    result = temp.val;
+                }
+                if (temp.left!=null){
+                    queue.addLast(temp.left);
+                }
+                if (temp.right!=null){
+                    queue.addLast(temp.right);
+                }
+            }
+        }
+        return result;
+    }
+
     int maxLevel=-1;
     int result =0;
     public int findBottomLeftValue(TreeNode root) {
@@ -75,6 +104,6 @@ public class DFSfindBottomLeftValue513LeetCode {
         treeNode2.right = null;
         treeNode3.left = null;
         treeNode3.right = null;
-        System.out.println(new DFSfindBottomLeftValue513LeetCode().findBottomLeftValue(treeNode1));
+        System.out.println(new DFSfindBottomLeftValue513LeetCode().findBottomLeftValue2(treeNode1));
     }
 }
