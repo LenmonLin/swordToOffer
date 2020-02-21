@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 /**
  * 给定一棵二叉树，想象自己站在它的右侧，按照从顶部到底部的顺序，返回从右侧所能
@@ -65,6 +66,27 @@ public class TreerightSideView199LeetCode {
         helper(root.left,arrayList,level+1);
     }
 
+    //层序遍历解法。
+    public List<Integer> rightSideView2(TreeNode root) {
+        if(root==null)return new ArrayList();
+        ArrayList<Integer> result = new ArrayList<>();
+        LinkedList<TreeNode>  queue = new LinkedList<>();
+        queue.addLast(root);
+        while (!queue.isEmpty()){
+            int size = queue.size();
+            //这种写法的层序遍历更容易理解
+            for (int i=0;i<size;i++){
+                TreeNode temp = queue.removeFirst();
+                if (i==size-1){
+                    result.add(temp.val);
+                }
+                if (temp.left!=null) queue.addLast(temp.left);
+                if (temp.right!=null) queue.addLast(temp.right);
+            }
+        }
+        return result;
+    }
+
     public static void main(String[] args) {
         //造一颗树[5,4,8,11,null,13,4,7,2]
         /*
@@ -101,6 +123,6 @@ public class TreerightSideView199LeetCode {
         treeNode8.right = null;
         treeNode9.left = null;
         treeNode9.right = null;
-        new TreerightSideView199LeetCode().rightSideView(treeNode1);
+        new TreerightSideView199LeetCode().rightSideView2(treeNode1);
     }
 }
