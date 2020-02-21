@@ -40,8 +40,46 @@ import java.util.LinkedList;
  * 二：字符串是否是数字，不能用Integer.valueOf(str)>=0&&Integer.valueOf(str)<=9
  * 因为当str不是数字的时候，Integer.valueOf()会报错。应该用Character.isDigit()一个
  * 一个判断。
+ * 增加题解简约版代码：自己写的实在太复杂了。
+ * 参考：https://leetcode-cn.com/problems/decode-string/solution/
+ * decode-string-fu-zhu-zhan-fa-di-gui-fa-by-jyd/
+ * 新思路：自己写的为什么那么复杂，就是因为只用到了一个栈，应该把数字和字符用两个
+ * 栈来存储，这样思路很清晰。简洁了很多代码。
  */
 public class StackdecodeString394LeetCode {
+
+    //题解简约版：
+    public String decodeString2(String s) {
+        StringBuilder res = new StringBuilder();
+        int multi = 0;
+        //把数字和字符用两个栈来存储
+        LinkedList<Integer> stack_multi = new LinkedList<>();
+        LinkedList<String> stack_res = new LinkedList<>();
+        for(Character c : s.toCharArray()) {
+            if(c == '[') {
+                stack_multi.addLast(multi);
+                stack_res.addLast(res.toString());
+                multi = 0;
+                //res这里存储临时结果。
+                res = new StringBuilder();
+            }
+            else if(c == ']') {
+                StringBuilder tmp = new StringBuilder();
+                int cur_multi = stack_multi.removeLast();
+                //这里是关键，注意tmp添加了res,这个时候的res是遇到[之前的字符
+                for(int i = 0; i < cur_multi; i++) tmp.append(res);
+                //链接这里为啥出了stack_res栈，这是处理
+                //3[a2[c]]上面的tmp=cc,还需要把a处理了。这样就完结了一次处理。
+                res = new StringBuilder(stack_res.removeLast() + tmp);
+            }
+            //这里为了处理数字是多位数的情况，比如12[c]这里的数字12就是两位数
+            else if(c >= '0' && c <= '9') multi = multi * 10 + Integer.parseInt(c + "");
+            else res.append(c);
+        }
+        //退出循环后，这里res存储的是总结果。
+        return res.toString();
+    }
+
     public String decodeString(String s) {
         if (s==null||s.length()==0)return "";
         LinkedList<String> stack = new LinkedList();
