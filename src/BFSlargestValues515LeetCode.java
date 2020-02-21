@@ -29,6 +29,38 @@ public class BFSlargestValues515LeetCode {
         TreeNode right;
         TreeNode(int x) { val = x; }
     }
+
+
+    //层序遍历规范模板写法
+    public List<Integer> largestValues2(TreeNode root) {
+        ArrayList<Integer> result = new ArrayList();
+        if(root == null){
+            return result;
+        }
+        LinkedList<TreeNode> queue = new LinkedList();
+        queue.addLast(root);
+        while(!queue.isEmpty()){
+            Integer minNum = Integer.MIN_VALUE;
+            int size = queue.size();
+            //这里表示每一层里面的循环
+            for(int i=0;i<size;i++){
+                TreeNode temp = queue.removeFirst();
+                if(minNum<temp.val){
+                    minNum = temp.val;
+                }
+                if(temp.left!= null){
+                    queue.addLast(temp.left);
+                }
+                if(temp.right!= null){
+                    queue.addLast(temp.right);
+                }
+            }
+            //遍历循环外面，就要把这一层最小值添加到结果中去
+            result.add(minNum);
+        }
+        return result;
+    }
+
     ArrayList result = new ArrayList();
     int maxNumber =Integer.MIN_VALUE;
     public List<Integer> largestValues(TreeNode root) {
