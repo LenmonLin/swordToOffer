@@ -64,10 +64,12 @@ public class DFSfindCircleNum547LeetCode {
         if (i<0||j<0||i>M.length-1||j>M.length-1||M[i][j]==0){
             return;
         }
+        //这里由于朋友圈的规定要求，不仅M[i][j]=0,同时 M[j][i]也要置零;遍历过一个，
+        // 另外一个也无需遍历，同时对角线也要置零
         M[i][j]=0;
         M[i][i]=0;
         M[j][i]=0;
-        //遍历一整行。
+        //遍历一整行，这个是和平时那种遍历周围四个方向的题目很不一样的点，易错
         for (int p =0;p<=M.length-1;p++){
             dfs(M,j,p);
         }
