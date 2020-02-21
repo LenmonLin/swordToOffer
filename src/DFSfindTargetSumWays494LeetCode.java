@@ -36,23 +36,16 @@ public class DFSfindTargetSumWays494LeetCode {
         return cnt;
     }
     public void dfs(int[] nums, int S,int sum){
-        /**
-         * 以下两点比较绕，暂时还没想到比较好的解决方式：先记着吧
-         * 这里注意体会，不能用if(i>=nums.length)return;因为num[i]是传入的参数，同时
-         * 又需要使用i++;导致i总是比num[i]快一步，所以必须用if else来减小一个i++的使用
-         * 同时这里要注意体会不能用if(i==nums.length-1&&S==sum)因为可能不满足S==
-         * sum的情况下也需要进入if而不是进入else再进行i++；
-         */
-        if (i==nums.length-1){
-            if (S==sum){
+        if (i>=nums.length)return;
+        if (i==nums.length-1&&S==sum){
                 cnt++;
-            }
-        }else {
-            i++;
-            dfs(nums,S,sum+nums[i]);
-            dfs(nums,S,sum-nums[i]);
-            i--;
         }
+        i++;
+        if (i<=nums.length-1) {
+            dfs(nums, S, sum + nums[i]);
+            dfs(nums, S, sum - nums[i]);
+        }
+        i--;
     }
 
     public static void main(String[] args) {
