@@ -29,40 +29,38 @@ public class BFSzigzagLevelOrder103LeetCode {
         TreeNode right;
         TreeNode(int x) { val = x; }
     }
-    ArrayList result = new ArrayList();
-    //记录层数
-    int flag = 1;
     public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
-        if (root==null)return new ArrayList<>();
-        bfs(root);
-        return result;
-    }
-    public void bfs(TreeNode root){
-        if (root == null)return;
-        Queue<TreeNode> queue = new LinkedList();
-        queue.offer(root);
-        while (!queue.isEmpty()){
-            int cnt = queue.size();
-            LinkedList temp = new LinkedList();
-            while (cnt>0){
-                TreeNode treeNode = queue.poll();
-                if (flag%2!=0) {
-                    //注意这里不要写成addLast(treeNode),查了很久的bug
-                    temp.addLast(treeNode.val);
-                }else {
-                    temp.addFirst(treeNode.val);
+            ArrayList result = new ArrayList();
+            if(root == null) return result;
+            LinkedList<TreeNode> queue = new LinkedList();
+            queue.addLast(root);
+            //记录层数。
+            int cnt=0;
+            while(!queue.isEmpty()){
+                int size = queue.size();
+                LinkedList<Integer> temp = new LinkedList();
+                //这个要放在for循环外面。容易错
+                cnt++;
+                for(int i=0;i<size;i++){
+                    TreeNode treenode = queue.removeFirst();
+                    //层数的处理，必须得放在temp上操作。绝对不能放在上面那个queue上
+                    // 操作，这点十分易错。如果放在queue上操作，会造成后期输出的节点的
+                    // 左右节点入栈也跟着错，那就整个逻辑就错了。
+                    if(cnt%2!=0){
+                        temp.addLast(treenode.val);
+                    }else{
+                        temp.addFirst(treenode.val);
+                    }
+                    if(treenode.left!=null){
+                        queue.addLast(treenode.left);
+                    }
+                    if(treenode.right!=null){
+                        queue.addLast(treenode.right);
+                    }
                 }
-                if (treeNode.left!=null){
-                    queue.offer(treeNode.left);
-                }
-                if (treeNode.right!=null){
-                    queue.offer(treeNode.right);
-                }
-                cnt--;
-            }
-                flag++;
                 result.add(temp);
-        }
+            }
+            return result;
     }
     public static void main(String[] args) {
         BFSzigzagLevelOrder103LeetCode bfSzigzagLevelOrder103LeetCode
