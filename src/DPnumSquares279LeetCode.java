@@ -15,6 +15,8 @@
  * 参考：https://leetcode-cn.com/problems/perfect-squares/solution/
  * bu-zhi-shi-da-an-er-shi-dong-tai-gui-hua-lei-ti-de/
  * 思路：先思考递归，找出递归的表达式，再用记忆化搜索自顶向下，最后Dp，思考双循环。
+ * 这里可以把外循环想成树高，内循环想成是每个节点的分支，题目要求满足条件情况下的
+ * 最矮的树的分支。
  *  状态转移方程中：dp[i-j*j]+1加一的原因是如果做了一次i-j*j处理，说明分离了一次，
  *  也就是说组成和的完全平方数的个数要加一个。
  *  这里有两个循环，第一个循环遍历传入的n的循环，n的最少完全平方个数，是从1,2...n-1
@@ -39,14 +41,18 @@ public class DPnumSquares279LeetCode {
         // 经过for外循环，n所包含的每个整数都取得了最少完全平方数的个数
         // dp[n]得到的也是最少个数
         for (int i=1;i<=n;i++){
-            //注意这里minOutput要放在外循环的内部。
-            int minOutput = Integer.MAX_VALUE;
-            //经过for内循环，从组成i的完全平方数的所有可能中
-            //得到最少的个数 minOutput 赋值给 dp[i]
+//            //注意这里minOutput要放在外循环的内部。
+//            int minOutput = Integer.MAX_VALUE;
+//            //经过for内循环，从组成i的完全平方数的所有可能中
+//            //得到最少的个数 minOutput 赋值给 dp[i]
+
+            // 最坏的情况就是每次+1,这个可以理解成树的高度。最坏情况就是树最高的情况，
+            // 因为题目要求的是满足条件的情况下树最矮是多少
+            dp[i] = i;
             for (int j=1;i-j*j>=0;j++){
-                minOutput=Math.min(minOutput,dp[i-j*j]+1);
+                dp[i]=Math.min(dp[i],dp[i-j*j]+1);
             }
-            dp[i]=minOutput;
+//            dp[i]=minOutput;
         }
         return dp[n];
     }
