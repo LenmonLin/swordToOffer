@@ -17,43 +17,63 @@
  * 输入: m = 7, n = 3
  * 输出: 28
  * 思路：动态规划：先把边角填满，
- * 0 ,1,1,1,1,1
+ * 1 ,1,1,1,1,1
  * 1
  * 1
  * 1
  * 1
  * 右下角空白处只能填的是dp[i-1][j]+dp[i][j-1]，两种方法数相加。
+ * 以上是第一种方法
  * @author LemonLin
  * @Description :DPuniquePaths62LeetCode
  * @date 19.8.14-16:16
+ * 思路二：
+ * 1、先想递归，从递归角度来想，举例m=3,n=2;递归函数helper(3,2);
+ * 第一步是假设处理(0,0)->(0,1)+helper(3,1);表示(3,1)没有处理。
+ * 第二步假设(0,1)->(1,1)+helper(2,1),表示(2,1)没有处理。
+ * 以此类推，最后处理了可能是(2,2)->(3,2)或者是(3,1)->(3,2)
+ * 2、以上是递归的思路，是从上往下的，而DP的解决是从下往上的。所以一般先填dp[3][2]
+ * 再填dp[2][2]或者dp[3][1]等等，以此类推。那么状态转移方程为什么是：
+ * dp[i][j]=dp[i+1][j]+dp[i][j+1];
+ * 因为dp[i][j]设置为i,j到达m,n的路径数。那么因为[i][j]的下一步只有两种情况：分别
+ * 是往[i+1][j]走或者往[i][j+1]走，如果假设[i+1][j]到m,n的路径数为a,[i][j+1]到m,n
+ * 的路径数为b,那么可以推测出[i][j]到m,n的路径数为a+b。所以得出状态转移方程如上。
+ * 3、状态的初始情况，也就是从最后一行边界或者最后一列边界到达目的地m，n都只有一种
+ * 方式，所以边界都只能填1。
+ * 其实这样想想，如果反向想明白了，用正向解法也可以。
  */
 public class DPuniquePaths62LeetCode {
-    public int uniquePaths(int m, int n) {
-        //特殊情况下只有一个空格时，应该返回1，但是dp[0][0]只能存0
-        if (m==1&&n==1){
-            return 1;
-        }
+    //自底向上的动态规划。
+    public int uniquePaths2(int m, int n) {
         int [][]dp = new int[m][n];
-        for (int i =0;i<m;i++){
-            for (int j=0;j<n;j++){
-                if ((i-1==-1&&j==0)||(i==0&&j-1==-1)){
-                    dp[i][j]=0;
-                    continue;
-                }
-                if ((i-1==-1&&j>0)||(j-1==-1&&i>0)){
+        for (int i =m-1;i>=0;i--){
+            for (int j=n-1;j>=0;j--){
+                //边界填写1
+                if ((i==m-1&&j>=0)||(j==n-1&&i>=0)){
                     dp[i][j]=1;
                     continue;
                 }
-                if (i>=0||j>=0){
-                    dp[i][j]=dp[i-1][j]+dp[i][j-1];
+                dp[i][j]=dp[i+1][j]+dp[i][j+1];
+            }
+        }
+        return dp[0][0];
+    }
+    public int uniquePaths(int m, int n) {
+        int [][]dp = new int[m][n];
+        for (int i =0;i<m;i++){
+            for (int j=0;j<n;j++){
+                //边界填写1
+                if ((i-1==-1&&j>=0)||(j-1==-1&&i>=0)){
+                    dp[i][j]=1;
                     continue;
                 }
+                dp[i][j]=dp[i-1][j]+dp[i][j-1];
             }
         }
         return dp[m-1][n-1];
     }
 
     public static void main(String[] args) {
-        System.out.println(new DPuniquePaths62LeetCode().uniquePaths(7, 3));
+        System.out.println(new DPuniquePaths62LeetCode().uniquePaths2(3, 2));
     }
 }
