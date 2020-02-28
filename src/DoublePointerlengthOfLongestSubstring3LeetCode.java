@@ -1,3 +1,4 @@
+import java.util.HashMap;
 import java.util.LinkedList;
 /**
  * 给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。
@@ -26,10 +27,46 @@ import java.util.LinkedList;
  * 遍历c,队列中为vdf，无重复，进队                                                               vdfc               3
  * 所以队列选啥比较好，暂定选linkedlist,需要插入删除的操作
  * @author LemonLin
- * @Description :StringlengthOfLongestSubstring
+ * @Description :DoublePointerlengthOfLongestSubstring
  * @date 19.6.23-17:19
+ * 方法二：用hashmap代替队列的作用，因为队列的contains实现感觉不太直观，同时也
+ * 是双指针，i指向滑动窗口的左边，j指向滑动窗口的右边。
+ * bug1:
+ * 输入:
+ * " "
+ * 输出
+ * 0
+ * 预期结果
+ * 1
+ * bug2:
+ * 输入:
+ * "abba"
+ * 输出
+ * 3
+ * 预期结果
+ * 2
  */
-public class StringlengthOfLongestSubstring3LeetCode {
+public class DoublePointerlengthOfLongestSubstring3LeetCode {
+    //用hashmap代码更简洁一些
+        public int lengthOfLongestSubstring2(String s){
+            if (s ==null)return 0;
+            //key放字符串中的每个字符，value放字符在字符串中的下标
+            HashMap<Character,Integer> hashMap = new HashMap<>();
+            int i=0;
+            int result =0;
+            for (int j=0;j<s.length();j++){
+                //hashMap.get(s.charAt(j))>=i为了解决bug2，排除掉之前已经重复数字但
+                // 是已经不在i和j直接的数了。
+                if (hashMap.containsKey(s.charAt(j))&&hashMap.get(s.charAt(j))>=i){
+                    i=hashMap.get(s.charAt(j));
+                    i++;
+                }
+                hashMap.put(s.charAt(j),j);
+                result = Math.max(result,j-i+1);
+            }
+            return result;
+        }
+
     public int lengthOfLongestSubstring(String s) {
         //这里add,remove方法是List接口的;offer，poll方法是Queue接口的，虽然两种方法使用得到
         //的结果都一样，但是这里是把Linkedlist当做队列使用，所以使用offer，poll更形象
@@ -63,7 +100,8 @@ public class StringlengthOfLongestSubstring3LeetCode {
     }
 
     public static void main(String[] args) {
-        String s = "dvdf";
-        System.out.println(new StringlengthOfLongestSubstring3LeetCode().lengthOfLongestSubstring(s));
+        String s = "abba";
+        System.out.println(new DoublePointerlengthOfLongestSubstring3LeetCode()
+                .lengthOfLongestSubstring2(s));
     }
 }
