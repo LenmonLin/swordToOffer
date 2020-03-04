@@ -13,9 +13,15 @@ import java.util.Arrays;
  * 思路：动态规划，这题的状态转移方程比较难写。
  * 参考：https://leetcode-cn.com/problems/longest-increasing-subsequence/
  * solution/dong-tai-gui-hua-er-fen-cha-zhao-tan-xin-suan-fa-p/
+ * 参考2：
+ * https://github.com/labuladong/fucking-algorithm/blob/master/
+ * 动态规划系列/动态规划设计：最长递增子序列.md
  * @author LemonLin
  * @Description :DPlengthOfLIS300LeetCode
  * @date 20.1.30-20:24
+ * 本题要注意和其他题目的DP数组不太一样，本题的求的最后结果不是要求dp[n],因为
+ * dp[n]可能比dp[n-1]小，可能比dp[1]小，本题最后求得结果是dp[0~n]中最大的那个
+ * dp[],这是本题的难点，也很难想到，所以本题需要单独记忆，特殊记忆。
  * 这题的难点是这个双循环为什么要这么写，同时状态转移方程为什么是这样写的。
  * 首先说一下这个双循环，和一般的回溯搜索循环不一样，回溯搜索循环的双循环是：
  *  for (int i=0;i<nums.length;i++){
