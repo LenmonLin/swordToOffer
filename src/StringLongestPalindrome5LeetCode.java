@@ -44,8 +44,42 @@
  * @author LemonLin
  * @Description :StringLongestPalindrome
  * @date 19.6.22-21:41
+ * 这题用DP方法的时间复杂度和中心扩散一样：但是用中心扩散更容易理解。这里面对奇数
+ * 偶数的区别，直接写一个传入两个参数的函数，传入i,i和i,i+1看哪个大，就选择哪个很巧妙。
  */
 public class StringLongestPalindrome5LeetCode {
+
+    //中心扩散法
+    public String longestPalindrome2(String s) {
+        int len = s.length();
+        String result ="";
+        String  temp = "";
+        for (int i=0;i<len;i++){
+            //奇数回文串
+            String odd = palindrome(s,i,i);
+            //偶数回文串
+            String even = palindrome(s,i,i+1);
+            temp = odd.length()>even.length()?odd:even;
+            if (temp.length()>result.length()){
+                result = temp;
+            }
+        }
+        return result;
+    }
+    //返回最长回文串
+    public String palindrome(String s, int l, int r) {
+        while (l>=0&&r<s.length()){
+            if (s.charAt(l)!=s.charAt(r)){
+                break;
+            }else{
+                l--;
+                r++;
+            }
+        }
+        //退出循环之后，l需要恢复++；r需要--，来弥补最后跳出循环时的移位，因为这里
+        // 字符串子串函数s.substring()z中不取右边，所以r不需要--；
+        return s.substring(l+1,r);
+    }
     public String longestPalindrome(String s) {
         int len = s.length();
         if (len == 0) {
@@ -82,8 +116,8 @@ public class StringLongestPalindrome5LeetCode {
 
     public static void main(String[] args) {
 
-        String s = "cb";
-        System.out.println(new StringLongestPalindrome5LeetCode().longestPalindrome(s));
+        String s = "babad";
+        System.out.println(new StringLongestPalindrome5LeetCode().longestPalindrome2(s));
 //        for (int i=0;i<s.length();i++){
 //            for (int j=0;j<=i;j++){
 //                System.out.println("i===="+s.charAt(i)+"j===="+s.charAt(j));
