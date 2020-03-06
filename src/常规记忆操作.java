@@ -74,6 +74,20 @@ public class 常规记忆操作 {
         arrayList1.add(2);
         arrayList1.add(3);
         ArrayList arrayList2 = new ArrayList(arrayList1);
+
+        //ArrayList转二维数组：
+        ArrayList<int[]> result = new ArrayList<>();
+        int left =0;
+        int right =2;
+        int [] temp;
+        for(int i=0;i<right-left;i++){
+             temp= new int[right-left];
+            temp[i] = left;
+            result.add(temp);
+        }
+        int[] [] out = new  int[result.size()][];
+        //dp是最后结果
+        int[][] dp = result.toArray(out);
     }
     //hashmap操作
     public  void hashmap(){
