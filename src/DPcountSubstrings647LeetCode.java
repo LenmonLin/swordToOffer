@@ -32,6 +32,68 @@
  *  dp[i+1][j-1]状态还未确定就写dp[i][j]的情况。
  */
 public class DPcountSubstrings647LeetCode {
+
+    //只是把遍历顺序修改了，有点参考516LeetCode的遍历顺序。但是还是需要判断一
+    // 下i<j的条件。
+    public int countSubstrings3(String s) {
+        int n = s.length();
+        //默认为false
+        boolean[][] dp = new boolean[n][n];
+        int result=0;
+        //注意这里j是外循环，j放在i后面。因为i不能比j大。
+        for (int i=0;i<n;i++){
+            dp[i][i] = true;
+            result++;
+        }
+        for (int i=n-2;i>=0;i--){
+            for (int j=i+1;j<n;j++){
+                if (i+1<j-1){
+                    dp[i][j]=dp[i+1][j-1]&&s.charAt(i)==s.charAt(j);
+                }else {
+                    dp[i][j]=s.charAt(i)==s.charAt(j);
+                }
+                if (dp[i][j]){
+                    result++;
+                }
+            }
+        }
+        return result;
+    }
+
+    //这种解法是有问题的，因为这里要注意子串和子序列的区别，子序列的话可以通过
+    // dp[i+1][j-1]也即字符串间隔(i+1,j-1)的子序列数目暂存记录来推测dp[i][j]的数目，
+    // 因为子序列可以删除中间若干个元素的。所以原来的数据可以暂存。而子串不可用
+    // 原来dp[i+1][j-1]的数目来推测dp[i][j]的数目，因为如果(i+1,j-1)的子串数目为3，
+    // 即使接下来[i]==[j],那么(i,j)的子串数目也不一定为4，因为(i+1,j-1)的子串数目为3，
+    // 不一定代表(i+1)==(j-1)如果(i+1,j-1)这个串本身不是子串，那么[i]==[j]也不能
+    // 在(i+1)==(j-1)为子串的基础上子串数量加一，因为(i,j)即使在[i]==[j]的情况下也不
+    // 一定是回文串。所以解法2这种想法有问题，只能用解法1Boolean来判断，最后计算
+    // 总数true有几个，那么子串就有几个。
+    public int countSubstrings2(String s) {
+        int n = s.length();
+        int[][] dp = new int [n][n];
+        for (int i=0;i<n;i++){
+            for (int j=0;j<n;j++) {
+                if (i==j){
+                    dp[i][j] =1;
+                }
+                if (i>j){
+                    dp[i][j]=0;
+                }
+            }
+        }
+        for (int i=n-2;i>=0;i--){
+            for (int j=i+1;j<n;j++){
+                if (s.charAt(i)==s.charAt(j)){
+                    dp[i][j]=dp[i+1][j-1]+1;
+                }else {
+                    dp[i][j]=Math.max(dp[i+1][j],dp[i][j-1]);
+                }
+            }
+        }
+        return dp[0][n-1];
+    }
+
     public int countSubstrings(String s) {
         int n = s.length();
         //默认为false
@@ -60,6 +122,6 @@ public class DPcountSubstrings647LeetCode {
 
     public static void main(String[] args) {
         String s="aaa";
-        System.out.println(new DPcountSubstrings647LeetCode().countSubstrings(s));
+        System.out.println(new DPcountSubstrings647LeetCode().countSubstrings3(s));
     }
 }
