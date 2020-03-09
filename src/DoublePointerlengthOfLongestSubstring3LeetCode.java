@@ -47,7 +47,10 @@ import java.util.LinkedList;
  * 2
  */
 public class DoublePointerlengthOfLongestSubstring3LeetCode {
-    //用hashmap代码更简洁一些
+    //用hashmap代码更简洁一些，为什么用hashmap就不需要删除有重复字符的前面的字
+    // 符，因为这里用了i<=j来控制滑动窗口，这样即使在hashmap里面，没有满足i<=j，
+    // 那么也不能进行更新滑动窗口左边的i坐标，所以就无需考虑，如果不在滑动窗口内，但
+    // 是在hashmap内的情况了，这种情况，已经通过i<=j排除掉了。
         public int lengthOfLongestSubstring2(String s){
             if (s ==null)return 0;
             //key放字符串中的每个字符，value放字符在字符串中的下标
@@ -56,8 +59,10 @@ public class DoublePointerlengthOfLongestSubstring3LeetCode {
             int result =0;
             for (int j=0;j<s.length();j++){
                 //hashMap.get(s.charAt(j))>=i为了解决bug2，排除掉之前已经重复数字但
-                // 是已经不在i和j直接的数了。
+                // 是已经不在i和j直接的数了。hashMap.get(s.charAt(j))>=i这个是保证滑动
+                // 窗口的i不能超过j ,否则肯定出问题。
                 if (hashMap.containsKey(s.charAt(j))&&hashMap.get(s.charAt(j))>=i){
+                    //这里重新更新了一下滑动窗口的左侧的坐标。
                     i=hashMap.get(s.charAt(j));
                     i++;
                 }
