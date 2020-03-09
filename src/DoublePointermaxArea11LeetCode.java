@@ -13,10 +13,10 @@
  * 当然长、宽越大越好，所以考虑设置两个首尾指针。比较两个指针的y大小，最小的那个移动，
  * 比如left=0，right=8，arr[left]<arr[right],所以left++;之后arr[1]>arr[8],所以right--;
  * 如此反复直到首尾指针相遇。这个过程中设置maxArea，不断比较获得maxArea
- * @Description :ArrayContainerWithMostWater11LeetCode
+ * @Description :DoublePointermaxArea11LeetCode
  * @date 19.7.12-23:59
  */
-public class ArrayContainerWithMostWater11LeetCode {
+public class DoublePointermaxArea11LeetCode {
     public int maxArea(int[] height) {
         int left = 0;
         int right = height.length-1;
@@ -41,6 +41,6 @@ public class ArrayContainerWithMostWater11LeetCode {
 
     public static void main(String[] args) {
         int [] test = {1,8,6,2,5,4,8,3,7};
-        System.out.println(new ArrayContainerWithMostWater11LeetCode().maxArea(test));
+        System.out.println(new DoublePointermaxArea11LeetCode().maxArea(test));
     }
 }
