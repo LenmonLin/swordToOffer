@@ -20,7 +20,8 @@
  * 思路：其实就是要找到要断开的节点位置，然后把原先第一个节点接到原先最后一个节点，
  * 在要断开的节点位置断开即可。考虑用双指针。快的指针从第一个节点开始先走k步，注意
  * 示例二，这里要到最后一个节点时要循环回去第一个节点，然后两个指针再开始同步走，
- * 如果快的指针到达最后一个节点，慢的指针就到达了要断开的位置。
+ * 如果快的指针到达最后一个节点，慢的指针就到达了要断开的位置。这里主要要处理输入
+ * 的K很大的情况下，要把K通过求余稳定在一个循环之类，否则会发生时间超时情况
  * bug1:
  *[1,2,3]
  * 2000000000
@@ -39,7 +40,8 @@ public class DoublePointerrotateRight61LeetCode {
     public ListNode rotateRight(ListNode head, int k) {
         if (head==null)return null;
 
-        //为了解决bug1,需要对k进行取余处理。
+        //为了解决bug1,需要对k进行取余处理。求出链表节点的总长度，然后求余。如果数
+        // 字太大容易超时，所以要把数字缩小至一个循环之类。
         ListNode temp = head;
         int count=0;
         while (temp.next!=null){
@@ -47,10 +49,12 @@ public class DoublePointerrotateRight61LeetCode {
             count++;
         }
         count++;
+        //求余后的k就把遍历缩小至一个循环之类。
         k=k%count;
         ListNode slow =head;
         ListNode fast = head;
         while (k>0){
+            //循环遍历到头结点
             if (fast.next==null){
                 fast=head;
             }else {
@@ -58,12 +62,16 @@ public class DoublePointerrotateRight61LeetCode {
             }
             k--;
         }
+        //开始快慢指针同时遍历，当fast到达尾节点，slow就到了要断开节点位置
         while (fast.next!=null){
                 fast=fast.next;
                 slow = slow.next;
         }
+        //fast尾部链接到原来链表的头结点
         fast.next = head;
+        //把slow的下个节点最为新链表的头结点
         head =slow.next;
+        //把原链表从中间断开
         slow.next =null;
         return head;
     }
