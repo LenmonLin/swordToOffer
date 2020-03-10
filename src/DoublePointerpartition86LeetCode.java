@@ -18,6 +18,8 @@
  * 十分巧妙。
  * 参考：https://leetcode-cn.com/problems/partition-list/solution/
  * fen-ge-lian-biao-by-leetcode/
+ * 设置两个指针，分别控制两个链表，第一个链表比x小，比X大的值重新放在第二个链表上，
+ * 都遍历完毕，直接把第二个链表接到第一个链表后面即可。
  */
 public class DoublePointerpartition86LeetCode {
     /**
