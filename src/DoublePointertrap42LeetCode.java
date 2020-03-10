@@ -13,9 +13,9 @@
  * 思路：参考：https://leetcode-cn.com/problems/trapping-rain-water/solution/
  * tu-jie-jie-yu-shui-dong-tai-gui-hua-he-shuang-zhi-/
  * 解法1：暴力解法
- * 注意思路就是根据木桶效应，找height[i]左右两边最矮的那个，然后用这个最矮的木桶减
- * 去当前柱子高度，就能得到当前柱子能放多少水，这个减去操作才是本题的精华和不容易
- * 想到的点。
+ * 注意思路就是根据木桶效应，找height[i]左右两边最高的柱子中较矮的那个，然后用这个
+ * 较矮的木桶减去当前柱子高度，就能得到当前柱子能放多少水，这个减去操作才是本题的
+ * 精华和不容易想到的点。
  * 解法2：记忆化搜索
  * 解法2和解法1总思路是一样的，不过解法2是把leftMax和rightMax存储起来了，有点
  * 动态规划的意思。空间换时间。
@@ -23,6 +23,29 @@
  * 观察发现，其实不需要保存全部的leftMax和rightMax，只要遍历到哪一个height[i]，用
  * 了那个时候的leftMax和rightMax，遍历下一个的时候再用此时的leftMax和rightMax即
  * 可，之前的leftMax和rightMax可以丢弃，无需保存。
+ * 本题的难点之一是从找i 左边和右边的最大值：思维上不容易想明白：
+ *暴力解法 :for (int j =i;j<height.length;j++){
+ *                 rightMax = Math.max(rightMax,height[j]);
+ *             }
+ *             //从右往左找i左边最高的柱子
+ *             for (int j =i;j>=0;j--){
+ *                 leftMax = Math.max(leftMax,height[j]);
+ *             }
+ * 本题的难点之二：居然可以一次性把所有从左往右的最大值求出来保存起来，也可以一次
+ * 性把所有从右往左的最大值求出来：
+ *      //从左往右找左边最大的，因为上面下标0已经填了，而且循环中有i-1,，怕越界，所以
+ *         // 下标从1开始
+ *         for (int i=1;i<height.length;i++){
+ *             leftMax[i]=Math.max(leftMax[i-1],height[i]);
+ *         }
+ *         //从右往左找右边最大的，因为上面下标length-1已经填了，而且循环中有i+1,怕数组
+ *         // 越界，所以下标从length-2开始。
+ *         for (int i=height.length-2;i>=0;i--){
+ *             rightMax[i]=Math.max(rightMax[i+1],height[i]);
+ *         }
+ * 本题的难点之三：只求当时的左边最大值和右边最大值：(用双指针同时求)
+ *     leftMax = Math.max(leftMax,height[left]);
+*      rightMax = Math.max(rightMax,height[right]);
  */
 public class DoublePointertrap42LeetCode {
     public int trap(int[] height) {
@@ -46,10 +69,11 @@ public class DoublePointertrap42LeetCode {
             for (int j =i;j<height.length;j++){
                 rightMax = Math.max(rightMax,height[j]);
             }
-            //从右往左找i坐标最高的柱子
+            //从右往左找i左边最高的柱子
             for (int j =i;j>=0;j--){
                 leftMax = Math.max(leftMax,height[j]);
             }
+            //左右两边最高这两个再进行比较，选比较矮的那个
             result += Math.min(leftMax,rightMax)-height[i];
         }
         return result;
