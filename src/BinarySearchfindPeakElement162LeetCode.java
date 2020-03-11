@@ -27,6 +27,22 @@
  * bug1:
  * [1,2]
  * java.lang.ArrayIndexOutOfBoundsException: 2
+ * 其实有点难，难在思维上不太容易想明白：
+ * 参考：https://leetcode-cn.com/problems/find-peak-element/solution/
+ * xiang-xi-tong-su-de-si-lu-fen-xi-duo-jie-fa-by-39/
+ * 难点一：因为 nums[-1] 看做负无穷，所以从第 0 个元素开始，它一定是上升的趋势，由
+ * 于我们要找峰顶，所以当它第一次出现下降，下降前的值就是我们要找的了。如果它一直上升到、
+ * 最后一个值，又因为 nums[n] 看做负无穷，所以最后一个值就可以看做一个峰顶。
+ * 主要是对nums[-1] = nums[n] = -∞这个条件理解不够深刻。
+ * 如果 nums[mid] < nums[mid + 1]，此时在上升阶段，因为 nums[n] 看做负无穷，
+ * 也就是最终一定会下降，所以 mid + 1 到 end 之间至少会存在一个峰顶，可以把左半部
+ * 分抛弃。
+ * 如果 nums[mid] > nums[mid + 1]，此时在下降阶段，因为 nums[0] 看做负无穷，
+ * 最初一定是上升阶段，所以 start 到 mid 之间至少会存在一个峰顶，可以把右半部分抛弃。
+ * 难点二：这里只需要比较nums[mid]>nums[mid+1]即可。
+ * 难点三：为什么不是有序数组也可以用二分法：
+ * 因为题目告诉我们可以返回数组中的任意一个峰顶。所以我们只要确定某一半至少存在一
+ * 个峰顶，那么另一半就可以抛弃掉。
  */
 public class BinarySearchfindPeakElement162LeetCode {
     public int findPeakElement(int[] nums) {
