@@ -28,16 +28,32 @@
  * 为什么不用hashMap记录s1字符出现的个数，是因为官方题解用hashMap超时了。
  * 怎么计算滑动窗口的字符出现的频率是否和s1中出现的字符频率一样；
  * 遍历两个s1Map数组和s2Map数组对比里面的数是不是都相等。
+ * 这里的说的s1排列就是要注意，就是字符长度和s1一样但是每个字符出厂顺序可以不一样，
+ * 比如s1="abc"， 那么acb,abc,bac,bca,cab,cba都是算s1的排列，所以这个总字符长度和
+ * 每个字符出现的频率都要对应上才能称为相同的排列。两个元素缺一不可。这个每个字符
+ * 出现的频率的对应，可以用遍历滑动窗口和s1数组来对比。这个字符长度可以通过固定s2Map
+ * 滑动窗口的长度来控制。比如s1字符长度为3，那么s2Map的滑动窗口长度也必须固定为3；
+ * 滑动窗口的长度本题怎么控制。本题控制的很巧妙，把s2Map的起始遍历坐标设置为s1.length()，
+ * 那么滑动窗口就形成了(0,j) j=s1.length(),然后每次j++的时候，滑动窗口的左侧的字符频率
+ * 都要--，所以这里可以看出，滑动窗口的右侧是j来控制。这里要注意s2Map不是滑动窗口，
+ * 滑动窗口是0，j，这个坐标而已，窗口是坐标！！不要搞混了，这里很容易搞混。为什么
+ * 这里的滑动窗口这么奇怪，一般不都有两个坐标，窗口左坐标，窗口右坐标，本题为啥只
+ * 有一个窗口右坐标，原因是这个滑动窗口的大小是固定住的，不能变的，所以只需要一个
+ * 坐标，加上长度控制，就可以。
  */
 public class DoublePointercheckInclusion567LeetCode {
     public boolean checkInclusion(String s1, String s2) {
         if (s1.length()>s2.length())return false;
         int[] s1Map = new int[26];
         int[] s2Map = new int[26];
+        //先把s1的所有字符频率都保存起来，这个时候s2Map也进行遍历，为滑动窗口的长
+        // 度做准备
         for (int i=0;i<s1.length();i++){
             s1Map[s1.charAt(i)-'a']++;
             s2Map[s2.charAt(i)-'a']++;
         }
+        //上一个循环的遍历，已经为滑动窗口提供了长度，这里只要把起始位置j设置为s1.length()
+        // 即可，这样滑动窗口有了长度加上尾坐标。
         for (int j=s1.length();j<s2.length();j++){
             if (isMatch(s1Map,s2Map)){
                 return true;
@@ -48,6 +64,7 @@ public class DoublePointercheckInclusion567LeetCode {
         //最后循环跳出还要在比较一下，到达j==s2.length()-1,这个还没比较。
         return isMatch(s1Map,s2Map);
     }
+    //遍历每个字符出现的次数是否相等。
     private  boolean isMatch(int[] s1Map,int [] s2Map){
         for (int i=0;i<26;i++){
             if (s1Map[i]!=s2Map[i]){
