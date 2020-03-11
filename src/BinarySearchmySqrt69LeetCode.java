@@ -15,12 +15,31 @@ import java.util.Scanner;
  * @author LemonLin
  * @Description :MathmySqrt69LeetCode
  * @date 19.9.12-10:32
+ * 注意考虑x*x的保存情况需要用long类型。保留左边的值，舍弃小数用left-1
  */
-public class MathmySqrt69LeetCode {
+public class BinarySearchmySqrt69LeetCode {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int x = scanner.nextInt();
-        System.out.println(new MathmySqrt69LeetCode().mySqrt(x));
+        System.out.println(new BinarySearchmySqrt69LeetCode().mySqrt2(x));
+    }
+    public int mySqrt2(int x) {
+        long left = 0;
+        long right  = x;
+        long mid =0;
+        long sqrt =0;
+        while (left<=right){
+            //这么写是为了防止left+right大数越界
+            mid = left+(right-left)/2;
+            sqrt = mid*mid;
+            if (sqrt>x){
+                right = mid-1;
+            }else{
+                left = mid+1;
+            }
+        }
+        //最后向左-1,因为while退出循环的条件是left>right
+        return (int)left-1;
     }
     public int mySqrt(int x) {
 
