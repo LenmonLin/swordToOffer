@@ -18,6 +18,13 @@
  * @date 20.2.5-11:34
  * 思路：用快速幂的方法，参考：
  * https://leetcode-cn.com/problems/powx-n/solution/powx-n-by-leetcode/
+ * 貌似和二分法关系不大：先想一想暴力解法：不断相乘，迭代即可。O(n)
+ * 还有一个更快的：假定我们已经得到了 x ^ {n / 2}的结果，并且我们现在想得到 x ^ n
+ *的结果。我们令 A 是 x ^ {n / 2}的结果，我们可以根据 n 的奇偶性来分别讨论 x ^ n
+ *的值。如果 n 为偶数，我们可以用公式 (x ^ n) ^ 2 = x ^ {2 * n}来得到 x ^ n = A * A。
+ * 如果 n 为奇数，那么 A * A = x ^ {n - 1}。直观上看，我们需要再乘一次 x，即 x ^ n
+ * = A * A * x。该方法可以很方便的使用递归实现。我们称这种方法为 "快速幂"，
+ *这里还要注意一个就是n<0的处理方式：需要令x=1/x;n=-n
  */
 public class BinarySearchmyPow50LeetCode {
     public double myPow(double x, int n) {
