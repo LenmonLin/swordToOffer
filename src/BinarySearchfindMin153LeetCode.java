@@ -32,28 +32,36 @@ public class BinarySearchfindMin153LeetCode {
         int left =0;
         int right = nums.length-1;
         int mid=0;
-        //解决bug1
-        if (nums[left]<nums[right]){
+        //解决bug1,以及只有一个元素时的问题。
+        if (nums[left]<nums[right]||nums.length==1){
             return nums[0];
         }
-        while (left<right){
+        while (left<=right){
             mid = left+(right-left)/2;
             //左半部分递增
             if (nums[left]<nums[mid]){
-                //这里要用等号
+                //这里要用mid不能用mid+1,因为要找的是最大值下标，有可能最大值下标就
+                // 是mid，所以不能把mid排除掉
                     left = mid;
             }else {
                     right = mid;
             }
+            //为什么这里要等于时退出，因为如果left==right，那么mid==left==right，这
+            // 样会死循环，而且正是因为 left=mid的设置，当left==right的时候，没有缩小
+            // 区间的必要了。所以必须终止循环
+            if (left == right){
+                break;
+            }
         }
-        if (left==nums.length-1){
-            return nums[0];
-        }
+        //返回最大值的下一个
         return nums[left+1];
     }
 
     public static void main(String[] args) {
-        int [] nums ={1,2};
+        int [] nums =
+                {3,4,5,1,2}
+//                {1,2}
+                ;
         System.out.println(new BinarySearchfindMin153LeetCode().findMin(nums));
     }
 }
