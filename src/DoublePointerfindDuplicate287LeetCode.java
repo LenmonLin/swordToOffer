@@ -18,11 +18,16 @@
  * 思路：很特别的解法，把数组看做链表，骚气的不行。
  * 参考https://leetcode-cn.com/problems/find-the-duplicate-number/solution/
  * kuai-man-zhi-zhen-de-jie-shi-cong-damien_undoxie-d/
+ * 本题难点主要是规定了空间复杂度只能是O(1),所以不能用hashmap方法记录数字出现的次数
+ *和LeetCode142环形链表解决思路基本一样，只是：
+ * slow = slow.next 本题是用slow = nums[slow];替代
+ * fast = fast.next.next 是用fast = nums[nums[fast]];替代，这个比较难想通
  */
 public class DoublePointerfindDuplicate287LeetCode {
     public int findDuplicate(int[] nums) {
         int slow=0;
         int fast =0;
+        //第一步先寻找相交节点
         while (true){
             //nums[nums[fast]]指针是快指针比较难理解，可以理解下标是指针，就是slow
             //数组元素也是指针就是，nums[fast],通常情况下，数组元素都比数组下标大，所
@@ -33,7 +38,7 @@ public class DoublePointerfindDuplicate287LeetCode {
                 break;
             }
         }
-
+        //第二步寻找环节点入口处也就是本题的重复值。
         int finder =0;
         while (true){
             finder=nums[finder];
