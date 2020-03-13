@@ -48,8 +48,9 @@
  *         某个节点就有归的操作。这里还有一个点，就是LeetCode110的返回出口为：
  *         return isBalanced(root.left)&&isBalanced(root.right);注意这个&&符号，同时
  *         递归出口其中一个返回的是false，&&符号有个短路特性，也就在只要其中一个返回
- *         false了，那么剩下那个不用计算了，不会影响最后结果。而LeetCode112最后是||
- *         的运算，所以都需要计算。
+ *         false了，那么剩下那个不用计算了，不会影响最后结果。
+ *  思考三：关于为什么需要遍历全部节点的，还有一个重要原因是hasPathSum2把结果
+ *  保存了起来，没有直接利用到||的短路结果，具体可以看hasPathSum3
  */
 public class TreehasPathSum112LeetCode {
     /**
@@ -61,6 +62,33 @@ public class TreehasPathSum112LeetCode {
          TreeNode right;
          TreeNode(int x) { val = x; }
      }
+
+    //回溯算法，这样子写，能够利用到||的短路操作，也就是计算到满足条件时，直接回溯
+    // 到上一层，最终回溯到根节点，而不用计算右子树的，主要原因是直接把helper3(root.left,
+    // sum,temp)||helper3(root.right,sum,temp)用来作为判断条件使用，而不是先保存
+    // 下来，比如helper2的写法，helper2是先保存到一个变量中，那么算完左子树即使满足
+    // 条件了，也无法使用短路原理，因为暂时保存在一个变量当中了，所以还需要去计算右
+    // 子树的节点。
+    public boolean hasPathSum3(TreeNode root, int sum) {
+        return helper3(root,sum,0);
+    }
+    public boolean helper3(TreeNode root, int sum,int temp) {
+        if (root == null){
+            return false;
+        }
+        temp +=root.val;
+        if (root.left ==null&&root.right==null&&temp == sum){
+            return true;
+        }
+        if (helper3(root.left,sum,temp)||helper3(root.right,sum,temp)){
+            return true;
+        }
+        temp-=root.val;
+        //为什么这里是返回false，因为前面都把返回true的情况考虑了，只要不满足返回true
+        // 的条件，都应该返回false。
+        return false;
+    }
+
      //回溯算法。
     public boolean hasPathSum2(TreeNode root, int sum) {
         return helper2(root,sum,0);
@@ -76,7 +104,7 @@ public class TreehasPathSum112LeetCode {
         boolean left = helper2(root.left,sum,temp);
         boolean right = helper2(root.right,sum,temp);
         temp-=root.val;
-        return left&&right;
+        return left||right;
     }
 
     public boolean hasPathSum(TreeNode root, int sum) {
