@@ -121,6 +121,7 @@ public class BackTrackingexist79LeetCode {
             return false;
         }
         isUsed[x][y]=true;
+        //这个写法很像LeetCode112，是利用了||操作的短路特性。很巧妙
         if (backTracking(board,x+1,y,word,index+1,isUsed)||
                 backTracking(board,x,y+1,word,index+1,isUsed)||
                 backTracking(board,x-1,y,word,index+1,isUsed)||
