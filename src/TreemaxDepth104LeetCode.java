@@ -29,6 +29,19 @@ public class TreemaxDepth104LeetCode {
         }
     }
 
+    //简约版答案，其实不用谢root.left ==null&&root.right == null的情况，root==null
+    // 会覆盖到，这种简单题可能看不出来有什么差别，但是复杂题看得就头大，各种出口。
+    //对比一下LeetCode111就会发现出口越少越好，后面优化的时候可以加出口，刚开始写
+    // 还是出口越少越好。
+    public int maxDepth3(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        int left_height = maxDepth3(root.left);
+        int right_height = maxDepth3(root.right);
+        return Math.max(left_height, right_height) + 1;
+    }
+
     public int maxDepth(TreeNode root) {
         if (root == null) return 0;
         //这样写有个bug
