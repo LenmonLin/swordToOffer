@@ -38,6 +38,28 @@ public class TreeisBalanced110LeetCode {
 //     TreeNode right;
 //     TreeNode(int x) { val = x; }
 //     }
+    //这种写法其实和isBalanced是一样的效果，这样写容易说明一点问题。就是只遍历到
+    // 中间某个节点就不遍历了，主要原因是&&的短路操作，而且是直接用的(isBalanced(root.left)
+    // 的结果，而不是把他保存起来等右边也遍历好了再用：比如下面这样：
+//    Boolean left = isBalanced2(root.left);
+//    Boolean right = isBalanced2(root.right);
+//    return left&&right;
+    //这样写是必须把right都算完才能算right的与操作。不能使用到了短路操作
+    public boolean isBalanced2(TreeNode root) {
+        if (root == null){
+            return true;
+        }
+        int leftHeight = treeHeight(root.left);
+        int  rightHeight = treeHeight(root.right);
+        if (Math.abs(leftHeight-rightHeight)>=2){
+            return false;
+        }
+        if (!(isBalanced2(root.left)&&isBalanced2(root.right))){
+            return false;
+        }
+        return true;
+    }
+
      public boolean isBalanced(TreeNode root) {
         if (root == null){
             return true;
