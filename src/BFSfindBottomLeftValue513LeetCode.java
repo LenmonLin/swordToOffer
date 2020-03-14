@@ -35,10 +35,10 @@ import java.util.LinkedList;
  * 在第几层，仔细体会。
  * 思路二：第一反应考虑层次遍历。参考LeetCode199层序遍历法。层次遍历比较直观。
  * @author LemonLin
- * @Description :DFSfindBottomLeftValue513LeetCode
+ * @Description :BFSfindBottomLeftValue513LeetCode
  * @date 20.1.15-11:49
  */
-public class DFSfindBottomLeftValue513LeetCode {
+public class BFSfindBottomLeftValue513LeetCode {
     /**
      * Definition for a binary tree node.
      */
@@ -104,6 +104,6 @@ public class DFSfindBottomLeftValue513LeetCode {
         treeNode2.right = null;
         treeNode3.left = null;
         treeNode3.right = null;
-        System.out.println(new DFSfindBottomLeftValue513LeetCode().findBottomLeftValue2(treeNode1));
+        System.out.println(new BFSfindBottomLeftValue513LeetCode().findBottomLeftValue2(treeNode1));
     }
 }
