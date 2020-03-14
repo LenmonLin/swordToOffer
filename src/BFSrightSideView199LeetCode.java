@@ -33,10 +33,10 @@ import java.util.List;
  *  另外一种思路：相当于对二叉树进行层序遍历，将每一层的最后一个节点存入最终的
  *  结果即可。
  * @author LemonLin
- * @Description :TreerightSideView199LeetCode
+ * @Description :BFSrightSideView199LeetCode
  * @date 2020/1/11-10:27
  */
-public class TreerightSideView199LeetCode {
+public class BFSrightSideView199LeetCode {
     /**
      * Definition for a binary tree node.
      */
@@ -123,6 +123,6 @@ public class TreerightSideView199LeetCode {
         treeNode8.right = null;
         treeNode9.left = null;
         treeNode9.right = null;
-        new TreerightSideView199LeetCode().rightSideView2(treeNode1);
+        new BFSrightSideView199LeetCode().rightSideView2(treeNode1);
     }
 }
