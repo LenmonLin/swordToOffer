@@ -22,8 +22,8 @@ import java.util.List;
  * @author LemonLin
  * @Description :ArrayspiralOrder54LeetCode
  * @date 20.2.9-17:06
- * 思路：当遍历完第一行时，把遍历范围第一行去掉，节奏遍历最后一列，遍历完了之后
- * 再把最后一列去掉，如此循环，就是每次遍历结束都要更新遍历访问。
+ * 思路：当遍历完第一行时，把遍历范围第一行去掉，接着遍历最后一列，遍历完了之后
+ * 再把最后一列去掉，如此循环，就是每次遍历结束都要更新遍历访问范围。
  * bug1：
  * []
  * java.lang.ArrayIndexOutOfBoundsException: 0
