@@ -61,6 +61,7 @@ public class BFSlevelOrder102LeetCode {
                 TreeNode treeNode  =queue.removeFirst();
                 arrayList.add(treeNode.val);
                 //再放入头结点的左右子节点。
+                //这里需要有if判断，这个也是模板的一部分，参考LeetCode429
                 if (treeNode.left!=null){
                     queue.addLast(treeNode.left);
                 }
