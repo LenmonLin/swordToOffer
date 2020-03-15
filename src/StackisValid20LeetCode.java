@@ -7,6 +7,7 @@ import java.util.Stack;
  * 注意空字符串可被认为是有效字符串。
  * 思路：利用栈来解决存储，比如存储顺序是({[ ,接下来如果是合法字符串的话，接下来必须是],而
  * 不是)或者}，所以不必担心顺序的问题，直接用栈顶出栈入栈就能解决问题。
+ * 如果接下来顺序不对的话，就不出栈，这样最后结果栈的大小肯定不能为0，就返回false
  * @author LemonLin
  * @Description :StringValidParentheses
  * @date 19.6.10-23:32
@@ -32,7 +33,7 @@ import java.util.Stack;
  * Input: "{[]}"
  * Output: true
  */
-public class StringValidParentheses20LeetCode {
+public class StackisValid20LeetCode {
     public boolean isValid(String s) {
         if (s==null)return true;
         Stack stack =new Stack();
@@ -57,6 +58,6 @@ public class StringValidParentheses20LeetCode {
 
     public static void main(String[] args) {
         String s ="]{";
-        System.out.println(new StringValidParentheses20LeetCode().isValid(s));
+        System.out.println(new StackisValid20LeetCode().isValid(s));
     }
 }
