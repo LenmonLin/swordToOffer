@@ -53,6 +53,9 @@ public class ArraycanJump55LeetCode {
         for (int i=0;i<=tempMax;i++){
             for (int j=i;j<=i+nums[i];j++){
                 //bug3：这里修正需要把tempMax加进去比较。
+                //注意这里需要更新三个数：1、i+nums[i],最开始的那个起跳点的位置。
+                // 2、在最开始起跳点能跳的最远位置范围内，遍历这个范围内的所有起跳点j+nums[j]
+                // 3、同时需要比较之前的最远能跳的点tempMax
                 tempMax=Math.max(Math.max(i+nums[i],j+nums[j]),tempMax);
                 //bug2修正nums.length需要减一.
                 if (tempMax>=nums.length-1){
