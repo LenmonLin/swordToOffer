@@ -16,10 +16,10 @@
  * 思路：
  * 比较简单，利用一个中间变量来交换左右子节点，再递归调用左右子树即可解决问题。
  * @author LemonLin
- * @Description :TreeinvertTree226LeetCode
+ * @Description :DFSinvertTree226LeetCode
  * @date 19.8.6-11:29
  */
-public class TreeinvertTree226LeetCode {
+public class DFSinvertTree226LeetCode {
     class TreeNode {
         int val;
         TreeNode left;
@@ -27,17 +27,16 @@ public class TreeinvertTree226LeetCode {
         TreeNode(int x) { val = x; }
     }
     public TreeNode invertTree(TreeNode root) {
-        //这里用到了先序遍历
-        if(root!=null){
-            TreeNode temp = root.left;
-            root.left = root.right;
-            root.right = temp;
-            invertTree(root.left);
-            invertTree(root.right);
-            return root;
-        }else {
-            return  null;
+        if (root == null){
+            return null;
         }
+        //这里用到了先序遍历
+        TreeNode temp = root.left;
+        root.left = root.right;
+        root.right = temp;
+        invertTree(root.left);
+        invertTree(root.right);
+        return root;
     }
     public static void main(String[] args) {
 
