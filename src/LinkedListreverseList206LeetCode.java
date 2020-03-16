@@ -8,7 +8,8 @@
  * @author LemonLin
  * @Description :LinkedListreverseList206LeetCode
  * @date 20.2.7-16:02
- * 思路：用两个指针记录一前一后记录目标链表，进行反转.
+ * 思路：用两个指针记录一前preCur一后Cur记录目标链表，进行反转.其实还需要一个
+ * 指针temp记录cur之后的结点，便于前面两个反转之后需要移动到第三个结点进行反转。
  */
 public class LinkedListreverseList206LeetCode {
     /**
