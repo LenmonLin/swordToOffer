@@ -56,8 +56,47 @@ import java.util.Arrays;
  * [[1,10],[4,5],[6,7],[8,9]]
  * 预期结果
  * [[1,10]]
+ * 思考2参考:https://leetcode-cn.com/problems/merge-intervals/solution/pai-xu-by-powcai/
+ * 自己写的太复杂了，思路也不够清晰，不利用记忆。
+ * 1、先按首位置进行排序;
+ * 2、接下来,如何判断两个区间是否重叠呢?比如 a = [1,4],b = [2,3]
+ * 当 a[1] >= b[0] 说明两个区间有重叠.但是如何把这个区间找出来呢?
+ * 左边位置一定是确定，就是 a[0]，因为进行了首位置排序，而右边位置是 max(a[1], b[1])
+ * 这里主要是对while的运用需要细想一下。所以,我们就能找出整个区间为:[1,4]
+ * 所以这里有两个循环，第一个循环是循环遍历输入的二维数组。第二个循环是控制是否有重叠。
  */
 public class Arraymerge56LeetCode {
+
+    public int[][] merge2(int[][] intervals) {
+        //特殊情况，排除
+        if (intervals==null||intervals.length==0||intervals.length==1){
+            return intervals;
+        }
+        Arrays.sort(intervals, (a, b) -> a[0] - b[0]);
+        //这里泛型中药填int[] 才才可以下方将ArrayList方便转换为int[][]
+        ArrayList<int []> result =  new ArrayList();
+        int i =0;
+        //第一个循环是循环遍历输入的二维数组。
+        while (i<intervals.length){
+            //重叠区间的左边位置确定好了
+            int left = intervals[i][0];
+            //临时记录重叠区间的右边位置
+            int right = intervals[i][1];
+            //这里是i<intervals.length-1是怕i+1越界， 判断所在行的right和下一行的left
+            // 大小，只有所在行的right大于下一行的left，才能进行合并。
+            while (i<intervals.length-1&&intervals[i+1][0]<=right){
+                //这里不要写成right = intervals[i+1][1];，因为可能出现a = [1,4],b = [2,3]
+                // 的情况，也就是4都比后面区间的右边位置大
+                right = Math.max(right,intervals[i+1][1]);
+                i++;
+            }
+            result.add(new int[]{left,right});
+            //这个容易遗漏
+            i++;
+        }
+        return result.toArray(new int[result.size()][]);
+    }
+
     public int[][] merge(int[][] intervals) {
         if (intervals==null||intervals.length==0||intervals.length==1){
             return intervals;
