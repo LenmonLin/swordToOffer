@@ -35,10 +35,13 @@ public class LinkedListdeleteDuplicates82LeetCode {
         ListNode dummy = new ListNode(0);
         dummy.next = head;
         ListNode cur = dummy;
+        //temp指向的是重复的结点
         ListNode temp = null;
-        while (cur!=null){
-            //注意这里是while不是if,这个bug隐藏的很深，找了半天
-            while (cur.next!=null&&cur.next.next!=null&&cur.next.val ==cur.next.next.val){
+        //注意这里是while不是if,这个bug隐藏的很深，找了半天
+        while (cur.next!=null&&cur.next.next!=null){
+            //这个if判断和else的结合不好想。
+            if(cur.next.val ==cur.next.next.val){
+                //temp指向的是重复的结点
                 temp = cur.next;
                 //这个循环是解题的关键
                 while (temp!=null&&temp.next!=null&&temp.val == temp.next.val){
@@ -47,8 +50,10 @@ public class LinkedListdeleteDuplicates82LeetCode {
                 //退出循环时，temp指向重复节点的最后一个，同时把cur保留在开头，这个
                 // 很关键
                 cur.next = temp.next;
+            }else {
+                //如果不是重复的，直接往下一个结点移动
+                cur=cur.next;
             }
-            cur=cur.next;
         }
         return dummy.next;
     }
