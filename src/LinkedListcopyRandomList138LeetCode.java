@@ -31,6 +31,13 @@
  * @Description :LinkedListcopyRandomList138LeetCode
  * @date 20.2.11-17:26
  * 思路：参考剑指offer26
+ *  解题思路：(分成三轮遍历)
+ *   1、在旧链表中创建新链表，此时不处理新链表的random指针；
+ *        遍历链表，复制每个结点，如复制结点A得到A1，将结点A1插到结点A后面；
+ *   2、根据旧链表的random指向结点，初始化新链表的兄弟结点
+ *         重新遍历链表，复制老结点的随机指针给新结点
+ *   3、从旧链表中拆分得到新链表
+ *          拆分链表，将链表拆分为原链表和复制后的链表
  */
 public class LinkedListcopyRandomList138LeetCode {
     /*
@@ -89,7 +96,6 @@ public class LinkedListcopyRandomList138LeetCode {
             }
             currentNode= currentNode.next;
         }
-
         return pCloneHead;
     }
 }
