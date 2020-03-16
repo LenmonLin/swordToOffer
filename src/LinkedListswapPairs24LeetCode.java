@@ -13,6 +13,11 @@ import java.util.LinkedList;
  * 参考：
  * https://leetcode-cn.com/problems/swap-nodes-in-pairs/solution/
  * dong-hua-yan-shi-24-liang-liang-jiao-huan-lian-bia/
+ * 我们利用一个stack，然后不断迭代链表，每次取出两个节点放入stack中，再从stack中
+ * 拿出两个节点。借助stack后进先出的特点，放进去的时候是1,2。拿出来的时候就是2，1
+ * 两个节点了。再把这两个节点串联起来，重复这个逻辑遍历完整个链表，就可以做到两两反
+ * 转的效果了。虽然用到了stack，但因为只存了两个元素，所以空间复杂度还是O(1)，时
+ * 间复杂度是O(n)。
  */
 public class LinkedListswapPairs24LeetCode {
     /**
@@ -31,13 +36,17 @@ public class LinkedListswapPairs24LeetCode {
         LinkedList<ListNode> stack = new LinkedList();
         ListNode temp = new ListNode(0);
         ListNode cur = head;
-        //这一步存起来了temp,即使后期temp怎么变，head放的都是最原始的temp，结果
-        // 返回head.next即可
+        //这一步把head指向了temp,即使后期temp怎么变，head指向的都是最原始的temp，
+        // 结果返回head.next即可。这一步不好看懂。这一步操作，主要是为了最后返回结果。
+        //这一步，head指向的是要新生成的链表，原来的链表开头保存到了cur，所以不用太慌。
         head = temp;
         while (cur!=null&&cur.next!=null){
+            //把第一个第二个节点存入栈中，这里cur遍历的是交换前的链表
             stack.addLast(cur);
             stack.addLast(cur.next);
+            //cur移到第三个节点下个循环再来遍历操作。
             cur = cur.next.next;
+            //temp其实就是指向交换后的链表，遍历的是交换后的链表
             temp.next = stack.pollLast();
             temp=temp.next;
             temp.next = stack.pollLast();
