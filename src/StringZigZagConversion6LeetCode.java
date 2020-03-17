@@ -47,19 +47,24 @@ public class StringZigZagConversion6LeetCode {
         //解决bug1
         if(numRows < 2) return s;
         ArrayList<StringBuilder> stringBuilders = new ArrayList<>();
+        //numRows表示新生成的字符的行数，每行一个StringBuilder来保存。
         for (int i=0;i<numRows;i++){
             stringBuilders.add(new StringBuilder());
         }
         int flag =-1;
         int i=0;
         stringBuilders.get(0).append(s.charAt(0));
+        //这里通过j遍历字符串，通过i来控制行数，flag作为1和-1进行增减函数每次触底或者
+        // 触顶的时候都改变flag的符号。来控制i是增加方向还是减小方向
         for (int j=1;j<s.length();j++){
             if (i==0 || i==numRows-1){
                 flag=-flag;
             }
             i+=flag;
+            //这里有两个坐标。i表示行数，j遍历字符串
             stringBuilders.get(i).append(s.charAt(j));
         }
+        //把每一行的字符串整合成一个字符串返回结果。
         StringBuilder result = new StringBuilder();
         for (int j=0;j<numRows;j++){
             result.append(stringBuilders.get(j));
