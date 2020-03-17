@@ -53,6 +53,7 @@ public class HashMapintToRoman12LeetCode {
                 "V", "IV", "I"};
         StringBuilder stringBuilder = new StringBuilder();
         for (int i=0;i<digits.length;i++){
+            //这里输入的num 从罗马数字的大数开始遍历，慢慢变小。
             while (num>=digits[i]){
                num-=digits[i];
                stringBuilder.append(romans[i]);
