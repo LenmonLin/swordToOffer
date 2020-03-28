@@ -23,6 +23,28 @@
  * 本题有点像LeetCode300，无法用数学归纳法解决。有点特殊。
  */
 public class DPmaxSubArray53LeetCode {
+
+    //在线处理法，注意到本题的要求是连续子列和，注意这个连续的意思。
+    //参考：https://www.icourse163.org/learn/ZJU-93001?tid=1206471203#/
+    // learn/content?type=detail&id=1211167079&cid=1213729155
+    public int maxSubArray2(int[] nums) {
+        //记录最大的连续子序和
+        int resultMax =Integer.MIN_VALUE;
+        //记录连续子序和，可能不是最大
+        int tempSum =0;
+        for (int i=0;i<nums.length;i++){
+            tempSum+=nums[i];
+            if (tempSum>resultMax){
+                resultMax = tempSum;
+            }
+            //如果tempSum<0,那说明这个数和后面的num[i+1]
+            // 相加一定会小于num[i+1],所以不如把tempSum置0.
+            if (tempSum<0){
+                tempSum =0;
+            }
+        }
+        return resultMax;
+    }
     public int maxSubArray(int[] nums) {
         if (nums.length==1)return nums[0];
         int []dp = new int[nums.length];
@@ -43,6 +65,6 @@ public class DPmaxSubArray53LeetCode {
 
     public static void main(String[] args) {
         int [] nums ={-2,1,-3,4,-1,2,1,-5,4};
-        System.out.println(new DPmaxSubArray53LeetCode().maxSubArray(nums));
+        System.out.println(new DPmaxSubArray53LeetCode().maxSubArray2(nums));
     }
 }
