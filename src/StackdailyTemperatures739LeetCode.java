@@ -1,3 +1,5 @@
+import java.util.LinkedList;
+
 /**
  * 根据每日 气温 列表，请重新生成一个列表，对应位置的输入是你需要再等待多久温度才
  * 会升高超过该日的天数。如果之后都不会升高，请在该位置用 0 来代替。
@@ -16,9 +18,26 @@
  * [3,1,1,2,1,1,0,1,0,0]
  * 预期结果
  * [3,1,1,2,1,1,0,1,1,0]
- *
+ * 思路2：单调栈：参考LeetCode496和LeetCode503
  */
 public class StackdailyTemperatures739LeetCode {
+
+    //单调栈解法
+    public int[] dailyTemperatures2(int[] T) {
+        LinkedList <Integer> stack = new LinkedList<>();
+        int [] result =new int[T.length];
+        for (int i=T.length-1;i>=0;i--){
+            while (!stack.isEmpty()&&T[stack.peekFirst()]<=T[i]){
+                stack.removeFirst();
+            }
+            //这里也不能像LeetCode496那样用原数组，因为while循环中T[stack.peekFirst()]<=T[i]
+            // 还要用到遍历过了的元素。如果用原数组替换，会产生错误
+            result[i]=stack.isEmpty()?0:(stack.peekFirst()-i);
+            //注意这里加入的是索引，不是索引元素
+            stack.addFirst(i);
+        }
+        return result;
+    }
     //执行结果：通过.显示详情
     //执行用时 :518 ms, 在所有 Java 提交中击败了5.02%的用户
     //内存消耗 :42.7 MB, 在所有 Java 提交中击败了42.22%的用户
@@ -49,7 +68,7 @@ public class StackdailyTemperatures739LeetCode {
     public static void main(String[] args) {
         int [] T={55,38,53,81,61,93,97,32,43,78} ;
         int[] result = new StackdailyTemperatures739LeetCode().
-                dailyTemperatures(T);
+                dailyTemperatures2(T);
         for (int i=0;i<result.length;i++){
             System.out.print(result[i]);
         }
