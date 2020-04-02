@@ -7,6 +7,8 @@ import java.util.*;
  */
 public class 常规记忆操作 {
     public static void main(String[] args) {
+        //Scanner 操作
+        new 常规记忆操作().scanner();
         //位操作
 //        new 常规记忆操作().bit();
         //list操作
@@ -25,6 +27,44 @@ public class 常规记忆操作 {
 //        new 常规记忆操作().stack();
 //        //堆的实现,包括最大堆和最小堆
 //        new 常规记忆操作().heap();
+    }
+
+    //Scanner操作
+    public void scanner(){
+        Scanner input = new Scanner(System.in);
+        System.out.println("请输入一个字符串(中间能加空格或符号)");
+        String a = input.nextLine();
+        System.out.println("请输入一个字符串(中间不能加空格或符号)");
+        String b = input.next();
+//                System.out.println("请输入一个整数");
+//                int c;
+//                c = input.nextInt();
+//                System.out.println("请输入一个double类型的小数");
+//                double d = input.nextDouble();
+//                System.out.println("请输入一个float类型的小数");
+//                float f = input.nextFloat();
+//                System.out.println("按顺序输出abcdf的值：");
+
+
+        //构造Scanner类的对象scan，接收从控制台输入的信息
+        Scanner scan = new Scanner(System.in);
+        System.out.println("请输入你的姓名");
+        //接收一个字符串，可以加除Enter以外的所有符号，包括空格和Tab
+        String name = scan.nextLine();
+        System.out.println("请输入你的ID");
+        String ID ;
+        while(scan.hasNextLine()) {// hasNextLine()方法判断当前是否有输入，当键盘有输入后执行循环
+            if(scan.hasNextInt()) {// 判断输入的值是否为整数类型，当为整数类型时执行循环
+                ID = scan.nextLine();
+                System.out.println("你输入的姓名为："+name);
+                System.out.println("你输入的ID为："+ID);
+                break;
+            }else {
+                System.out.println("请输入数字哦！");
+                ID = scan.nextLine();
+                continue;
+            }
+        }
     }
 
     //位操作
