@@ -34,6 +34,7 @@ public class Sort912LeetCode {
 //        shellSort(nums);
         //*********交换类排序
 //        bubbleSort(nums);
+        quickSort(nums);
         //*********选择类排序
 //        selectSort(nums);
 //        heapSort(nums);
@@ -195,7 +196,43 @@ public class Sort912LeetCode {
         }
     }
 
-
+    /**
+     * 快速排序
+     */
+    private void quickSort(int []  nums){
+        quickHelper(nums,0,nums.length-1);
+    }
+    private void quickHelper(int arr[],int left,int right){
+        //递归出口
+        if (left>=right){
+            return;
+        }
+        int l=left;
+        int r=right;
+        //把这个pivot中心点设置成从数组左侧开始选取
+        int pivot = arr[l];
+        //三个循环，外部循环解决左右两个指针不能碰面的控制，内部的两个循环解决左边
+        // 指针向右移动和右边指针向左移动
+        while (l < r) {
+            //第一个先选用的是低位的数组为参考对象，则从右边比较起来
+            while (l < r && pivot <= arr[r]) r--;
+            if (l < r) {
+                arr[l] = arr[r];
+                //交换之后，l向后移动一位
+                l++;
+            }
+            while (l < r && arr[l] <= pivot) l++;
+            if (l < r) {
+                arr[r] = arr[l];
+                //交换之后，r向前移动一位
+                r--;
+            }
+        }
+        arr[l] = pivot;
+        //以上完成了第一趟的排序
+        quickHelper(arr, left, l - 1);
+        quickHelper(arr, l + 1, right);
+    }
     /**
      * 选择排序：最外层的循环是已经拍好序的元素遍历
      * 内层循环是未拍好序的元素遍历。
