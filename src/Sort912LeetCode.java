@@ -36,7 +36,9 @@ public class Sort912LeetCode {
 //        bubbleSort(nums);
         //*********选择类排序
 //        selectSort(nums);
-        heapSort(nums);
+//        heapSort(nums);
+        //*********归并排序
+        mergeSort(nums);
         return  nums;
     }
 
@@ -294,8 +296,98 @@ public class Sort912LeetCode {
         }
     }
 
+    /**
+     * 归并排序，和选择排序一样，归并排序的性能不受输入数据的影响，但表现比选择排
+     * 序好的多，因为始终都是O(n log n）的时间复杂度。代价是需要额外的内存空间
+     * 步骤：
+     * 1、 把长度为n的输入序列分成两个长度为n/2的子序列。
+     * 2、对这两个子序列分别采用归并排序。
+     * 3、将两个排序好的子序列合并成一个最终的排序序列。
+     * 由于递归的关系，递最后每个数组长度都为1，才开始归，认真想怎么归会比较容易想明白。
+     * 从每个数组长度都为1开始归：比如：原始序列49 38  65  97  76  13 27
+     * 1）将原始数组看着7个长度为1的子序列，显然这些子序列都是有序的。
+     * 子序列1:49
+     * 子序列2:38
+     * 子序列3:65
+     * 子序列4:97
+     * 子序列5:76
+     * 子序列6:13
+     * 子序列7:27
+     * 2）两两归并，形成有序二元组，{38,49},{65,97},{13,76},{27}
+     * 以此类推。
+     * 最佳情况：T(n) = O(n)  最差情况：T(n) = O(nlogn)  平均情况：T(n) = O(nlogn)
+     */
+    //这个函数就是为了隐藏内部传递函数，其实可有可无，有了外面只需要传一个nums进
+    // 来就可以，对使用者比较友好。
+    private void mergeSort(int[] nums){
+        int [] temp = new int[nums.length];
+        mSort(nums,temp,0,nums.length-1);
+    }
+    //递归的核心函数
+    private void mSort(int [] result,int [] temp,int left,int right){
+        if (left>=right){
+            return;
+        }
+        int mid=0;
+        //确定一分为二的分界点,mid是左边数组的末尾元素
+        mid=left+(right-left)/2;
+        //递归解决左边，右边，这里和二分法不一样，要包括全部的元素，所以不能有遗漏，
+        // 所以不能写mid-1和mid+1,要覆盖全部，mid和mid+1就无缝覆盖
+        mSort(result,temp,left,mid);
+        mSort(result,temp,mid+1,right);
+        //合并已经排好序的左右两边的数组。
+        // 最初始状态，每个小模块数量都是1的时候，可以看做1个元素就是有序的
+        mergeS(result,temp,left,mid,right);
+    }
+
+    /**
+     * 这里假设要合并数组A和数组B，因为两个数组放在同一个数组中的，所以需要下标区分
+     * @param result 输入数组
+     * @param temp  临时数组，为什么要传入临时数组，而不是在内部开辟new一个，这
+     *              里传入临时数组，相当于这个临时数组是全局变量，因为是数组，是引用类
+     *              型的，所以可以看做全局变量，因为mergeS函数每合并一次，就需要一个
+     *              临时数组，如果放在mergeS内部new数组，那么每合并一次，就需要new
+     *              一次，系统开销比new一次全局变量大。所以选择传入参数。
+     * @param leftStart 合并数组之前数组A的起始下标
+     * @param mid 合并数组之前数组A的结尾下标，mid+1就是合并数组之前数组B的起始下标
+     * @param rightEnd 就是合并数组之前数组B的结尾下标
+     */
+    private void mergeS(int [] result,int[] temp,int  leftStart,int mid,int rightEnd){
+        //第一小块数组的终点
+        int leftEnd=mid;
+        //数组所存的数据的个数，方便后面临时数组从后往前复制数据到result数组中
+        int count=rightEnd-leftStart+1;
+        //临时数组的起始位置
+        int tempStart=leftStart;
+        //第二小块的起始位置
+        int rightStart = mid+1;
+        while (leftStart<=leftEnd&&rightStart<=rightEnd){
+            //将第一小块的数组数据复制到临时数组中去
+            if (result[leftStart]<result[rightStart]){
+                temp[tempStart++] = result[leftStart++];
+            }else {
+                //将第二小块的数组数据复制到临时数组中去
+                temp[tempStart++]=result[rightStart++];
+            }
+        }
+        //当第二小块数组数据复制完时，直接复制剩下的第一小块的数组数据
+        while (leftStart<=leftEnd){
+            temp[tempStart++]=result[leftStart++];
+        }
+        while (rightStart<=rightEnd){
+            temp[tempStart++]=result[rightStart++];
+        }
+        //将临时数组的数据复制到result数组中去
+        //注意这里用了一个很巧妙的利用数据个数从右边开始将数据复制，因为左边起始位
+        // 置leftStart,已经变化了，不能使用
+        for (int i =0;i<count;i++,rightEnd--){
+            result[rightEnd]=temp[rightEnd];
+        }
+    }
+
+
     public static void main(String[] args) {
-        int [] nums ={-2,3,-5};
+        int [] nums ={-2,3,-5,4,7,9};
         new Sort912LeetCode().sortArray(nums);
         for(int i=0;i<nums.length;i++){
             System.out.println(nums[i]);
