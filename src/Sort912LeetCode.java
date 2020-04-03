@@ -39,7 +39,8 @@ public class Sort912LeetCode {
 //        selectSort(nums);
 //        heapSort(nums);
         //*********归并排序
-        mergeSort(nums);
+//        mergeSort(nums);
+        mergeSort2(nums);//非递归写法
         return  nums;
     }
 
@@ -422,6 +423,68 @@ public class Sort912LeetCode {
         }
     }
 
+    /**
+     * 归并排序非递归算法，递归算法需要用到logN的空间栈。所以尝试使用非递归算法。
+     * 参考：https://www.icourse163.org/learn/ZJU-93001?tid=1207006212#/
+     * learn/content?type=detail&id=1212031660&cid=1215166364&replay=true
+     * @param result  待排序数组
+     * @param temp  临时存放的数组
+     * @param length  每个小分段的长度，大小为1,2,4,8...
+     */
+    private void mergeSort2(int [] nums){
+        int [] temp = new int[nums.length];
+        int length =1;
+        while (length<nums.length){
+            //做两遍mergePass,最后一遍的mergePass为了把最后的结果肯定放在nums上，
+            // 即使已经排序结束，只需要把temp数组元素复制一遍到nums即可
+            mergeSPass(nums,temp,length);
+            length*=2;
+            mergeSPass(temp,nums,length);
+            length*=2;
+        }
+    }
+    private void mergeSPass(int [] result,int[] temp,int  length){
+        int resultLength = result.length;
+        //从左到右一对一对的执行合并的函数。这里的i每次都跨越两段。那么循环判断条件
+        // 为什么是要-2*length，因为mergeS1函数是每次归并看输入下标就知道是成对偶
+        // 数个的，但是输入可能是奇数个，可能最后末尾归并并不是完整的个数，所以末尾
+        // 的2*length以内的数要特殊处理。
+        int i;
+        for (i=0;i<=resultLength-2*length;i+=2*length){
+            //i是左小段的起始位置，i+length-1是左小段的终止位置，i+2*length-1是右小
+            // 段的终止位置。这里的mergeS1 和递归写法中的mergeS还是有一点点不一样
+            // 我们最后不把temp排好序的复制到result数组中。
+            mergeS1(result,temp,i,i+length-1,i+2*length-1);
+        }
+        //i+length<resultLength说明最后还剩下两个子列
+        if (i+length<resultLength){
+            mergeS1(result,temp,i,i+length-1,resultLength-1);
+            //说明最后只剩下一个子列，所以不需要合并，直接把最后一个子列放在临时数组
+            // 里面即可
+        }else{
+            for (int j=i;j<resultLength;j++){
+                temp[j]=result[j];
+            }
+        }
+    }
+    private void mergeS1(int [] result,int[] temp,int  leftStart,int mid,int rightEnd){
+        int leftEnd=mid;
+        int tempStart=leftStart;
+        int rightStart = mid+1;
+        while (leftStart<=leftEnd&&rightStart<=rightEnd){
+            if (result[leftStart]<result[rightStart]){
+                temp[tempStart++] = result[leftStart++];
+            }else {
+                temp[tempStart++]=result[rightStart++];
+            }
+        }
+        while (leftStart<=leftEnd){
+            temp[tempStart++]=result[leftStart++];
+        }
+        while (rightStart<=rightEnd){
+            temp[tempStart++]=result[rightStart++];
+        }
+    }
 
     public static void main(String[] args) {
         int [] nums ={-2,3,-5,4,7,9};
