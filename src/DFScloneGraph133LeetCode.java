@@ -88,6 +88,7 @@ class Node {
         return dfs(node,hashMap);
     }
     private Node dfs(Node node,HashMap<Integer,Node> hashMap){
+    //归的出口是这个原始是否遍历过，一旦遍历过就回退。这里是返回Node,有点不容易理解
         if (hashMap.containsKey(node.val)){
             return hashMap.get(node.val);
         }
