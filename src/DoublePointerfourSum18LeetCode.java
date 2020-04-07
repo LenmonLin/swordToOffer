@@ -44,7 +44,8 @@ public class DoublePointerfourSum18LeetCode {
                 int left = j + 1;
                 int right = nums.length-1;
                 if (i-1>=0&&nums[i]==nums[i-1]||
-                        //解决bug1,注意这里是j-1>=i+1不是j-1>=0,粗心了。
+                        //解决bug1,注意这里是j-1>=i+1不是j-1>=0,粗心了。解释可以
+                        // 看LeetCode15题解，异曲同工之妙
                         (j-1>=i+1&&nums[j]==nums[j-1]) ) {
                     continue;
                 }
