@@ -46,11 +46,15 @@ public class StringStrStr28LeetCode {
         return -1;
     }
 
-    //简化版
+    //简化版，主体有三个指针，i指针是为了最后返回结果索引开头。j指针其实就是指向haystack，
+    //然后再需要一个指针指向needle
     public int strStr2(final String haystack, final String needle) {
         if (needle.isEmpty()) return 0;
 
-        final int N = haystack.length() - needle.length() + 1;
+        //如果存在是子串的可能，那么长度只可能在这两者之差中一定会遇到相同的字符，
+        // 如果在haystack上超过了两者之差还没碰到可能重复的字符，那么之后及时碰到
+        // 了，在haystack上重复的部分也不够needle长
+        int N = haystack.length() - needle.length() + 1;
         for (int i = 0; i < N; i++) {
             int j = i;
             int k = 0;
