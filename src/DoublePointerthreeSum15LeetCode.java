@@ -17,6 +17,31 @@ import java.util.List;
  * @date 20.2.1-21:16
  * 思路：一个i遍历再在i后面加两个指针。总共三个变量即可确定规定和。
  * 这里题目的要求：答案中不可以包含重复的三元组。需要认真处理一下。
+ * 这里关于重复三元组的处理，三个指针都需要处理：
+ *  if (i-1>=0&&nums[i]==nums[i-1]) {
+ *     continue;
+ * }
+ *while (left <right&&nums[left+1]==nums[left]){
+ *   left++;
+ * }
+ *while (left<right&&nums[right]==nums[right-1]){
+ *   right--;
+ * }
+ * 那么什么i是和i-1比较，left是和left+1比较，right又是right-1比较。
+ * 这里是因为left=i+1,所以left不能和left-1比较，否则就会出现，如果目标下标为
+ * 0,0,1,2,3,4，target = 4；
+ * i=0; left=1,right  =5;
+ * 这个时候下标组合0，1,5就会被跳过。所以i的比较应该往左边，left的比较应该往右边，
+ * 这样这两个比较就不会重合，跳过应该有的解。right因为是从右边开始的，所以没人跟他
+ * 重叠，所以right和right+1对比也可以，只要注意right+1边界问题即可。
+ * 看了LeetCode18四数之和，其实还有一种写法，也可以写left与left-1对比，只要排除
+ * left和i重叠情况即可。所以：
+ * while (left <right&&nums[left+1]==nums[left]){
+ *    left++;
+ *  }改成一下写法也能通过：(添加了left-1>=i+1条件克制重复跳过)
+ *  while (left <right&&left-1>=i+1&&nums[left]==nums[left-1]){
+ *    left++;
+ *  }
  * bug1:
 * 输入:
 * [0,0,0,0]
