@@ -12,7 +12,7 @@ public class 常规记忆操作 {
         //位操作
 //        new 常规记忆操作().bit();
         //list操作
-        new 常规记忆操作().list();
+//        new 常规记忆操作().list();
 //        //hashmap操作
 //        new 常规记忆操作().hashmap();
 //        //数学运算
@@ -31,11 +31,219 @@ public class 常规记忆操作 {
 
     //Scanner操作
     public void scanner(){
-        Scanner input = new Scanner(System.in);
-        System.out.println("请输入一个字符串(中间能加空格或符号)");
-        String a = input.nextLine();
-        System.out.println("请输入一个字符串(中间不能加空格或符号)");
-        String b = input.next();
+
+        /**
+         * next() 与 nextLine() 区别
+         * next():
+         *
+         * 1、一定要读取到有效字符后才可以结束输入。
+         * 2、对输入有效字符之前遇到的空白，next() 方法会自动将其去掉。
+         * 3、只有输入有效字符后才将其后面输入的空白作为分隔符或者结束符。
+         * next() 不能得到带有空格的字符串。
+         * nextLine()：
+         *
+         * 1、以Enter为结束符,也就是说 nextLine()方法返回的是输入回车之前的所有字符。
+         * 2、可以获得空白。
+         * 链接：https://ac.nowcoder.com/acm/contest/320/A
+         * 计算a+b
+         * 输入描述:
+         * 输入包括两个正整数a,b(1 <= a, b <= 10^9),输入数据包括多组。
+         * 输出描述:
+         * 输出a+b的结果
+         * 示例1
+         */
+        /**
+         * 输入
+         * 1 5
+         * 10 20
+         * 输出
+         * 6
+         * 30
+         */
+        Scanner input1 = new Scanner(System.in);
+        while (input1.hasNext()){
+            int a = input1.nextInt();
+            int b = input1.nextInt();
+            System.out.println(a+b);
+        }
+        /**
+         * 输入
+         * 2
+         * 1 5
+         * 10 20
+         * 输出
+         * 6
+         * 30
+         */
+        Scanner input2 = new Scanner(System.in);
+        while (input2.hasNext()){
+            int a = input2.nextInt();
+            for (int i=0;i<a;i++){
+                int b = input2.nextInt();
+                int c = input2.nextInt();
+                System.out.println(b+c);
+            }
+        }
+        /**
+         * 输入
+         * 4 1 2 3 4
+         * 5 1 2 3 4 5
+         * 0
+         * 输出
+         * 10
+         * 15
+         */
+        Scanner input3 = new Scanner(System.in);
+             while (input3.hasNext()){
+                 int n = input3.nextInt();
+                 if (n==0){
+                     break;
+                 }
+                 int result = 0;
+                 for (int i=0;i<n;i++){
+                     int a = input3.nextInt();
+                     result+=a;
+                 }
+                 System.out.println(result);
+             }
+        /**
+         * 输入
+         * 2
+         * 4 1 2 3 4
+         * 5 1 2 3 4 5
+         * 输出
+         * 10
+         * 15
+         */
+        Scanner input4 = new Scanner(System.in);
+        int a = input4.nextInt();
+        while (a!=0){
+            int b= input4.nextInt();
+            int result =0;
+            for (int i=0;i<b;i++){
+                int c = input4.nextInt();
+                result+= c;
+            }
+            System.out.println(result);
+            a--;
+        }
+        /**
+         * 输入
+         * 4 1 2 3 4
+         * 5 1 2 3 4 5
+         * 输出
+         * 10
+         * 15
+         */
+        Scanner input6 = new Scanner(System.in);
+        while (input6.hasNext()){
+            int a6 = input6.nextInt();
+            int result =0;
+            for (int i=0;i<a6;i++){
+                int b= input6.nextInt();
+                result+=b;
+            }
+            System.out.println(result);
+        }
+        /**
+         * 输入数据有多组, 每行表示一组输入数据。
+         * 每行不定有n个整数，空格隔开。(1 <= n <= 100)。
+         * 输入
+         * 1 2 3
+         * 4 5
+         * 0 0 0 0 0
+         * 输出
+         * 6
+         * 9
+         * 0
+         */
+        Scanner input7 = new Scanner(System.in);
+        while(input7.hasNextLine()){
+            String [] s=input7.nextLine().split(" ");
+            int sum=0;
+            for(int i=0;i<s.length;i++){
+                sum=sum+Integer.parseInt(s[i]);
+            }
+            System.out.println(sum);
+        }
+        /**
+         * 对输入的字符串进行排序后输出
+         * 输入描述:
+         * 输入有两行，第一行n
+         * 第二行是n个空格隔开的字符串
+         * 输出描述:
+         * 输出一行排序后的字符串，空格隔开，无结尾空格
+         * 示例1
+         * 输入
+         * 5
+         * c d a bb e
+         * 输出
+         * a bb c d e
+         */
+        Scanner input8 = new Scanner(System.in);
+        int a8= input8.nextInt();
+        String[] array = new String[a8];
+        for (int i = 0; i < a8; ++i) {
+            array[i] = input8.next();
+        }
+        Arrays.sort(array);
+        for (int i = 0; i < a8; ++i) {
+            if (i == a8 - 1) {
+                System.out.println(array[i]);
+                break;
+            }
+            System.out.print(array[i] + " ");
+        }
+        /**
+         * 输入
+         * a c bb
+         * f dddd
+         * nowcoder
+         * 输出
+         * a bb c
+         * dddd f
+         * nowcoder
+         */
+        Scanner input9 = new Scanner(System.in);
+        while(input9.hasNextLine()){
+            String [] s=input9.nextLine().split(" ");
+            Arrays.sort(s);
+            for (int i = 0; i < s.length; ++i) {
+                if (i ==  s.length - 1) {
+                    System.out.println(s[i]);
+                    break;
+                }
+                System.out.print(s[i] + " ");
+            }
+        }
+        /**
+         * 输入
+         * a,c,bb
+         * f,dddd
+         * nowcoder
+         * 输出
+         * a,bb,c
+         * dddd,f
+         * nowcoder
+         */
+        Scanner input10 = new Scanner(System.in);
+        while(input10.hasNextLine()){
+            String [] s=input10.nextLine().split(",");
+            Arrays.sort(s);
+            for (int i = 0; i < s.length; ++i) {
+                if (i ==  s.length - 1) {
+                    System.out.println(s[i]);
+                    break;
+                }
+                System.out.print(s[i] + ",");
+            }
+        }
+//        Scanner input = new Scanner(System.in)
+//        };
+//        System.out.println("请输入一个字符串(中间能加空格或符号)");
+//        String a = input.nextLine();
+//        System.out.println("请输入一个字符串(中间不能加空格或符号)");
+//        String b = input.next();
 //                System.out.println("请输入一个整数");
 //                int c;
 //                c = input.nextInt();
@@ -47,24 +255,24 @@ public class 常规记忆操作 {
 
 
         //构造Scanner类的对象scan，接收从控制台输入的信息
-        Scanner scan = new Scanner(System.in);
-        System.out.println("请输入你的姓名");
-        //接收一个字符串，可以加除Enter以外的所有符号，包括空格和Tab
-        String name = scan.nextLine();
-        System.out.println("请输入你的ID");
-        String ID ;
-        while(scan.hasNextLine()) {// hasNextLine()方法判断当前是否有输入，当键盘有输入后执行循环
-            if(scan.hasNextInt()) {// 判断输入的值是否为整数类型，当为整数类型时执行循环
-                ID = scan.nextLine();
-                System.out.println("你输入的姓名为："+name);
-                System.out.println("你输入的ID为："+ID);
-                break;
-            }else {
-                System.out.println("请输入数字哦！");
-                ID = scan.nextLine();
-                continue;
-            }
-        }
+//        Scanner scan = new Scanner(System.in);
+//        System.out.println("请输入你的姓名");
+//        //接收一个字符串，可以加除Enter以外的所有符号，包括空格和Tab
+//        String name = scan.nextLine();
+//        System.out.println("请输入你的ID");
+//        String ID ;
+//        while(scan.hasNextLine()) {// hasNextLine()方法判断当前是否有输入，当键盘有输入后执行循环
+//            if(scan.hasNextInt()) {// 判断输入的值是否为整数类型，当为整数类型时执行循环
+//                ID = scan.nextLine();
+//                System.out.println("你输入的姓名为："+name);
+//                System.out.println("你输入的ID为："+ID);
+//                break;
+//            }else {
+//                System.out.println("请输入数字哦！");
+//                ID = scan.nextLine();
+//                continue;
+//            }
+//        }
     }
 
     //位操作
