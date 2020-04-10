@@ -17,6 +17,8 @@ import java.util.*;
  * 思路:先用一个hashmap,存储nums中数组出现的频率，然后再用最小堆存储对应频率的
  * 数字。和LeetCode215有点像，因为这里是求前K高的，高对应着最小堆。因为这里是要求
  * 频率的高低，所以也就是需要对优先队列传入一个参数。
+ * 本题的难点之一是只比较HashMap中的value的值的大小，排序输出结果却是排序HashMap
+ * 中的key
  *  PriorityQueue<Integer> minHeap = new PriorityQueue<Integer>((n1,n2)->
  *                 hashMap.get(n1)-hashMap.get(n2)
  *         );
@@ -30,6 +32,7 @@ import java.util.*;
  *                     }
  *                 }
  *         );
+ *
  * bug1:
  * 输入:
  * [4,1,-1,2,-1,2,3]
@@ -39,7 +42,6 @@ import java.util.*;
  * 预期结果
  * [-1,2]
  * 解决方式：
- *
  */
 public class HeaptopKFrequent347LeetCode {
     //关于优先队列中比较器的改造，更容易理解。
@@ -70,6 +72,7 @@ public class HeaptopKFrequent347LeetCode {
         );
         for (HashMap.Entry<Integer,Integer> digits:hashMap.entrySet()){
             if (minHeap.size()<k){
+                //最小堆中存储的是hashMap中的节点，但是输出结果需要转换为key
                 minHeap.add(digits);
             }else {
                 if (hashMap.get(minHeap.peek().getKey())<hashMap.get(digits.getKey())){
@@ -79,6 +82,7 @@ public class HeaptopKFrequent347LeetCode {
             }
         }
         while (minHeap.size()>0){
+            //输出结果需要转换为key,minHeap中存储的是节点Entry
             result.add(minHeap.remove().getKey());
         }
         return result;
