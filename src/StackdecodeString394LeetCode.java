@@ -49,6 +49,8 @@ import java.util.LinkedList;
 public class StackdecodeString394LeetCode {
 
     //题解简约版：
+    //讲一下关于进栈的问题，遇到[才进栈，那没遇到[之前遍历的东西怎么处理，用变量先
+    // 暂时存储在变量中，这里要注意数组多位数的处理，需要拼凑成十进制。
     public String decodeString2(String s) {
         StringBuilder res = new StringBuilder();
         int multi = 0;
