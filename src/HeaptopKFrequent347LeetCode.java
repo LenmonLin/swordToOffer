@@ -1,7 +1,5 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.PriorityQueue;
+import java.util.*;
+
 /**
 * 给定一个非空的整数数组，返回其中出现频率前 k 高的元素。
 * 示例 1:
@@ -22,6 +20,16 @@ import java.util.PriorityQueue;
  *  PriorityQueue<Integer> minHeap = new PriorityQueue<Integer>((n1,n2)->
  *                 hashMap.get(n1)-hashMap.get(n2)
  *         );
+ * PriorityQueue中的比较器有两种写法，还有一种比较好理解：
+ * PriorityQueue<HashMap.Entry<Integer,Integer>> minHeap = new PriorityQueue<>(
+ *                 new Comparator<HashMap.Entry<Integer, Integer>>() {
+ *                     @Override
+ *                     public int compare(Map.Entry<Integer, Integer> o1,
+ *                                        Map.Entry<Integer, Integer> o2) {
+ *                         return o1.getValue()-o2.getValue();
+ *                     }
+ *                 }
+ *         );
  * bug1:
  * 输入:
  * [4,1,-1,2,-1,2,3]
@@ -34,7 +42,48 @@ import java.util.PriorityQueue;
  *
  */
 public class HeaptopKFrequent347LeetCode {
+    //关于优先队列中比较器的改造，更容易理解。
     public List<Integer> topKFrequent(int[] nums, int k) {
+        ArrayList<Integer> result= new ArrayList<>();
+        HashMap<Integer,Integer> hashMap = new HashMap<>();
+        Integer temp =0;
+        for (int i=0;i<nums.length;i++){
+            if (hashMap.containsKey(nums[i])){
+                temp = hashMap.get(nums[i]);
+                temp+=1;
+                hashMap.put(nums[i],temp);
+            }else {
+                hashMap.put(nums[i],1);
+            }
+        }
+
+        //比较器中的泛型参数放入HashMap.Entry元素，然后再利用getValue去比较HashMap
+        // 中的value值，o1-o2是升序，o2-o1是降序
+        PriorityQueue<HashMap.Entry<Integer,Integer>> minHeap = new PriorityQueue<>(
+                new Comparator<HashMap.Entry<Integer, Integer>>() {
+                    @Override
+                    public int compare(Map.Entry<Integer, Integer> o1,
+                                       Map.Entry<Integer, Integer> o2) {
+                        return o1.getValue()-o2.getValue();
+                    }
+                }
+        );
+        for (HashMap.Entry<Integer,Integer> digits:hashMap.entrySet()){
+            if (minHeap.size()<k){
+                minHeap.add(digits);
+            }else {
+                if (hashMap.get(minHeap.peek().getKey())<hashMap.get(digits.getKey())){
+                    minHeap.remove();
+                    minHeap.add(digits);
+                }
+            }
+        }
+        while (minHeap.size()>0){
+            result.add(minHeap.remove().getKey());
+        }
+        return result;
+    }
+    public List<Integer> topKFrequent1(int[] nums, int k) {
         ArrayList<Integer> result= new ArrayList<>();
         HashMap<Integer,Integer> hashMap = new HashMap<>();
         Integer temp =0;
