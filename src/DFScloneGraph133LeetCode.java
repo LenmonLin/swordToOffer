@@ -88,6 +88,12 @@ class Node {
         return dfs(node,hashMap);
     }
     private Node dfs(Node node,HashMap<Integer,Node> hashMap){
+    //递归递归一定要有归，先入为主的观念，应该写if(node == null) return null,为啥本
+        // 题不写null ,因为本题是图，图是有环的，所以只要碰到了环就可以归，所以用
+        //hashMap.containsKey(node.val)来代表归，同时因为如果是null，那么遍历操
+        // 作 for (Node temp:node.neighbors){是不会遍历到的，所以无需考虑Node为null
+        // 的情况，是不会发生的。除非最开始传入的是null，这个情况已经在cloneGraph函
+        // 数进行了处理。
     //归的出口是这个原始是否遍历过，一旦遍历过就回退。这里是返回Node,有点不容易理解
         if (hashMap.containsKey(node.val)){
             return hashMap.get(node.val);
