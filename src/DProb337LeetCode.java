@@ -42,7 +42,7 @@ import java.util.HashMap;
  * 能偷的钱当做value
  */
 public class DProb337LeetCode {
-    public class TreeNode {
+    static class TreeNode {
      int val;
      TreeNode left;
      TreeNode right;
@@ -53,7 +53,10 @@ public class DProb337LeetCode {
         return robHelper(root,hashMap);
     }
     private int robHelper(TreeNode root, HashMap<TreeNode,Integer> hashMap){
+        //这里是叶节点的递归出口
         if (root==null)return 0;
+        //其实这里是往回归的过程，可能会用到的之前计算的结果，有点类似动态规划，用的是
+        // 之前计算的结果。
         if (hashMap.containsKey(root))return hashMap.get(root);
         int money = root.val;
         if (root.left!=null){
@@ -64,11 +67,24 @@ public class DProb337LeetCode {
         }
         int result = Math.max(money,robHelper(root.left,hashMap)+robHelper(root.right
         ,hashMap));
+        //这里和前面的代码if (hashMap.containsKey(root))return hashMap.get(root);配套
         hashMap.put(root,result);
         return result;
     }
 
     public static void main(String[] args) {
+        TreeNode treeNode1 = new TreeNode(1);
+        TreeNode treeNode2 = new TreeNode(2);
+        TreeNode treeNode3 = new TreeNode(3);
+        TreeNode treeNode5 = new TreeNode(5);
+        TreeNode treeNode7 = new TreeNode(7);
+        treeNode1.left = treeNode2;
+        treeNode1.right = treeNode3;
+        treeNode2.left = null;
+        treeNode2.right = treeNode5;
+        treeNode3.left = null;
+        treeNode3.right = treeNode7;
+        System.out.println(new DProb337LeetCode().rob(treeNode1));
 
     }
 }
