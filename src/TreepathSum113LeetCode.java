@@ -28,6 +28,8 @@ import java.util.List;
  * 2、关于思路中的解决第二条路径使用新的ArrayList，这里用到了一个临时的ArrayList,
  * 然后如果满足就把这个临时的ArrayList复制到新的ArrayList传入到最终的List中去。
  * 复制ArrayList可以用new ArrayList<>(temp);直接在括号中传入临时ArrayList即可；
+ * 为什么要进行复制，因为List是引用类型，temp如果没有复制，添加进result之后，后期回溯
+ * 修改还是会改变原来添加进result的temp，所以需要拷贝一份
  * 3、关于路径的记录这里要用到回溯，在递归函数之后加入回溯temp.remove(
  * temp.size()-1);这点比较难以理解，举个例子，遍历到7时，7下面没有左右子树了，回
  * 退到11，这个过程就是回溯，那么临时ArrayList需要减去7，然后才能往2遍历
@@ -54,21 +56,21 @@ public class TreepathSum113LeetCode {
         TreeNode(int x) { val = x; }
     }
     public List<List<Integer>> pathSum(TreeNode root, int sum) {
-            List<List<Integer>>  lists = new ArrayList<>();
+            List<List<Integer>>  result = new ArrayList<>();
             ArrayList temp = new ArrayList();
-            helper(root,sum,lists,temp);
-            return lists;
+            helper(root,sum,result,temp);
+            return result;
     }
-    public void helper(TreeNode root, int sum, List<List<Integer>> lists, ArrayList
+    public void helper(TreeNode root, int sum, List<List<Integer>> result, ArrayList
             temp){
         if (root == null)return;
         sum-=root.val;
         temp.add(root.val);
         if (root.left == null&&root.right==null &&sum == 0){
-            lists.add(new ArrayList<>(temp));
+            result.add(new ArrayList<>(temp));
         }
-        helper(root.left,sum,lists,temp);
-        helper(root.right,sum,lists,temp);
+        helper(root.left,sum,result,temp);
+        helper(root.right,sum,result,temp);
         temp.remove(temp.size()-1);
     }
 
