@@ -400,8 +400,8 @@ public class Sort912LeetCode {
         //第二小块的起始位置
         int rightStart = mid+1;
         while (leftStart<=leftEnd&&rightStart<=rightEnd){
-            //将第一小块的数组数据复制到临时数组中去
-            if (result[leftStart]<result[rightStart]){
+            //将第一小块的数组数据复制到临时数组中去，加等号表示稳定的排序算法
+            if (result[leftStart]<=result[rightStart]){
                 temp[tempStart++] = result[leftStart++];
             }else {
                 //将第二小块的数组数据复制到临时数组中去
