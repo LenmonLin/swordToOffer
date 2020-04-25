@@ -48,6 +48,25 @@ public class DFSfindTargetSumWays494LeetCode {
         i--;
     }
 
+    //根据LeetCode129关于局部变量和全局变量的理解，对i这个全局变量改成局部变量
+    int count =0;
+    public int findTargetSumWays2(int[] nums, int S) {
+        int sum=0;
+        int i=-1;
+        dfs2(nums,S,sum,i);
+        return count;
+    }
+    public void dfs2(int[] nums, int S,int sum,int i){
+        if (i>=nums.length)return;
+        if (i==nums.length-1&&S==sum){
+            count++;
+        }
+        i++;
+        if (i<=nums.length-1) {
+            dfs2(nums, S, sum + nums[i],i);
+            dfs2(nums, S, sum - nums[i],i);
+        }
+    }
     public static void main(String[] args) {
         int [] nums={1, 1, 1, 1, 1};
         int S=3;
