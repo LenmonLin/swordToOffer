@@ -28,6 +28,7 @@ public class LinkedListmergeKLists23LeetCode {
          ListNode(int x) { val = x; }
      }
 
+     //方法3：用一个最小堆把同一列的节点放入堆中，然后取出，再添加一个。
     public ListNode mergeKLists(ListNode[] lists) {
          if (lists.length == 0)
              return null;
@@ -38,6 +39,7 @@ public class LinkedListmergeKLists23LeetCode {
                 return o1.val-o2.val;
             }
         });
+        //哑结点的设置是为了最后返回处理方便
         ListNode dummy = new ListNode(-1);
         ListNode curNode = dummy;
         //直接把头节点全部加进来，就是把整个链表加进来
