@@ -44,6 +44,12 @@
  * 634 ms, 在所有 Java 提交中击败了8.43%的用户
  * 内存消耗 :
  * 41.4 MB, 在所有 Java 提交中击败了14.64%的用户
+ * 解法2：
+ * 逆向思考，只需要一层循环，遍历数组，保持一个能跳到最远的变量，如果这个变量在遍历
+ * 数组的过程中比遍历下标小，就说明不能跳到。直接退出。
+ * 执行用时 :2 ms, 在所有 Java 提交中击败了71.32%的用户
+ * 内存消耗 :
+ * 41.9 MB, 在所有 Java 提交中击败了12.50%的用户
  */
 public class ArraycanJump55LeetCode {
     public boolean canJump(int[] nums) {
@@ -64,6 +70,17 @@ public class ArraycanJump55LeetCode {
             }
         }
         return false;
+    }
+    //解法2：逆向思维
+    public boolean canJump2(int[] nums) {
+        int tempMax = 0;
+        for(int i=0;i<nums.length;i++){
+            if (tempMax<i){
+                return false;
+            }
+            tempMax = Math.max(tempMax,i+nums[i]);
+        }
+        return true;
     }
 
     public static void main(String[] args) {
