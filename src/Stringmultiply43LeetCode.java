@@ -78,7 +78,13 @@ public class Stringmultiply43LeetCode {
                 int mul= n1*n2;
                 int p1 = i+j;
                 int p2 = i+j+1;
-                //存放临时的两数的和：这里要注意要把原来的末位p2加上。
+
+                //这里有个难点，新的乘积到结果位的过程需要把结果位的p1和p2加入到新的
+                // 乘积上，首先先处理把新的乘积和结果位的p2相加，然后相除之后才把商和
+                // 结果位的p1相加。debug一遍容易懂，很难描述
+
+                //存放临时的两数的和：这里要注意要把上一轮乘积的首位p1加上，而上一轮乘
+                // 积的首位p1等于本轮乘积的p2,这个容易错误，
                 int sumTemp = mul+result[p2];
                 result[p2] = sumTemp%10;
                 //注意这里要用加号，因为之前其实有计算结果。
@@ -149,8 +155,8 @@ public class Stringmultiply43LeetCode {
     }
 
     public static void main(String[] args) {
-        String num1 ="99";
-        String num2 ="9";
+        String num1 ="123";
+        String num2 ="456";
         System.out.println(new Stringmultiply43LeetCode().multiply2(num1, num2));
     }
 }
