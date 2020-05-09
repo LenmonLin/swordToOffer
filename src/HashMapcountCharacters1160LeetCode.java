@@ -25,7 +25,8 @@ import java.util.Arrays;
  * 思路：用hashMap存放chars的字符和对应出现的字符次数。遍历words中的每个单词，
  * 如果能够在hashMap中找到，并且字符次数不会减到小于0，就算能够构成单词，检测下
  * 一个单词时，重置hashMap。
- * 后来发现hashMap无法深拷贝，只能用数组。数组能够深拷贝。
+ * 后来发现hashMap无法深拷贝，只能用数组。数组能够深拷贝。也就是遍历一个单词，用
+ * 一个新的原来的没有变化过的数组。
  */
 public class HashMapcountCharacters1160LeetCode {
     public int countCharacters(String[] words, String chars) {
