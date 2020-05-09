@@ -33,8 +33,44 @@
  * @author LemonLin
  * @Description :StringCompareVersionNumbers
  * @date 19.6.23-23:24
+ * 参考：https://leetcode-cn.com/problems/compare-version-numbers/solution/xiang-xi-tong-su-de-si-lu-fen-xi-duo-jie-fa-by-40/
+ * 思路按照「点」对版本号进行切割，然后依次比较每个数字即可。这里切割出来的是字符串，
+ * 所以我们需要把字符串转为数字，因为字符串转数字不是这道题的重点，所以直接调用系统
+ * 提供的 Integer.parseInt 即可。
  */
 public class StringCompareVersionNumbers165LeetCode {
+
+    //直接用 Integer.parseInt 省去了处理前导零的步骤，让代码简洁了
+    public int compareVersion2(String version1, String version2) {
+        String[] nums1 = version1.split("\\.");
+        String[] nums2 = version2.split("\\.");
+        int i = 0, j = 0;
+        while (i < nums1.length || j < nums2.length) {
+            //这个技巧经常用到，当一个已经遍历结束的话，我们将其赋值为 0
+            String num1 = i < nums1.length ? nums1[i] : "0";
+            String num2 = j < nums2.length ? nums2[j] : "0";
+            int res = compare(num1, num2);
+            if (res == 0) {
+                i++;
+                j++;
+            } else {
+                return res;
+            }
+        }
+        return 0;
+    }
+    private int compare(String num1, String num2) {
+        int n1 = Integer.parseInt(num1);
+        int n2 = Integer.parseInt(num2);
+        if (n1 > n2) {
+            return 1;
+        } else if (n1 < n2) {
+            return -1;
+        } else {
+            return 0;
+        }
+    }
+    //这种写法比较复杂
     public int compareVersion(String version1, String version2) {
         String[] v1=version1.split("\\.");
         String[] v2=version2.split("\\.");
