@@ -34,31 +34,27 @@ public class LinkedListswapPairs24LeetCode {
             return head;
         }
         LinkedList<ListNode> stack = new LinkedList();
-        ListNode temp = new ListNode(0);
-        ListNode cur = head;
-        //这一步把head指向了temp,即使后期temp怎么变，head指向的都是最原始的temp，
-        // 结果返回head.next即可。这一步不好看懂。这一步操作，主要是为了最后返回结果。
-        //这一步，head指向的是要新生成的链表，原来的链表开头保存到了cur，所以不用太慌。
-        head = temp;
-        while (cur!=null&&cur.next!=null){
-            //把第一个第二个节点存入栈中，这里cur遍历的是交换前的链表
-            stack.addLast(cur);
-            stack.addLast(cur.next);
-            //cur移到第三个节点下个循环再来遍历操作。
-            cur = cur.next.next;
-            //temp其实就是指向交换后的链表，遍历的是交换后的链表
-            temp.next = stack.pollLast();
-            temp=temp.next;
-            temp.next = stack.pollLast();
-            temp = temp.next;
+        ListNode newList = new ListNode(0);
+        ListNode dummy = newList;
+        while (head!=null&&head.next!=null){
+            //把第一个第二个节点存入栈中，这里head遍历的是交换前的链表
+            stack.addLast(head);
+            stack.addLast(head.next);
+            //head移到第三个节点下个循环再来遍历操作。
+            head = head.next.next;
+            //newList其实就是指向交换后的链表，遍历的是交换后的链表
+            newList.next = stack.pollLast();
+            newList=newList.next;
+            newList.next = stack.pollLast();
+            newList = newList.next;
         }
-        //注意边界条件，当链表长度是奇数时，cur就不为空
-        if(cur!=null) {
-            temp.next = cur;
+        //注意边界条件，当链表长度是奇数时，head就不为空
+        if(head!=null) {
+            newList.next = head;
         } else {
-            temp.next = null;
+            newList.next = null;
         }
-        return head.next;
+        return dummy.next;
     }
 
     //自己最原始的思路写的有bug,可以不看，只是留着存档。
