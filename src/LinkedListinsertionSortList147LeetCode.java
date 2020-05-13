@@ -34,12 +34,17 @@ public class LinkedListinsertionSortList147LeetCode {
         ListNode temp =null;
         while (unSorted!=null){
             while (sorted.next!=null &&unSorted.val>sorted.next.val){
+                //循环退出时unSorted节点应该插在sorted所指向的节点的后面
                 sorted= sorted.next;
             }
+            //temp临时记录未排序部分的第二个结点，因为第一个节点要被插入到排序部分
             temp = unSorted.next;
-            //这下面两行代码很关键，自己就这两行没写对，一直绕晕了。
+            //这下面两行代码很关键，自己就这两行没写对，一直绕晕了。把未排序的第一个节点
+            // 插入到排序序列中
             unSorted.next = sorted.next;
             sorted.next =unSorted;
+
+            //已排序指针和未排序指针重新指向各自链表头部。
             sorted=dummy;
             unSorted = temp;
         }
