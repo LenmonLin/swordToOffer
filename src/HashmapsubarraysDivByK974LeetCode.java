@@ -29,6 +29,14 @@ import java.util.HashMap;
  * 这里的处理方式都把它转换为正余数：
  * int key = (sum % K + K) % K;本来应该是sum % K + K，为啥还要%K，是为了把
  * 结果限定在0——K-1之间
+ * 因为用了 nums[i]+nums[i+1]+....+nums[j-1] = {sum(后面的)-sum(前面的)}%k=0
+ *  推出 sum(后面的)%k=sum(前面的)%k推导，所以只需要两个前缀和除以K的余数相等
+ *  就满足题目要求，比如k=5,sum(后面的) = 9,sum(前面) = 4，那么
+ *  {sum(后面的)-sum(前面的)}%5=0，sum(后面的) = 9%5=4，sum(前面) = 4%5=4
+ *  满足条件。但是有一个特殊情况就是比如k=5,sum(后面的) = 9,sum(前面) = -6，
+ *  {sum(后面的)-sum(前面的)}%5=0（9--6=15,15%5=0）按理说应该满足条件的，但是
+ *  如果这样计算sum(后面的) = 9%5=4，sum(前面) = -6%5=-1，4!=-1,就不满足条件。
+ *  但是实际情况是满足条件的。所以就是说负数sum要处理一下。
  * 2、关于暴力算法，应该设置sum[i]=nums[0]+nums[1]+...+nums[i-1]
  * 这么做是为了相减的时候处理方便：
  * sum[j]-sum[i]=nums[i]+nums[i+1]+....+nums[j-1];
@@ -48,7 +56,7 @@ import java.util.HashMap;
  * 满足计数结果条件。
  */
 public class HashmapsubarraysDivByK974LeetCode {
-    //用上hashMap
+    //用上hashMap使时间复杂度下降为O(n)
     public int subarraysDivByK(int[] A, int K) {
         int result =0;
         HashMap<Integer,Integer> hashMap = new HashMap<>();
