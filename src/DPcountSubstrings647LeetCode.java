@@ -30,8 +30,35 @@
  *          10
  *  而dp[i][j]是有dp[i+1][j-1]推出，可以发现dp[i+1][j-1]比dp[i][j]先填，所以不会造成
  *  dp[i+1][j-1]状态还未确定就写dp[i][j]的情况。
+ *  解法2 ：参考LeetCode5的中心扩散法：更为易懂。
+ * 参考 https://leetcode-cn.com/problems/palindromic-substrings/solution/python3-zhong-xin-kuo-zhan-fa-by-312shan/
+ * https://leetcode-cn.com/problems/palindromic-substrings/solution/liang-dao-hui-wen-zi-chuan-de-jie-fa-xiang-jie-zho/
  */
 public class DPcountSubstrings647LeetCode {
+
+    //中心扩散法
+    int result =0;
+    public int countSubstrings4(String s) {
+        for (int i=0;i<s.length();i++){
+            //奇数个数的回文串中心
+            palindrome(s,i,i);
+            //偶数个数的回文串中心
+            palindrome(s,i,i+1);
+        }
+        return result;
+    }
+    //left和right两个坐标向左右扩散
+    public void palindrome(String s, int left, int right) {
+        while (left>=0&&right<s.length()){
+            if (s.charAt(left)!=s.charAt(right)){
+                break;
+            }else{
+                left--;
+                right++;
+                result++;
+            }
+        }
+    }
 
     //只是把遍历顺序修改了，有点参考516LeetCode的遍历顺序。但是还是需要判断一
     // 下i<j的条件。
