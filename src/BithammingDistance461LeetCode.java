@@ -12,12 +12,12 @@
  *        ↑   ↑
  * 上面的箭头指出了对应二进制位不同的位置。
  * @author LemonLin
- * @Description :BithammingDistance461
+ * @Description :BithammingDistance461LeetCode
  * @date 20.5.29-21:14
  * 思路：先对两个数进行异或操作，然后看看异或结果中有几个1，就是结果，怎么查看有
  * 几个1，可以判断末尾是不是奇数，然后再右移，如此循环。
  */
-public class BithammingDistance461 {
+public class BithammingDistance461LeetCode {
     public int hammingDistance(int x, int y) {
         int temp = x^y;
         int result =0;
