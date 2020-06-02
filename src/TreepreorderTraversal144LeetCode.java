@@ -20,6 +20,7 @@ import java.util.List;
  * @date 20.2.12-16:55
  * 思路：主要考察非递归迭代写法
  * 参考：https://segmentfault.com/a/1190000016674584
+ * 参考：解法2 对比LeetCode94更具普遍意义。https://www.icourse163.org/learn/ZJU-93001?tid=1450069451#/learn/content?type=detail&id=1214143618&cid=1217772376&replay=true
  */
 public class TreepreorderTraversal144LeetCode {
     /**
@@ -31,6 +32,28 @@ public class TreepreorderTraversal144LeetCode {
      *     TreeNode(int x) { val = x; }
      * }
      */
+
+    public List<Integer> preorderTraversal2(TreeNode root) {
+        ArrayList<Integer> result = new ArrayList<>();
+        LinkedList<TreeNode> stack = new LinkedList();
+        if (root==null)return result;
+        TreeNode cur = root;
+        //为什么这里是或者，因为当左边结点遍历结束之后，还需要入栈右边结点，这个时
+        // 候，可能栈为空，但是cur不为空
+        while (cur!= null||!stack.isEmpty()){
+            while (cur!= null){
+                stack.addLast(cur);
+                result.add(cur.val);
+                cur = cur.left;
+            }
+            if (!stack.isEmpty()){
+                cur = stack.pollLast();
+                cur = cur.right;
+            }
+        }
+        return result;
+    }
+
     public List<Integer> preorderTraversal(TreeNode root) {
         ArrayList<Integer> result  = new ArrayList();
         if (root==null){
