@@ -31,25 +31,28 @@ public class MakeTree {
         return treeNodeCommon1;
     }
     public  TreeNode makeTree2(){
+        /**
+         *                  8
+         *             6       10
+         *          null   7    9    11
+         */
         TreeNode treeNodeCommon1 = new TreeNode(8);
         TreeNode treeNodeCommon2 = new TreeNode(6);
         TreeNode treeNodeCommon3 = new TreeNode(10);
-        TreeNode treeNodeCommon4 = new TreeNode(5);
+//        TreeNode treeNodeCommon4 = new TreeNode(5);
         TreeNode treeNodeCommon5 = new TreeNode(7);
         TreeNode treeNodeCommon6 = new TreeNode(9);
         TreeNode treeNodeCommon7 = new TreeNode(11);
-        TreeNode treeNodeCommon8 = new TreeNode(11);
-        TreeNode treeNodeCommon9 = new TreeNode(11);
+//        TreeNode treeNodeCommon8 = new TreeNode(11);
+//        TreeNode treeNodeCommon9 = new TreeNode(11);
 
         treeNodeCommon1.left = treeNodeCommon2;
         treeNodeCommon1.right = treeNodeCommon3;
-        treeNodeCommon2.left = treeNodeCommon4;
-        treeNodeCommon2.right = null;
+        treeNodeCommon2.left = null;
+        treeNodeCommon2.right = treeNodeCommon5;
 
-        treeNodeCommon3.left = null;
+        treeNodeCommon3.left = treeNodeCommon6;
         treeNodeCommon3.right = treeNodeCommon7;
-        treeNodeCommon4.left = treeNodeCommon8;
-        treeNodeCommon7.right = treeNodeCommon9;
 
         return treeNodeCommon1;
     }

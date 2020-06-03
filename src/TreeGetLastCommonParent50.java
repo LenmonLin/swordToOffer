@@ -82,6 +82,26 @@ public class TreeGetLastCommonParent50 {
         }
         return getLastCommonParent(path1,path2);
     }
+
+    //改造getNodePath，看着太复杂，但是不能这么写，这样的话即使寻找到一条路径也
+    // 无法立马退出。参考LeetCode236正确的写法
+    public  void  getNodePath2(TreeNode root, TreeNode targetNode,
+                                ArrayList tempList ,ArrayList path){
+        if ( root == null){
+            return ;
+        }
+        tempList.add(root);
+        if(root.val == targetNode.val){
+            //list 复制。把tempList的内容复制给path
+            path.addAll(tempList);
+            return;
+        }
+        getNodePath2(root.left,targetNode,tempList,path);
+        getNodePath2(root.right,targetNode,tempList,path);
+        //不包括目标节点，把目标节点排除
+        tempList.remove(tempList.size()-1);
+    }
+
     //获取路径的方法，有点类似深度优先
     //获取路径的方法，有点难，不好理解。
    public  void  getNodePath(TreeNode root, TreeNode targetNode,
