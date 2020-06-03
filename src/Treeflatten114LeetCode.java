@@ -29,6 +29,10 @@ import common.TreeNode;
  * 将原来的右子树接到左子树的最右边节点
  * 考虑新的右子树的根节点，一直重复上边的过程，直到新的右子树为 null
  * 照着题解写的，这题这不好理解。感觉还是没理顺
+ * 参考：
+ * https://leetcode-cn.com/problems/flatten-binary-tree-to-linked-list/solution/xiang-xi-tong-su-de-si-lu-fen-xi-duo-jie-fa-by--26/
+ * 简单直白做法：通过非递归先序遍历把所有的节点放在数组里，然后在一个for循环修改
+ * 他们的指向。 时间复杂度O(n) 空间复杂度O(n)
  */
 public class Treeflatten114LeetCode {
     /**
