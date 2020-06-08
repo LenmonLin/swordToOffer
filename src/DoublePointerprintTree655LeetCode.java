@@ -53,8 +53,12 @@ import java.util.List;
  * 树高3，数组长7 ；
  * 树高4，数组长15；
  * 也就是数组长为2^(n)-1 ,其中n是树高。
- * 参考：https://leetcode-cn.com/problems/print-binary-tree/solution/java-di-
- * gui-by-zxy0917-13/
+ * 参考：https://leetcode-cn.com/problems/print-binary-tree/solution/java-di-gui-by-zxy0917-13/
+ * 由题意知，当二叉树高度为1时，结果集元素个数为1；高度为2时，结果集元素个数为3，
+ * 高度为3时，结果集个数为7。所以当高度为depth时，结果集元素个数为[高度为depth-1
+ * 的结果集元素个数*2+1]
+ * 首先求出树的最大高度depth，从而能求出结果集的元素个数width，再构建结果集，使
+ * 用""填充每个元素，从而构建了一个depth*width的矩形。
  * 假设第一行的起始索引位置为0，结束位置为width，我们可以观察到根节点在第一行的
  * 最中间位置mid，然后对于其左子树根节点，其插入位置在[0,mid-1]的最中间，其右子
  * 树根节点在[mid+1,width]的最中间
@@ -72,9 +76,9 @@ public class DoublePointerprintTree655LeetCode {
     public List<List<String>> printTree(TreeNode root) {
         //1、求树的高度：
         int treeDepth=getTreeDepth(root);
-        //2、求输出列表的每个数组元素的宽度：
+        //2、求输出列表的每个数组元素的宽度：这个可以用数学归纳法得出
         int listBroad = (int) Math.pow(2,treeDepth)-1;
-        //3、初始化结果集：
+        //3、初始化结果集，先填满""。
         List<List<String>> result = new ArrayList<>(treeDepth);
         for (int i=0;i<treeDepth;i++){
             List<String> list = new ArrayList<>();
@@ -91,6 +95,7 @@ public class DoublePointerprintTree655LeetCode {
         if (root == null || start > end) return;
         //获取当前节点需要插入List的位置
         int insert = start + (end - start) / 2;
+        //root.val + ""的目的只是让root.val 的类型从int转换为字符
         result.get(depth - 1).set(insert, root.val + "");
         //递归
         helper(root.left, depth + 1, start, insert - 1, result);
