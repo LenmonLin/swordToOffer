@@ -55,13 +55,21 @@ public class BinarySearchfindPeakElement162LeetCode {
         //解决bug1,这里为了不让mid+1越界，所以应该设置左闭右开，具体可参考：
         // https://leetcode-cn.com/problems/find-first-and-last-position-of-element-in-
         //sorted-array/solution/er-fen-cha-zhao-suan-fa-xi-jie-xiang-jie-by-labula/
-        while (start<end){
+        //上面的还是太难记，直接固定start<=end写法，然后剩下的用几个数代替，然后进行
+        // 调试，应该就能出结果。
+        while (start<=end){
             mid = start+(end-start)/2;
             //说明mid左边的数可能更大
-            if (nums[mid]>nums[mid+1]){
-                end=mid;
+            if (mid+1<=end&&nums[mid]<nums[mid+1]){
+                start=mid+1;
             }else {
-                start = mid+1;
+                //为了处理 1.3,2的情况。当mid为3，mid+1为2，这个时候最大值应该在3，
+                // 而不是mid-1的1。
+                end = mid;
+            }
+            //这个是通过调试出来的结果
+            if(start == end){
+                break;
             }
         }
         return start;
@@ -69,6 +77,9 @@ public class BinarySearchfindPeakElement162LeetCode {
 
     public static void main(String[] args) {
         int [] nums={1,2,3,1};
+//        int [] nums={1,2};
+//        int [] nums={2,1};
+//        int [] nums={5,6,4};
         System.out.println(new BinarySearchfindPeakElement162LeetCode().
                 findPeakElement(nums));
     }
