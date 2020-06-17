@@ -53,6 +53,7 @@
  * Input: "256.256.256.256"
  * Output: "Neither"
  * Explanation: This is neither a IPv4 address nor a IPv6 address.
+ * 这里要特别注意正则表达式的转义写法String[] strings = IP.split("\\.");
  */
 public class StringValidateIPAddress468LeetCode {
     public String validIPAddress(String IP) {
