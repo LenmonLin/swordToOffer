@@ -16,8 +16,11 @@ import java.util.HashMap;
  * 你可以认为所有数字总和在 32 位有符号整数范围内。
  * @author LemonLin
  * @Description :HashmapcheckSubarraySum523LeetCode
- * @date 20.4.14-21:20、
- * 参考：https://github.com/labuladong/fucking-algorithm   前缀和技巧
+ * @date 20.4.14-21:20
+ *参考：LeetCode560
+ * https://leetcode-cn.com/problems/subarray-sum-equals-k/solution/dai-ni-da-tong-qian-zhui-he-cong-zui-ben-fang-fa-y/
+ *  https://segmentfault.com/a/1190000022853798
+ * https://github.com/labuladong/fucking-algorithm   前缀和技巧
  * 前缀和的思路是这样的，对于一个给定的数组 nums，我们额外开辟一个前缀和数组进行预处理：
  * int n = nums.length;
  * // 前缀和数组
@@ -29,6 +32,8 @@ import java.util.HashMap;
  * 那么如果我们想求 nums[i..j] 的和，只需要一步操作 preSum[j+1]-preSum[i] 即可，
  * 而不需要重新去遍历数组了
  *
+ * 以上应该设置preSum[i] 就是 nums[0..i] 的和比较容易理解下面的使用HashMap，参考
+ * LeetCode560的讲解
  * 关于使用HashMap使O(n)
  * 参考：https://leetcode-cn.com/problems/continuous-subarray-sum/solution/
  * lian-xu-de-zi-shu-zu-qiu-he-by-lenn123/
@@ -58,25 +63,22 @@ public class HashmapcheckSubarraySum523LeetCode {
     public boolean checkSubarraySum(int[] nums, int k) {
         HashMap<Integer,Integer> hashMap  = new HashMap<>();
         int sum =0;
-        //除数为0 特殊处理
-        if (k==0){
-            for (int i =0;i<nums.length-1;i++){
-                if (nums[i]==0&&nums[i]==nums[i+1]){
-                    return true;
-                }
+        //这里hashMap 记录的是preSum[]数组的元素的值和下标，可以参考LeetCode560
+        hashMap.put(0, -1);
+        for (int i =0;i<nums.length;i++){
+            sum +=nums[i];
+            //除数不应该为0,这里是对k=0特殊处理，如果k=0,直接越过这里，然后进入下面
+            // 的hashMap中
+            if (k != 0){
+                sum = sum%k;
             }
-            return false;
-        }
-        //除数不为0
-        for (int i =1;i<=nums.length;i++){
-            sum +=nums[i-1];
-            if (hashMap.containsKey(sum%k)){
-                //为了确保子数组的大小至少为 2
-                if (i-hashMap.get(sum%k)>=2){
+            if (hashMap.containsKey(sum)){
+                //为了确保子数组的大小至少为 2，这里很精髓
+                if (i-hashMap.get(sum)>=2){
                     return true;
                 }
             }else {
-                hashMap.put(sum%k,i);
+                hashMap.put(sum,i);
             }
         }
         return false;
