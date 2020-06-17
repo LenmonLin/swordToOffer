@@ -54,6 +54,7 @@ import java.util.HashMap;
  * 推出 sum(后面的)%k=sum(前面的)%k，如果sum(前面的)%k!=0,那么要前后都出现
  * 一次不等于0的，才满足计数结果条件，如果sum(前面的)%k==0，那么第一次出现就应该
  * 满足计数结果条件。
+ * 关于为啥要有hashmap.put(0,1)，可以参考LeetCode560
  */
 public class HashmapsubarraysDivByK974LeetCode {
     //用上hashMap使时间复杂度下降为O(n)
