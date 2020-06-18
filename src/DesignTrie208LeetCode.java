@@ -63,7 +63,8 @@ public class DesignTrie208LeetCode {
         //搜索要是刚刚好全部匹配才能返回true，不能只匹配其中一些字符
         for (char c:word.toCharArray()){
             //给定字符串某个字符找不到，就说明没有匹配到
-            //这里为啥不能直接写node.childrens[c-'a'] == null，要多用一层node？？
+            //这里为啥不能直接写node.childrens[c-'a'] == null，要多用一层node？
+            // 因为这样退出循环的时候，还要判断node.isEnd,更加的清晰
             node = node.childrens[c-'a'];
             if (node ==null){
                 return false;
