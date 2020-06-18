@@ -64,7 +64,7 @@ public class DesignTrie208LeetCode {
         for (char c:word.toCharArray()){
             //给定字符串某个字符找不到，就说明没有匹配到
             //这里为啥不能直接写node.childrens[c-'a'] == null，要多用一层node？
-            // 因为这样退出循环的时候，还要判断node.isEnd,更加的清晰
+            // 因为这样试把节点变化到孩子节点了，下一轮循环的时候就能够比较下一个字符
             node = node.childrens[c-'a'];
             if (node ==null){
                 return false;
