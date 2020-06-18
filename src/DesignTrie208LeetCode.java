@@ -31,6 +31,7 @@ public class DesignTrie208LeetCode {
 
         TreeNode (){
             isEnd = false;
+            //这里有点难以理解，可以类比int [] text = new int[26];
             childrens = new TreeNode[26];
         }
    }
