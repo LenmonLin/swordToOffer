@@ -22,7 +22,7 @@ import java.util.LinkedList;
  * 思路：用栈可以解决：
  * 参考：
  * https://leetcode-cn.com/problems/remove-k-digits/solution/
- * yi-diao-kwei-shu-zi-by-leetcode/
+ yi-diao-kwei-shu-zi-by-leetcode/
  * 注意几个特殊情况的处理：
  * 1、当我们离开主循环时，我们删除了 m 个数字，这比要求的要少，即（m<k）。
  * 在极端情况下，我们不会删除循环中单调递增序列的任何数字，即 m==0。在这种
@@ -79,96 +79,44 @@ import java.util.LinkedList;
  * "1"
  * 预期结果
  * "0"
- *
  * //    所有的bug都是因为for里面的while循环没写出来
  * 这题调了一个小时，太尴尬了。
  */
 public class GreedyremoveKdigits402LeetCode {
     public String removeKdigits(String num, int k) {
-//        if (num.length()<k) return null;
-//        if (num.length()==k)return "0";
-//        if (num.length()==2&&k==1){
-//            if (num.charAt(0)-'0'>num.charAt(1)-'0'){
-//                return num.substring(1,2);
-//            }else {
-//                return num.substring(0,1);
-//            }
-//        }
         //用队列比较好，因为后期还要从队列头部顺序输出结果
         LinkedList<Integer> queue = new LinkedList<>();
-//    所有的bug都是因为for里面的while循环没写出来
-        for(int i=0;i<num.length();i++) {
-            while(queue.size() > 0 && k > 0 && queue.peekLast() > num.charAt(i)-'0') {
+        //维护一个递增栈，当当前元素小于栈顶元素，则移掉栈顶元素。
+        for (char c :num.toCharArray()) {
+            while(queue.size() > 0 && k > 0 && queue.peekLast() >c-'0') {
                 queue.removeLast();
                 k -= 1;
             }
-            queue.addLast(num.charAt(i)-'0');
+            queue.addLast(c-'0');
         }
-        for(int i=0; i<k; ++i) {
+        //处理356 ，k=1 这种情况
+        while (k>0){
             queue.removeLast();
-        }
-//        queue.addLast(num.charAt(0)-'0');
-//        for (int i=1;i<num.length();i++){
-//            if (k<=0){
-//                queue.addLast(num.charAt(i)-'0');
-//                continue;
-//            }
-//            if (num.charAt(i)-'0'>=queue.peekLast()){
-//                queue.addLast(num.charAt(i)-'0');
-//            }else {
-//                queue.removeLast();
-//                queue.addLast(num.charAt(i)-'0');
-//                k--;
-//            }
-//        }
-//        while (k>0&&queue.size()!=0){
-//            queue.removeLast();
-//            k--;
-//        }
-////        //如果都是递增数字
-//        if (!flag){
-//            return num.substring(0,num.length()-k);
-//        }
-        //删除了所有数字
-        if (queue.size()==0){
-            return "0";
-        }
-        boolean allZero=true;
-        for (Integer integer:queue){
-            if (integer !=0){
-                allZero=false;
-                break;
-            }
-        }
-        if (allZero==true){
-            return "0";
+            k -= 1;
         }
         StringBuilder stringBuilder = new StringBuilder();
-        //处理前导零的问题。
+        //处理前导0，0200这种情况，要把前面的0排除掉
         boolean leadingZero = true;
         for(Integer digit: queue) {
             if(leadingZero && digit == 0) continue;
             leadingZero = false;
             stringBuilder.append(digit);
         }
-
-//        boolean zeroFlag = false;
-//       while (!queue.isEmpty()){
-//            if (!zeroFlag&&queue.peekFirst()==0){
-//                queue.removeFirst();
-//                if (queue.peekFirst()!=0){
-//                    zeroFlag = true;
-//                }
-//                continue;
-//            }
-//            stringBuilder.append(queue.removeFirst());
-//        }
+        //处理000这种情况，会被上面的前导零处理程序处理成""
+        if (stringBuilder.toString().length()==0){
+            return "0";
+        }
         return stringBuilder.toString();
     }
 
     public static void main(String[] args) {
-        String num = "1234567890";
-        int k=9;
+        String num = "356";
+        int k=1;
         System.out.println(new GreedyremoveKdigits402LeetCode().removeKdigits(num, k));
     }
 }
