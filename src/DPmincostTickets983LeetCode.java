@@ -37,7 +37,9 @@
  * @author LemonLin
  * @Description :DPmincostTickets983LeetCode
  * @date 20.5.6-15:35
- * 思路：动态规划，设置dp[i]为第i天所需花费最少的成本。
+ * 思路：动态规划，设置dp[i]为第i天所需花费最少的成本。难点在于有两个遍历变量，一个
+ * 是出行日期，一个是正常的平时的日期。当平时的日期等于出行日期的时候才需要进行成本
+ * 比较。
  * 参考https://leetcode-cn.com/problems/minimum-cost-for-tickets/solution/java-dong-tai-gui-hua-si-lu-bu-zou-cong-hou-xiang-/
  */
 public class DPmincostTickets983LeetCode {
