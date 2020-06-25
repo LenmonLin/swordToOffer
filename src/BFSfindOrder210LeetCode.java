@@ -106,6 +106,8 @@ public class BFSfindOrder210LeetCode {
         for (int k=0;k<result.size();k++){
             output[k] = result.get(k);
         }
+        //如果拓扑排序存入的数字等于课程总个数，也就是将所有的课程并入了拓扑排序，
+        // 就说明没有环，没有拉下的节点，就可以输出结果。
         if (result.size()==numCourses){
             return output;
         }
