@@ -34,6 +34,9 @@
  * 加了，cur没加，这样不满足这种情况，其次，num[cur]==0时，要交换时，只可能把1
  * 交换到前面去，不可能交换2到前面去，2全部都被交换到后面去了。所以cur++，只会让
  * cur左边的数要么是0要么是1，不会发生存在漏2的情况。暂时先记住吧
+ * 评论区关于遇到2时cur不用++的理解：
+ * 因为curr左边的值已经扫描过了，所以curr要++继续扫描下一位，而与p2交换的值，
+ * curr未扫描，要停下来扫描一下，所以curr不用++。
  */
 public class DoublePointersortColors75LeetCode {
     public void sortColors(int[] nums) {
